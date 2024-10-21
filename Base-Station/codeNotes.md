@@ -1,0 +1,16 @@
+- Import 
+	- network to enable AP MODE
+	- time
+	- requests
+	- Sockets
+- setup AP
+	- Read AP details from config file 
+- store all new connected devices starting from 1 
+	- dict with key: identifier 1, etc and value: device id/ip, ip, Mac etc. 
+	- 88
+- API
+	- one thread that takes input from video switch aka GPIO then adds to que. 
+    	- Input: GPIO 1 High = Camera 1 Preview Mode
+    	- Que: recv1, preview
+	- another thread that reads from the queue and makes POST to Recivers waits for confirmation before removing from que
+    	- post to http://recv1(IP)/preview
