@@ -1,18 +1,30 @@
-# apMode file
+from machine import Pin, PWM
+from time import sleep
+#import urequests as requests
+import requests
+
+
+
+#import connectToWlan
+#connectToWlan.connectWLAN()
 import apMode
-apModeReturn= apMode.ap_mode()
-print(apModeReturn)
+apMode.ap_mode()
 
+# make a urequest to 192.168.88.232/led16on then off
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   #creating socket object
-s.bind(('', 80))
-s.listen(5)
+request_url = 'http://192.168.88.234/'
+off = "led16off"
+on = "led16on"
 
-while True:
-    conn, addr = s.accept()
-    print('Got a connection from %s' % str(addr))
-    request = conn.recv(1024)
-    print('Content = %s' % str(request))
-    response = web_page()
-    conn.send(response)
-    conn.close()
+#while True:
+
+    # response = requests.get(request_url+on)
+    # # Print results
+    # print('Response code: ', response.status_code)
+    # print('Response text:', response.text)
+    # sleep(2)
+    # response = requests.get(request_url+off)
+    # print('Response code: ', response.status_code)
+    # print('Response text:', response.text)
+    # sleep(1)
+

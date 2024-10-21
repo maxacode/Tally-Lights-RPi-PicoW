@@ -11,15 +11,11 @@ wifiSSID = "Tally-Lights"
 wifiPass = "LSDkj%$#8ew7lka4"
 hostName = "Tally-System"
 
-def web_page():
-  html = """<html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-            <body><h1>Hello World</h1></body></html>
-         """
-  return html
+
 
 # if you do not see the network you may have to power cycle
 # unplug your pico w for 10 seconds and plug it in again
-def ap_mode(ssid, password):
+def ap_mode():
 
     # Just making our internet connection
     ap = network.WLAN(network.AP_IF)
