@@ -1168,7 +1168,7 @@ class Microdot:
         """
         raise HTTPException(status_code, reason)
 
-    async def start_server(self, host='0.0.0.0', port=80, debug=False,
+    async def start_server(self, host='0.0.0.0', port=8080, debug=False,
                            ssl=None):
         """Start the Microdot web server as a coroutine. This coroutine does
         not normally return, as the server enters an endless listening loop.
@@ -1251,7 +1251,7 @@ class Microdot:
                 # wait a bit and try again
                 await asyncio.sleep(0.1)
 
-    def run(self, host='0.0.0.0', port=80, debug=False, ssl=None):
+    def run(self, host='0.0.0.0', port=8080, debug=False, ssl=None):
         """Start the web server. This function does not normally return, as
         the server enters an endless listening loop. The :func:`shutdown`
         function provides a method for terminating the server gracefully.

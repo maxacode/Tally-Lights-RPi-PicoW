@@ -25,7 +25,7 @@ print("Starting WLAN Connection")
 
 ssid = 'Tell My Wi-Fi Love Her'
 password = 'GodIsGood!'
-
+print(ssid)
 def flashLed(times,duration,msg):
     x = 0
     while x < times:
@@ -69,5 +69,6 @@ def connectWLAN():
         
     
     led.on()
+    return (status[0])
 
 #connectWLAN()
