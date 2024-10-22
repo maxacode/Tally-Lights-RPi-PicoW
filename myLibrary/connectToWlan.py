@@ -23,14 +23,14 @@ led.value(1)
 
 print("Starting WLAN Connection")
 
-ssid = 'Tally-Lights'
-password = 'LSDkj%$#8ew7lka4'
+ssid = 'Tell My Wi-Fi Love Her'
+password = 'GodIsGood!'
 
-def flashLed(times,duration):
+def flashLed(times,duration,msg):
     x = 0
     while x < times:
         time.sleep(duration)
-        print("Flashing LED")
+        print(msg, " ", time.time())
         x += 1
         led.toggle()
         time.sleep(duration)
@@ -57,14 +57,15 @@ def connectWLAN():
         
         # Handle connection error
     if wlan.status() != 3:
-        flashLed(9999, 0.05)
+        flashLed(9999, 0.05,'Failed to connect to WLAN')
         print('customRaise: network connection failed')
 
     else:
         print('Connected')
         status = wlan.ifconfig()
         print( f'ip = {str(status)}')
-        flashLed(2, 0.25)
+        
+        flashLed(2, 0.25, 'Connected to WLAN')
         
     
     led.on()

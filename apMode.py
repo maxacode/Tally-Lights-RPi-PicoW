@@ -13,6 +13,9 @@ def setup_ap(ssid, password):
     # Configure AP settings
     ap.config(essid=ssid, password=password)  # Set SSID and password
 
+    # Create a WLAN object for AP mode
+    ap = network.WLAN(network.AP_IF)
+
 
     # Activate AP mode
     ap.active(True)
