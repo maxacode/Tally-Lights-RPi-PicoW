@@ -7,7 +7,7 @@ import requests
 
 #import connectToWlan
 #connectToWlan.connectWLAN()
-import apMode
+import myLibrary.apMode as apMode
 apMode.ap_mode()
 print(apMode.ap.isconnected())
 print(apMode.ap.ifconfig())
