@@ -48,9 +48,7 @@ def getDipSwitch():
     print(f"Tally ID: {tallyID}")
 
 getDipSwitch()
-
-
-
+ 
 # function to handle PIN PWM for LED
 def ledPWM(pin, freq, duty):
     global output
@@ -77,12 +75,10 @@ async def led(request):
     green = 17
     blue = 16
     out = 'ack: '
-    multiplier = 15000
+    multiplier = 45000
     
     result = [list(ledStatus[i:i+2]) for i in range(0, len(ledStatus), 2)]
-
-    
-    
+ 
     try:
         ledPWM(blue, 500, 0)
         PST = int(result[tallyID-1][0])
@@ -100,13 +96,7 @@ async def led(request):
         print(f'Line 91: {E}')
         status = 418
         return E, status, {'Content-Type': 'text/html'}
-        
-        
-        
-
-
-
-
+         
 @app.route('/shutdown')
 async def shutdown(request):
     request.app.shutdown()
@@ -118,34 +108,56 @@ async def recvSetup():
     print(f'Url: {url}')
     print(f'my ip: {myIP}')
     blue = 16
-    ledPWM(blue, 500, 15000)
 
     
     headers = {'ip':myIP, 'tallyID':str(tallyID)}
     print('sending post')
     try:
-        response = requests.post(url,headers=headers,timeout=5)
-        print('post sent')
-        if response.status_code == 200:
-            print('Request successful')
-            print(response.text)
-            
-        else:
-            print('Request failed')
-            print(response.text)
-            ledPWM(blue, 500, 0)
-            task = asyncio.create_task(recvSetup())
-            await asyncio.sleep(3)
+        while True:
+            ledPWM(blue, 500, 20000)
+            response = requests.post(url,headers=headers,timeout=1)
+            print('post sent')
+            if response.status_code == 200:
+                print('Request successful')
+                print(response.text)
+                ledPWM(blue, 500, 0)
+                break
+            else:
+                print('Request failed')
+                ledPWM(blue, 500, 0)
+                await asyncio.sleep(3)
+                
+            # else:
+            #     print('Request failed')
+            #     print(response.text)
+            #     ledPWM(blue, 500, 0)
+            #     task = asyncio.create_task(recvSetup())
+            #     await asyncio.sleep(10)
+            #     ledPWM(blue, 500, 15000)
     except Exception as e:
         print(f"Error: {e}")
         ledPWM(blue, 500, 0)
-        task = asyncio.create_task(recvSetup())
-        await asyncio.sleep(3)
+        #task = asyncio.create_task(recvSetup())
+        await asyncio.sleep(5)
+        ledPWM(blue, 500, 15000)
+        await recvSetup()
         
     
+async def sendButton():
+    butt = Pin(19, Pin.IN, Pin.PULL_DOWN)
+    while True:
+        #print(f'buttval{butt.value()}')
+        if butt.value() == 1:
+            print('Button pressed')
+            await recvSetup()
+     
+        await asyncio.sleep(2)
+
 async def mainThreads():
-    print(1.7)
+    print(1.11)
     #task2 = asyncio.create_task(app.run(debug=True)())
+    asyncio.create_task(sendButton())
+    
     task = asyncio.create_task(recvSetup())
 
 

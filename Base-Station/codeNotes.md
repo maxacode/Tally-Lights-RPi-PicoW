@@ -25,4 +25,12 @@
     	- another thread that reads from the queue and makes POST to Recivers waits for confirmation before removing from que
     	- post to http://recv1(IP)/preview
       	- https://medium.com/@desjoerdhaan/quick-and-dirty-iot-prototype-in-10-minutes-be74378f4ded
-      	- 
+
+
+API Documentation
+    New Tally Reciver Registration/Setup
+        http://{ip}:8080/recvSetup
+        post
+        Headers: 
+            ip: {myIP} ex 
+            id: {id} ex 1-4
