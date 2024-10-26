@@ -1,18 +1,18 @@
 {
     "_comments/sections": {
-      "global": "Global configuration",
+      "global": "Global configuration For Recv",
       "tallyBrightness": "Tally LED brightness 0 - 65000",
       "ledOutGpio": "GPIO pins that are used for LED output",
       "api": "API configuration"
    },
    "global" : {
-      "version": "1.3",
+      "version": "1.4",
       "baseStationName": "tally.local",
       "apMode": false,
       "apSSID": "TallySystemSSID",
       "apPassword": "KakDela!",
-      "wlanSSID": "Tell My Wi-Fi Love Her",
-      "wlanPassword": "GodIsGood!"
+      "wlanSSID": "OC-Staff",
+      "wlanPassword": "loveGodloveothers"
    },
     "tallyBrightness": {
       "red": 10000,

@@ -1,5 +1,5 @@
 """
-base-Station - Main: v1.5
+base-Station - Main: v1.6
 
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
@@ -111,6 +111,8 @@ def setupWLAN():
 
 def announce_service(baseIP):
     client = Client(baseIP)
+    print(config['global']['baseStationName'])
+    
     responder = Responder(
         client,
         own_ip=lambda: baseIP,
@@ -156,7 +158,7 @@ def setupIRQ():
         for y in x:
             #print('x; y: ', x, y)
             gpioIN = Pin(y, Pin.IN, Pin.PULL_DOWN)
-            gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState, hard=False)
+            gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
         
 
 async def testLeds():
@@ -169,12 +171,15 @@ async def testLeds():
         but1.off()
         but2.on()
 
+curGpioState = ''
+
 def getGPIOState(pin):
-    global gpioState
-    global gpioIN, curButMap
-    print("Pin went high: ", str(pin)[8:10])
+    global curGpioState,gpioState, gpioIN, curButMap
     gpioIN.irq(handler=None)
+    pinNum = str(pin)[8:10]
+    print("Pin went high: ", pinNum)
     gpioState = ''
+
     for x in curButMap:
         #  print('x',x)
         for y in x:
@@ -184,10 +189,17 @@ def getGPIOState(pin):
             else:
                 pin = Pin(y, Pin.IN, Pin.PULL_DOWN)
                 gpioState += str(pin.value())
-    print(f'current_button_state{curButMap}  new state {gpioState}') # current_button_state00000000
-    gpioIN.irq(handler=getGPIOState)
+    print(f'curGpioState: {curGpioState}  new gpioState: {gpioState}') # current_button_state00000000
     
-    sendGPIOUpdate(gpioState)
+    if curGpioState != gpioState:
+        print('Different state')
+        curGpioState = gpioState
+        print('curGpioState: ', curGpioState)
+        gpioIN.irq(handler=getGPIOState)
+        sendGPIOUpdate(gpioState)
+    else:
+        print('same states')
+    
  
  
 current_button_state = ''
@@ -208,7 +220,7 @@ def sendGPIOUpdate(state):
         global currentClientLEDPin
         for ip in clients.keys():
           currentClientLEDPin = config["tallyLEDStatus"]["tally"+clients[ip]][0]
-          print('currentClientLEDPin: ',currentClientLEDPin)
+          #print('currentClientLEDPin: ',currentClientLEDPin)
                 
           while True:
             try:
@@ -221,7 +233,7 @@ def sendGPIOUpdate(state):
                 gc.collect()
                 
                 currentClientLEDPin = config["tallyLEDStatus"]["tally"+clients[ip]][0]
-                print('currentClientLEDPin: ',currentClientLEDPin)
+               # print('currentClientLEDPin: ',currentClientLEDPin)
                 
                # print(f"currentClientLEDPin: {currentClientLEDPin}")
                 status = response.status_code
@@ -243,18 +255,6 @@ def sendGPIOUpdate(state):
                     ledPWM(currentClientLEDPin, 0)
                     break
                 
-           
-
-########### Main Loop #################
-#async def main_loop():
-    
-    #print("Main Loop")
-    #while True:
-        #new_state = get_button_state()
-        #if new_state is not None:
-        #    send_button_update(new_state)
-       # await asyncio.sleep(0.3)  # Adjust sleep time as needed
-
 
 ####### baseAPI #################
         
@@ -263,35 +263,21 @@ async def create_client(request):
   #  print("requests.headers.ip: ", request.headers['ip'])
   #  print("requests.headers.tallyID: ", request.headers['tallyID'])
     print("#############################  NEW CLIENT: ", request.headers['ip'], "| Tally ID: ", request.headers['tallyID'], " | URL: ", request.url)
-    #requests.url:  /recvSetup?test123=hello123
     #print("requests.json: ", request.json)
    # print("requests.form: ", request.form)
     
-    # add client it 
     clients[request.headers['ip']] = request.headers['tallyID'] 
     
-    #print('config',config['tallyLEDStatus'])
     tallyID = "tally"+request.headers['tallyID']
 
     tallyID2 = config['tallyLEDStatus'][tallyID][0]
-    
-    #print('tallyID2',tallyID2)
-
-    
+ 
     print(ledPWM(tallyID2, config['tallyBrightness'][tallyID]))
 
     print('All connected Clients: ', clients)
-    # Start the main loop after adding a client
-   # task1 = asyncio.create_task(main_loop())
-    
+     
     return current_button_state, 200, {'Content-Type': 'text/html'}
-    #print("Starting thread main_loop()")
-
-   # main_loop()
-
-   # finally:
-       # _thread.start_new_thread(main_loop())
-        #main_loop()
+ 
 
 def write_config(config):
     try:

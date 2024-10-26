@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v1.2
+v1.5
 Reads the dip switches and sends a post request to the base station with the IP and Tally ID
 Takes PST and PGM values from the POST request and sets the LED colors accordingly
 Functions and classes:
@@ -39,17 +39,19 @@ serverMdnsName = config["global"]["baseStationName"]
 client = Client('192.168.88.231')
 
 async def query_mdns_and_dns_address():
-    global serverIP
-    while True:
-        try:
-            serverIP1 = (list(await client.getaddrinfo("tally.local", 8080)))
-            serverIP = "http://"+serverIP1[0][4][0] + ":" + str(serverIP1[0][4][1])
-            print("MDNS address found: ", serverIP)
-            break
-        except Exception as e:
-            print("MDNS address not found: ", e)
-            await asyncio.sleep(2)
- 
+    global serverIP 
+    if config['global']['wlanSSID'] == "Tell My Wi-Fi Love Her":
+        
+        while True:
+            try:
+                serverIP1 = (list(await client.getaddrinfo("192.168.88.234", 8080)))
+                serverIP = "http://"+serverIP1[0][4][0] + ":" + str(serverIP1[0][4][1])
+                print("MDNS address found: ", serverIP)
+                break
+            except Exception as e:
+                print("MDNS address not found: ", e)
+                await asyncio.sleep(2)
+     
 
 def setupWLAN():
     global myIP, serverMdnsName
@@ -170,6 +172,9 @@ async def recvSetup():
    # print(f'my ip: {myIP}')
     blue = 16
 
+    #if irqPin != 'Null':
+    #print('irqPin', irqPin)
+        
     lastTime = time.time()
     
     headers = {'ip':myIP, 'tallyID':str(tallyID)}
@@ -211,7 +216,7 @@ async def recvSetup():
 def sendPost(pin):
    # buttonSendRecvSetup.irq(handler=None)
     print('Button pressed', pin)
-    recvSetup()
+    asyncio.run(recvSetup())
   #  buttonSendRecvSetup.irq(handler=sendPost)
 
  
