@@ -1,0 +1,31 @@
+{
+    "_comments/sections": {
+      "global": "Global configuration",
+      "tallyBrightness": "Tally LED brightness 0 - 65000",
+      "ledOutGpio": "GPIO pins that are used for LED output",
+      "api": "API configuration"
+   },
+   "global" : {
+      "version": "1.3",
+      "baseStationName": "tally.local",
+      "apMode": false,
+      "apSSID": "TallySystemSSID",
+      "apPassword": "KakDela!",
+      "wlanSSID": "Tell My Wi-Fi Love Her",
+      "wlanPassword": "GodIsGood!"
+   },
+    "tallyBrightness": {
+      "red": 10000,
+      "blue": 25000,
+      "green": 45000
+    },
+    "ledOutGpio": {
+      "red": 18,
+      "blue": 17,
+      "green": 16
+    },
+      "api": {
+          "ledControlEndpoint": "/led",
+          "receiverSetup": "/recvSetup"
+      }
+  }

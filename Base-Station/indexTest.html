@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta version="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Updated JSON Data with POST Request</title>
+</head>
+<body>
+    <h1>Send Updated JSON Data to IP Address</h1>
+
+    <!-- Input Form for JSON Data -->
+    <form id="jsonForm">
+        <label for="version">Version:</label>
+        <input type="text" id="version" version="version" value="Default Version"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" version="email" value="default@example.com"><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" version="age" value="25"><br><br>
+
+        <label for="active">Active:</label>
+        <input type="checkbox" id="active" version="active" checked><br><br>
+
+        <button type="button" onclick="sendPostRequest()">Send POST Request</button>
+    </form>
+
+    <!-- Script for Handling the POST Request -->
+    <script>
+        // Store default values
+        const defaultValues = {
+            version: "Default Version",
+            email: "default@example.com",
+            age: 25,
+            active: true
+        };
+
+        // Function to send the POST request
+        function sendPostRequest() {
+            // Retrieve current values from the form
+            const version = document.getElementById('version').value;
+            const email = document.getElementById('email').value;
+            const age = parseInt(document.getElementById('age').value);
+            const active = document.getElementById('active').checked;
+
+            // Create an empty object to store only updated fields
+            const updatedData = {};
+
+            // Check if each field is different from the default value
+            if (version !== defaultValues.version) {
+                updatedData.version = version;
+            }
+            if (email !== defaultValues.email) {
+                updatedData.email = email;
+            }
+            if (age !== defaultValues.age) {
+                updatedData.age = age;
+            }
+            if (active !== defaultValues.active) {
+                updatedData.active = active;
+            }
+
+            // If no fields are updated, alert the user
+            if (Object.keys(updatedData).length === 0) {
+                alert('No fields were updated.');
+                return;
+            }
+
+            // Specify the target URL (Replace with your target IP address)
+            const url = 'http://192.168.88.234:8080/configUpdate'; // Example IP and endpoint
+
+            // Use fetch to send the POST request
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Specify JSON content type
+                },
+                body: JSON.stringify(updatedData) // Convert updated fields to JSON
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data); // Handle the response data
+                alert('POST request sent successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error); // Handle any errors
+               // alert('Error sending POST request.');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,26 +1,43 @@
-from machine import Pin 
+
+    
+    
+from machine import Pin
+import time
+
+# Interrupt handler function
+def button_handler(pin):
+    print("Button was pressed!")
+
+# Set up GPIO 14 as an input with a pull-down resistor
+button = Pin(16, Pin.IN, Pin.PULL_DOWN)
+
+# Attach an interrupt to the pin
+button.irq(trigger=Pin.IRQ_RISING, handler=button_handler)
+
+# Main loop
+while True:
+    time.sleep(1)  # Keep the loop running
+
+#interups
+but1 = 16
+but2 = 17
+
+from machine import Pin
 from time import sleep
-z = 0 
-current_button_state = []
-t1PST = Pin(16, Pin.IN, Pin.PULL_DOWN)
-t1PGM = Pin(17, Pin.IN, Pin.PULL_DOWN)
-t2PST = Pin(18, Pin.IN, Pin.PULL_DOWN)
-t2PGM = Pin(19, Pin.IN, Pin.PULL_DOWN)
+
+int1 = Pin(but1, Pin.IN, Pin.PULL_DOWN)
+int2 = Pin(but2, Pin.IN, Pin.PULL_DOWN)
 
 
-while z <= 30: 
-    z += 1
-    #print(z)
-    new_state = []
+def intHandler(button):
+    print('button number triggered: ',button)
 
-    allTallys = (t1PST,t1PGM,t2PST,t2PGM)
-    for x in allTallys:
-        #print(x.value())
-        new_state.append(x.value())
 
-    #print(new_state, current_button_state)
+int1.irq(trigger=Pin.IRQ_RISING, handler=intHandler(int1))
+
+x = 0
+while True:
+    x +=1 
+    print("True Loop: ", x)
     sleep(.5)
-    if new_state != current_button_state:
-        current_button_state = new_state
-
-        print("Button Changed to:", new_state)
+    

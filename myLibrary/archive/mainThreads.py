@@ -3,10 +3,10 @@ import time, socket, network
 apMode = False
 
 if apMode == True:
-    import apWorks
+    import myLibrary.apWorks as apWorks
     apWorks.setup_ap()
 elif apMode == False:
-    import connectToWlan
+    import Recievers.connectToWlan as connectToWlan
     connectToWlan.connectWLAN()
 
 print("vtempMain: 1.1")

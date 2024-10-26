@@ -1,7 +1,7 @@
 import time, socket, network
 print("vtempMain: 1.5")
 from microdot import Microdot
-import connectToWlan
+import Recievers.connectToWlan as connectToWlan
 from time import sleep
 from machine import Pin
 ####### setup AP ######################
@@ -9,7 +9,7 @@ from machine import Pin
 apMode = False
 
 if apMode == True:
-    import apWorks
+    import myLibrary.apWorks as apWorks
     apWorks.setup_ap()
 elif apMode == False:
     connectToWlan.connectWLAN()

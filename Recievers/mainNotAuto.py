@@ -1,5 +1,6 @@
 # Recievers Main Function
 """
+v1.2
 Reads the dip switches and sends a post request to the base station with the IP and Tally ID
 Takes PST and PGM values from the POST request and sets the LED colors accordingly
 Functions and classes:
@@ -16,12 +17,58 @@ from machine import Pin, PWM
 from time import sleep
 import asyncio
 import requests
-
+import json
 import connectToWlan
-myIP = connectToWlan.connectWLAN()
 
 from microdot import Microdot, send_file
 app = Microdot()
+from mdns_client import Client
+
+
+with open('recvConfig.json','r') as f:
+    config = json.load(f)
+    #print(config)
+    print(config["global"]["version"])
+
+serverIP = ''
+myIP = ''
+serverMdnsName = config["global"]["baseStationName"]
+
+
+
+client = Client('192.168.88.231')
+
+async def query_mdns_and_dns_address():
+    global serverIP
+    while True:
+        try:
+            serverIP1 = (list(await client.getaddrinfo("tally.local", 8080)))
+            serverIP = "http://"+serverIP1[0][4][0] + ":" + str(serverIP1[0][4][1])
+            print("MDNS address found: ", serverIP)
+            break
+        except Exception as e:
+            print("MDNS address not found: ", e)
+            await asyncio.sleep(2)
+ 
+
+def setupWLAN():
+    global myIP, serverMdnsName
+    print('apMode: ',config["global"]["apMode"])
+    if config["global"]["apMode"] == True:
+        print("Connecting to AP: ", config["global"]["apSSID"])
+        myIP = connectToWlan.connectWLAN(config["global"]["apSSID"], config["global"]["apPassword"])
+
+    elif config["global"]["apMode"] == False:
+        print("Connecting to AP: ", config["global"]["wlanSSID"])
+
+        myIP = connectToWlan.connectWLAN(config["global"]["wlanSSID"], config["global"]["wlanPassword"])
+   
+    
+    print(f'######## Connected:  {serverMdnsName} myIP {myIP} ############')
+
+
+    
+
 tallyID = None
 ##### Reading 2 Dip Switches ####
 def getDipSwitch():
@@ -48,7 +95,20 @@ def getDipSwitch():
     print(f"Tally ID: {tallyID}")
 
 getDipSwitch()
+import time
+
+
+lastTime = time.time()
  
+async def keepAlive():
+    # tracking last comm time
+    currentTime = time.time()
+    global lastTime
+    if currentTime - lastTime > 10:
+        print('No communication for 10 seconds')
+        lastTime = currentTime
+        await recvSetup()
+
 # function to handle PIN PWM for LED
 def ledPWM(pin, freq, duty):
     global output
@@ -68,6 +128,7 @@ async def hello(request):
 
 @app.post('/led')
 async def led(request):
+    lastTime = time.time()
     # turn on led 16 half brightness
     ledStatus = request.headers['ledStatus']
     print(f"ledStatus: {ledStatus}")
@@ -104,18 +165,22 @@ async def shutdown(request):
 
 async def recvSetup():
     # Sending a post to base and recvSetup with IP and Tally ID
-    url = 'http://192.168.88.234:8080/recvSetup'
-    print(f'Url: {url}')
-    print(f'my ip: {myIP}')
+    url = serverIP + config['api']['receiverSetup']
+   # print(f'Url: {url}')
+   # print(f'my ip: {myIP}')
     blue = 16
 
+    lastTime = time.time()
     
     headers = {'ip':myIP, 'tallyID':str(tallyID)}
-    print('sending post')
-    try:
-        while True:
+    
+    while True:
+        try:
+
             ledPWM(blue, 500, 20000)
-            response = requests.post(url,headers=headers,timeout=1)
+            print('sending post: ', url, headers)
+
+            response = requests.post(url,headers=headers,timeout=10)
             print('post sent')
             if response.status_code == 200:
                 print('Request successful')
@@ -134,29 +199,30 @@ async def recvSetup():
             #     task = asyncio.create_task(recvSetup())
             #     await asyncio.sleep(10)
             #     ledPWM(blue, 500, 15000)
-    except Exception as e:
-        print(f"Error: {e}")
-        ledPWM(blue, 500, 0)
-        #task = asyncio.create_task(recvSetup())
-        await asyncio.sleep(5)
-        ledPWM(blue, 500, 15000)
-        await recvSetup()
-        
+        except Exception as e:
+            print(f"Error 201: {e}")
+            ledPWM(blue, 500, 0)
+            #task = asyncio.create_task(recvSetup())
+            await asyncio.sleep(5)
+            #ledPWM(blue, 500, 15000)
+            #await recvSetup()
+            
     
-async def sendButton():
-    butt = Pin(19, Pin.IN, Pin.PULL_DOWN)
-    while True:
-        #print(f'buttval{butt.value()}')
-        if butt.value() == 1:
-            print('Button pressed')
-            await recvSetup()
-     
-        await asyncio.sleep(2)
+def sendPost(pin):
+   # buttonSendRecvSetup.irq(handler=None)
+    print('Button pressed', pin)
+    recvSetup()
+  #  buttonSendRecvSetup.irq(handler=sendPost)
+
+ 
 
 async def mainThreads():
-    print(1.11)
+   # print(1.11)
+
     #task2 = asyncio.create_task(app.run(debug=True)())
-    asyncio.create_task(sendButton())
+    buttonSendRecvSetup = Pin(19, Pin.IN, Pin.PULL_DOWN)
+    buttonSendRecvSetup.irq(trigger=Pin.IRQ_RISING, handler=sendPost)
+    asyncio.create_task(keepAlive())
     
     task = asyncio.create_task(recvSetup())
 
@@ -167,6 +233,9 @@ async def mainThreads():
 
 # Main program execution
 if __name__ == "__main__":
+    setupWLAN()
+    asyncio.run(query_mdns_and_dns_address())
+
     asyncio.run(mainThreads())
     # Main thread continues running while the other threads execute
     print("xyz")
