@@ -7,20 +7,21 @@
 </head>
 <body>
     <h1>Send Updated JSON Data to IP Address</h1>
+    <!-- version 1.1 --> 
 
     <!-- Input Form for JSON Data -->
     <form id="jsonForm">
         <label for="version">Version:</label>
-        <input type="text" id="version" version="version" value="Default Version"><br><br>
+        <input type="text" id="version" value="Default Version"><br><br>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" version="email" value="default@example.com"><br><br>
+        <input type="email" id="email" value="default@example.com"><br><br>
 
         <label for="age">Age:</label>
-        <input type="number" id="age" version="age" value="25"><br><br>
+        <input type="number" id="age" value="25"><br><br>
 
         <label for="active">Active:</label>
-        <input type="checkbox" id="active" version="active" checked><br><br>
+        <input type="checkbox" id="active" checked><br><br>
 
         <button type="button" onclick="sendPostRequest()">Send POST Request</button>
     </form>

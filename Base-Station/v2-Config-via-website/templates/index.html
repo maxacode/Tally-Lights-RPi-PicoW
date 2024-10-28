@@ -1,0 +1,50 @@
+{% args name %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Editor</title>
+</head>
+<body>
+    <h1>Edit Configuration</h1>
+    <form id="configForm">
+        {% for key in name.keys() %}
+            <label for="{{ key }}">{{ key }}:</label>
+            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ name[key] }}" size="50">
+            <br><br>
+        {% endfor %}
+        <button type="button" onclick="submitConfig()">Save Changes</button>
+    </form>
+
+    <script>
+        function submitConfig() {
+            const form = document.getElementById('configForm');
+            const formData = {};
+
+            // Gather form data
+            Array.from(form.elements).forEach(element => {
+                if (element.name) {
+                    formData[element.name] = element.value;
+                }
+            });
+
+            // Send JSON HTTP POST request
+            fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

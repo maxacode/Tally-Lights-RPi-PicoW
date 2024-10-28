@@ -1,5 +1,5 @@
 """
-base-Station - Main: v1.6
+base-Station - Main: v1.7
 
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
@@ -23,17 +23,24 @@ Functions and classes:
 import time, socket, network, json, requests, asyncio, uasyncio, gc
 from machine import Pin, PWM
 
+## External Files:
+from getConfig import getConf
 
+from microdot import Microdot, send_file, Response
+from utemplate import Template
 
-configFileName = 'baseConfig.json'
-global config
-with open(configFileName,'r') as f:
-    config = json.load(f)
-    #print(config)
-    print(config["global"]["version"])
+from cors import CORS
 
-   # smaple button_pin = config['global']['version']
-tallyEnabled = []
+from mdns_client import Client
+from mdns_client.responder import Responder
+ 
+from connectToWlan import mainFunc
+
+# Config file to read data 
+config = getConf()
+    
+
+#tallyEnabled = []
 current_button_map = []
 def setupMappings():
     global current_button_map, hostName
@@ -41,22 +48,17 @@ def setupMappings():
     y = 1
     gpioInput = config['gpioInput']
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
-    #print('gpioinput',gpioInput) 
     for x in tallyEnabled:
         if x:
-            
             current_button_map.append(gpioInput['tally'+str(y)])
         elif x == False:
             current_button_map.append([0,0])
         y += 1
-        
-    # Tally LED Mappings
-    
     #current map [[16, 17], [18, 19], [20, 21], [22, 26]]
-    #print('current map',current_button_map)
-
+ 
 
 # function to handle PIN PWM for LED
+# neo pixel eventually
 def ledPWM(pin, level):
     global output
     #print('Pin: ', pin, 'Freq: ', freq, 'Duty: ', duty)
@@ -67,20 +69,10 @@ def ledPWM(pin, level):
     #print("returning pin freq duty")
     return f"(ledPWM: {pin}, {level})"
 
-# files on the devie
-from microdot import Microdot, send_file
-from cors import CORS
-
-from mdns_client import Client
-from mdns_client.responder import Responder
- 
-#apWorks or wlan
-####### setup AP ######################
- 
-
 
 def setupWLAN():
     apMode = config['global']['apMode']
+    
     if apMode:
         import apWorks
         ssid = config['global']["apSSID"]
@@ -89,7 +81,6 @@ def setupWLAN():
         apWorks.setup_ap(ssid,ssidPassword)
     elif apMode == False:
         print("Connecting to WLAN")
-        import connectToWlan
         ssid = config['global']["wlanSSID"]
         ssidPassword = config['global']["wlanPassword"]
         baseIP = connectToWlan.connectWLAN(ssid,ssidPassword)
@@ -132,7 +123,7 @@ def responder(responder):
  
 ####### API ######################
 app = Microdot()
-CORS(app, allowed_origins=['*'], allow_credentials=True)
+CORS(app, allowed_origins='*', allow_credentials=True)
 
 clients = {}
 current_button_state = []  # Initialize global variable for button state
@@ -232,7 +223,7 @@ def sendGPIOUpdate(state):
                 # Replace with your actual function to send POST requests (e.g., using sockets)
                 url = f"http://{ip}:8080/led"  # Replace with your client's endpoint
                 headers = {'ledStatus':str(state)}
-                response = requests.post(url,headers=headers,timeout = 1)
+                response = requests.post(url,headers=headers,timeout = 5)
                 gc.collect()
                 
                 currentClientLEDPin = config["tallyLEDStatus"]["tally"+clients[ip]][0]
@@ -279,6 +270,7 @@ async def create_client(request):
 
     print('All connected Clients: ', clients)
      
+    
     return current_button_state, 200, {'Content-Type': 'text/html'}
  
 
@@ -306,15 +298,16 @@ def updateConfig(key,value):
 #@app.post('/configUpdate')
 @app.route('/configUpdate', methods=['POST', 'OPTIONS'])
 async def configUpdate(request):
-    jsonReq = "configUpdate:json ", request.json
+    #jsonReq = "configUpdate:json ", request.json
+    jsonReq = request.json
     print('jsonreq',jsonReq)
    # print('jsonred[email',jsonReq[1]['age'])
-    for x in jsonReq[1].keys():
-        print('x',x)
-        print(config['global'][x])
-        print(jsonReq[x])
+    for x in jsonReq.keys():
+        print('x: ' ,x)
+       # print(config['global'][x])
+      #  print(jsonReq[x])
         #key1 = "['global"+"[{x}]"
-        updateConfig(x,jsonReq[x])
+        #updateConfig(x,jsonReq[x])
         #updateConfig(x,jsonReq[1][x])
    # print("configUpdate: txt ", request.text)
     #print("configUpdate: headers ", request.headers)
@@ -323,10 +316,45 @@ async def configUpdate(request):
     # return JSON response with word 'Config Updated' and status code 200
     return {'message': 'Config Updated'}, 200
 
-@app.route('/')
-async def home(request):
-    response = send_file('indexTest.html')
-    return response
+
+
+@app.route('/', methods=['GET', 'POST'])
+async def index(req):
+    global config
+    #name = None
+    #if req.methodest  == 'POST':
+      #  name3 = config
+    #response = send_file('indexTest.html')
+    # Sends the conifg var which is conents of config file
+    
+    if req.method == 'POST':
+        print("POST: ", req.url)
+        #print(req)
+        #print(req.form.get('api')['ledControlEndpoint'])
+        #print(req.form)
+        config2 = req.json
+        
+        
+        with open("sampleConf.json", 'w') as x:
+            json.dump(config2, x)
+            
+       # print(config2)
+        return await Template('index.html').render_async(name=config2)
+    elif req.method == 'GET':
+        print("Get on: ", req.url)
+        with open("sampleConf.json", 'r') as f:
+            config2 = json.load(f)
+        
+        print(config2)
+        print('get on: ', req.url)
+    
+    return await Template('index.html').render_async(name=config2)
+
+
+   # return config
+
+
+Response.default_content_type = 'text/html'
 
 
 @app.route('/shutdown')
@@ -348,21 +376,21 @@ async def mainThreads():
 
 # Main program execution
 if __name__ == "__main__":
+    # config = getConf() runs first to setup files
+
     setupMappings()
     
     #seutp Wifi or AP mode
-    baseIP = setupWLAN()
+    baseIP = mainFunc()
+    #make hostname.local available
     resp = announce_service(baseIP)
     responder(resp)
 
-    for x in config.keys():
-        print(x)
-    
+    #setup pins to be interupted based on config file
     setupIRQ()
 
     asyncio.run(mainThreads())
     # Main thread continues running while the other threads execute
-
 
 
 
