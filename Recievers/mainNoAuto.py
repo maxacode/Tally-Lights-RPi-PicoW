@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v1.5
+v1.6
 Reads the dip switches and sends a post request to the base station with the IP and Tally ID
 Takes PST and PGM values from the POST request and sets the LED colors accordingly
 Functions and classes:
@@ -30,7 +30,7 @@ with open('recvConfig.json','r') as f:
     #print(config)
     print(config["global"]["version"])
 
-serverIP = ''
+serverIP = 'http://10.1.21.238:8080'
 myIP = ''
 serverMdnsName = config["global"]["baseStationName"]
 

@@ -1,0 +1,37 @@
+[tallyBrightness]
+tally1 = 65000
+tally4 = 65000
+tally3 = 65000
+tally2 = 65000
+
+[api]
+ledControlEndpoint = led
+receiverSetup = recvSetup
+
+[tallyEnabled]
+tally1 = true
+tally4 = true
+tally3 = true
+tally2 = true
+
+[gpioInput]
+tally1 = 17,16
+tally4 = 26,22
+tally3 = 21,20
+tally2 = 19,18
+
+[tallyLEDStatus]
+tally1 = 12, 45000
+tally4 = 15, 25000
+tally3 = 14, 45000
+tally2 = 13, 45000
+
+[global]
+apMode = false
+apSSID = TallySystemSSID
+apPassword = KakDela!
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
+baseStationName = tally2
+wlanPassword = GodIsGood!, loveGodloveothers
+version = 1.9
+

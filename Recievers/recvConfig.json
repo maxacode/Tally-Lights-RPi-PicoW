@@ -1,6 +1,6 @@
 {
     "_comments/sections": {
-      "global": "Global configuration For Recv",
+      "global": "Global configuration",
       "tallyBrightness": "Tally LED brightness 0 - 65000",
       "ledOutGpio": "GPIO pins that are used for LED output",
       "api": "API configuration"
