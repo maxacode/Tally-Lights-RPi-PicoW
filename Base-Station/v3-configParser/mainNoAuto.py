@@ -50,7 +50,7 @@ config = getConf(configFileName)
 current_button_map = []
 def setupMappings():
     global current_button_map, hostName
-    tallyEnabled = (list(config.items('tallyEnabled').values()))
+    tallyEnabled = (list(await config.items('tallyEnabled').values()))
     y = 1
     gpioInput = config.items('gpioInput')
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
