@@ -1,12 +1,29 @@
-[tallyBrightness]
-tally1 = 65000
-tally4 = 65000
-tally3 = 65000
-tally2 = 65000
+[Sections]
+gpioInput = Pins for input, PGM First then PST
+tallyLEDStatus = Brightness of Led for each Tally on the Base
+tallyBrightness = Brightness on the Recievers, red, green, blue order
 
-[api]
-ledControlEndpoint = led
-receiverSetup = recvSetup
+
+[global]
+version = 1.9
+apSSID = TallySystemSSID
+apPassword = KakDela!
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
+baseStationName = tally4
+wlanPassword = GodIsGood!, loveGodloveothers
+apMode = false
+
+[tallyBrightness]
+tally1 = 200, 200, 100
+tally4 = 200, 200, 100
+tally3 = 200, 200, 100
+tally2 = 200, 200, 100
+
+[tallyLEDStatus]
+tally1 = 12, 100
+tally4 = 15, 100
+tally3 = 14, 100
+tally2 = 13, 100
 
 [tallyEnabled]
 tally1 = true
@@ -15,23 +32,17 @@ tally3 = true
 tally2 = true
 
 [gpioInput]
-tally1 = 17,16
-tally4 = 26,22
-tally3 = 21,20
-tally2 = 19,18
+tally1 = 16,17
+tally4 = 22,26
+tally3 = 20,21
+tally2 = 18,19
 
-[tallyLEDStatus]
-tally1 = 12, 45000
-tally4 = 15, 25000
-tally3 = 14, 45000
-tally2 = 13, 45000
 
-[global]
-apMode = false
-apSSID = TallySystemSSID
-apPassword = KakDela!
-wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
-baseStationName = tally2
-wlanPassword = GodIsGood!, loveGodloveothers
-version = 1.9
+[ledOutGpio]
+neoPin = 28
+
+[api]
+ledControlEndpoint = led
+receiverSetup = recvSetup
+
 

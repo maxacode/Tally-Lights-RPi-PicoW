@@ -14,6 +14,8 @@ Functions and classes:
     
 """
 
+# add tallyBrightness api endpiont to set it 
+
 from machine import Pin, PWM
 from time import sleep
 import asyncio
@@ -41,22 +43,64 @@ red = (0, 255, 0)
 blue = (0, 0, 255)
 violet = (0, 255, 100)
 
-    
+serverIP = ''
+printFOn = True # All Msg
+printFFOn = True # only impt
+printWOn = True
+
+def printF(*args):
+    print("                   ---------                       ")
+
+    if printFOn == True:
+        print(args)
+            
+def printFF(*msg):
+    print("                   ---------                       ")
+    if printFFOn == True:
+        print(msg)
+    elif printFOn == True:
+        printF(msg)
+def printW(*msg):
+    print("                   ---------                       ")
+
+    if printWOn == True:
+        print(msg)
+    elif printFon == True:
+        printF(msg)
+
+# Function to start query of MDNS 
 async def query_mdns_and_dns_address(myIP):
     global serverIP
+    printF('ln 61, query mdns started')
     client = Client(myIP)
+    retry = 0
     while True:
+        printF(('retry mds: ', retry))
+        
+        if retry >= 8:
+            printF("retry more than 8")
+            retry = 0
+            break
         try:
-            #print(config.items('global')['baseStationName'])
-            serverIP1 = (list(await client.getaddrinfo(config.items('global')['baseStationName'], 8080)))
+            retry += 1
+            
+            printF(('    Getting MDNS for: ', config.items('global')['baseStationName']))
+            serverIP1 = (list(await client.getaddrinfo(config.items('global')['baseStationName'], config.items('global')['port'])))
            # serverIP1 = (list(await client.getaddrinfo("tally2", 8080)))
-            serverIP = "http://"+serverIP1[0][4][0] + ":" + str(serverIP1[0][4][1])
-            print("!!!!! MDNS address found: ", serverIP)
+            serverIP = "http://"+serverIP1[0][4][0] + ":" + config.items('global')['port']
+            printF(("            !!!!!!!!!!!!!!!!!! MDNS address found: ", serverIP))
+
+            config.items('global')['baseStationIP'] = str(serverIP1[0][4][0])
+            config.write('recvConfig.json')
             break
         except Exception as e:
-            print("MDNS address not found: ", e)
-            await asyncio.sleep(2)
-     
+            retry += 1
+            printF(("        MDNS address not found: ",e))
+            await asyncio.sleep(1)
+            
+    printF("starting recvSetu ln 75")
+    await recvSetup()
+
 
 ##### Reading 2 Dip Switches ####
 tallyID = 1
@@ -79,48 +123,69 @@ def getDipSwitch():
             tallyID = 1
         else:
             tallyID = 2       
-    print(f"Tally ID: {tallyID}")
+    printFF(f"Tally ID: {tallyID}")
  
 async def keepAlive():
     # tracking last comm time
   #  currentTime = time.time()
     global lastTime
     if currentTime - lastTime > 10:
-        print('No communication for 10 seconds')
+        printF('No communication for 10 seconds')
         lastTime = currentTime
         await recvSetup()
 
 @app.route('/')
 async def hello(request):
+    printW(request.url, request.json, request.headers)
+    
     response = send_file('index.html')
     return response
     #return html, 200, {'Content-Type': 'text/html'}
 
 @app.post('/led')
 async def led(request):
+    printW(request.url, request.json, request.headers) #('/led', None, {'ledStatus': '00000100', 'Host': '192.168.88.229', 'Connection': 'close'})
 
     ledStatus = request.headers['ledStatus']
-    print(f"ledStatus: {ledStatus}")
+    printW(f"ledStatus: {ledStatus}")
     out = 'ack: '
   #  multiplier = 45000
     
-    result = [list(ledStatus[i:i+2]) for i in range(0, len(ledStatus), 2)]
- 
+    result = [list(ledStatus[i:i+2]) for i in range(0, len(ledStatus), 2)] #('ln 148 result', [['0', '0'], ['0', '0'], ['0', '1'], ['0', '0']])
+    printW('ln 148 result', result)
+    
     try:
         setNeo(blue, 0)
-        PST = int(result[tallyID-1][0])
-        PGM = int(result[tallyID-1][1])
+        PGM = int(result[tallyID-1][0]) # PGM live
+        PST = int(result[tallyID-1][1]) # PST Preview
+        printW(f'PST/PGM: {PST} : {PGM}')
+        printW(config.items('tallyBrightness')['red'])
+        print(type(config.items('tallyBrightness')['red']))
+        
         if PST == 0 and PGM == 0:
-            out = setNeo(blue, 50)
+            printW(f'159')
+
+            out = out + '00' #+ str(setNeo(blue, 50))
+            return out, 200, {'Content-Type': 'text/html'}
+        if PGM == 1:
+            printW(f'164')
+            out = out + '1,0 red'
+
+            setNeo(red, int(config.items('tallyBrightness')['red']))
+        if PST == 1:
+            printW(f'167')
+            out = out +  '0,1,green '
+            setNeo(green, int(config.items('tallyBrightness')['green']))
             
-        print(f'PST/PGM: {PST} : {PGM}')
-        out = out + setNeo(red, 500, config.items('tallyBrightness')('red'))
-        out = out + setNeo(green, 500, config.items('tallyBrightness')('green'))
-        E = out
-        status = 200
-        return out, status, {'Content-Type': 'text/html'}
+        if PST == 1 and PGM == 1:
+            out = out + " 1,1 green/red"
+            setNeo(red, int(config.items('tallyBrightness')['red'], green, int(config.items('tallyBrightness')['green'])))
+            #etNeo(green, int(config.items('tallyBrightness')['green']))
+
+        printW(out)
+        return out, 200, {'Content-Type': 'text/html'}
     except Exception as E:
-        print(f'Line 91: {E}')
+        printF(f'Line 172: {E}')
         status = 418
         return E, status, {'Content-Type': 'text/html'}
          
@@ -131,48 +196,44 @@ async def shutdown(request):
 
 async def recvSetup():
     # Sending a post to base and recvSetup with IP and Tally ID
+    printF('ln 163 recvSetup started')
     url = serverIP + config.items('api')['receiverSetup']
 
     headers = {'ip':myIP, 'tallyID':str(tallyID)}
-    
+    retry = 0    
     while True:
+        printF('ln 169 while True')
+        # We are trying to get MDNS IP if server does not reply after 5 attemps
+        retry += 1
+        if retry >= 2:
+            printF('retry more that 5')
+            retry = 0
+            await query_mdns_and_dns_address(myIP)
+            break
         try:
-
+            printF(('sending post: ', url, headers))
             setNeo(blue,100)
-            print('sending post: ', url, headers)
-
-            response = requests.post(url,headers=headers,timeout=10)
-            print('post sent')
+            response = requests.post(url,headers=headers,timeout=2)
+            printF('post sent')
             if response.status_code == 200:
-                print('Request successful')
-                print(response.text)
+                printF('Request successful')
+                printF(response.text)
                 setNeo(blue, 0)
                 break
             else:
-                print('Request failed')
+                printF('Request failed')
                 setNeo(blue, 0)
-                await asyncio.sleep(3)
+                await asyncio.sleep(1)
 
         except Exception as e:
-            print(f"Error 201: {e}")
+            printFF(f"Error recvSetup ln 201: {e}")
             setNeo(blue, 0)
-            await asyncio.sleep(5)
+            await asyncio.sleep(2)
 
-    
-def sendPost(pin):
-   # buttonSendRecvSetup.irq(handler=None)
-    print('Button pressed', pin)
-    asyncio.run(recvSetup())
-  #  buttonSendRecvSetup.irq(handler=sendPost)
-
- 
 
 async def mainThreads():
-   # print(1.11)
+    printF('ln 207 mainThread start')
 
-    #task2 = asyncio.create_task(app.run(debug=True)())
-    buttonSendRecvSetup = Pin(19, Pin.IN, Pin.PULL_DOWN)
-    buttonSendRecvSetup.irq(trigger=Pin.IRQ_RISING, handler=sendPost)
    # asyncio.create_task(keepAlive())
     
     task = asyncio.create_task(recvSetup())
@@ -188,10 +249,20 @@ if __name__ == "__main__":
     getDipSwitch()
 
     myIP = mainFunc()
-
-    asyncio.run(query_mdns_and_dns_address(myIP))
-
+    try:
+        printF('228')
+        if isinstance(config.items('global')['baseStationIP'], str):
+            printF('ln 230')
+            serverIP = "http://"+str(config.items('global')['baseStationIP']) + ":8080"
+        else:
+            printF(('ln 233: ', config.items('global')['baseStationIP']))
+            asyncio.run(query_mdns_and_dns_address(myIP))
+    except Exception as e:
+        printF(235)
+        printF(e)
+        asyncio.run(query_mdns_and_dns_address(myIP))
+        
     asyncio.run(mainThreads())
     # Main thread continues running while the other threads execute
-    print("xyz")
+    printF("xyz")
  

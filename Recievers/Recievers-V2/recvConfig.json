@@ -1,30 +1,33 @@
-[Section Descriptions]
-global = Global Settings, add Wifi networks seperated with a ","
-tallyBrightness = Tally LED brightness 0 - 300 
-ledOutGpio =  GPIO pin that is used for LED output - DO NOT CHANGE
-api =  API configuration - DO NOT CHANGE
-dipSwitch = The Pins for DIP Switches - DO NOT CHANGE
-      
-[global]
-version = 1.4
-baseStationName = tally3.local
-apSSID = TallySystem-Reciever
-apPassword = KakDela!
-wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
-wlanPassword = GodIsGood!, loveGodloveothers, KakDela!
-
 [tallyBrightness]
 red = 200
-blue = 150
 green = 150
-
-[ledOutGpio]
-neoPixel = 28
+blue = 150
 
 [dipSwitch]
-dip1 = 15
 dip2 = 14
+dip1 = 15
 
 [api]
 ledControlEndpoint = /led
 receiverSetup = /recvSetup
+
+[Section Descriptions]
+tallyBrightness = Tally LED brightness 0 - 300
+dipSwitch = The Pins for DIP Switches - DO NOT CHANGE
+ledOutGpio = GPIO pin that is used for LED output - DO NOT CHANGE
+global = Global Settings, add Wifi networks seperated with a ","
+api = API configuration - DO NOT CHANGE
+
+[ledOutGpio]
+neoPixel = 28
+
+[global]
+wlanPassword = GodIsGood!, loveGodloveothers, KakDela!
+apSSID = TallySystem-Reciever
+baseStationIP = 192.168.88.234
+apPassword = KakDela!
+port = 8080
+baseStationName = tally4.local
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
+version = 1.4
+

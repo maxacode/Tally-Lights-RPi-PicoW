@@ -13,3 +13,4 @@ def getConf(configFileName):
 if __name__ == '__main__':
     getConf()
     
+#config.write('baseConfig.json')
