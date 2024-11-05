@@ -50,23 +50,26 @@ import asyncio
 
 from mdns_client import Client
  
+from connectToWlan import mainFunc
 
-own_ip_address = '192.168.88.231'
+own_ip_address = mainFunc()
+#own_ip_address = '192.168.88.229'
 
-
+import time
 #loop = uasyncio.get_event_loop()
 client = Client(own_ip_address)
 
 
 async def query_mdns_and_dns_address():
-    try:
-        serverIP1 = (list(await client.getaddrinfo("tally.local", 8080)))
-        serverIP = serverIP1[0][4][0] + ":" + str(serverIP1[0][4][1])
+    while True:
+        try:
+            serverIP1 = (await client.getaddrinfo("tally2.local", 80))
+            serverIP = serverIP1[0][4][0] + ":" + str(serverIP1[0][4][1])
 
-        print("MDNS address found: ", serverIP)
+            print("MDNS address found: ", serverIP)
 
-    except Exception as e:
-        print("MDNS address not found: ", e)
-
+        except Exception as e:
+            print("MDNS address not found: ", e)
+    time.sleep(1)
 
 asyncio.run(query_mdns_and_dns_address())

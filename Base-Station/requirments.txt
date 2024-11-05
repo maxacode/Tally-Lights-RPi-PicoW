@@ -1,0 +1,9 @@
+myLibrary/Lib:
+    configparser/
+    mdns_client/
+    microdot/
+    neopixel/
+    utemplate2/
+    
+    connectToWlan
+    getConfig

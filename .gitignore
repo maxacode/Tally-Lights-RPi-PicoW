@@ -6,6 +6,19 @@ __pycache__/
 # C extensions
 *.so
 
+# Local Files:
+.vscode/
+.micropico
+.Tally-Lights-RPi-PicoW.code-workspace
+.settings.json
+
+settings.json
+vscode/
+micropico
+Tally-Lights-RPi-PicoW.code-workspace
+
+
+
 # Distribution / packaging
 .Python
 build/

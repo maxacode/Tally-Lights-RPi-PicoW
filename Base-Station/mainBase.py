@@ -1,5 +1,5 @@
 """
-base-Station - Main: v1.7
+base-Station - Main: v3.1
 
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
@@ -36,11 +36,13 @@ from mdns_client.responder import Responder
  
 from connectToWlan import mainFunc
 
+from npDone import setNeo
+
 # Config file to read data
 
-configFileName = 'baseConfig.json'
+#configFileName = 'baseConfig.json'
 
-config = getConf(configFileName)
+#config = getConf(configFileName)
 
 #print(config)
 #print(config.sections())
@@ -50,7 +52,7 @@ config = getConf(configFileName)
 current_button_map = []
 def setupMappings():
     global current_button_map, hostName
-    tallyEnabled = (list(await config.items('tallyEnabled').values()))
+    tallyEnabled = (list(config.items('tallyEnabled').values()))
     y = 1
     gpioInput = config.items('gpioInput')
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
@@ -78,13 +80,13 @@ def ledPWM(pin, level):
 for x in (12,13,14,15):
     ledPWM(x, 0)
 
-def announce_service(baseIP):
-    client = Client(baseIP)
+def announce_service(myIP):
+    client = Client(myIP)
     #print(config.items('global')['baseStationName'])
     
     responder = Responder(
         client,
-        own_ip=lambda: baseIP,
+        own_ip=lambda: myIP,
         host=lambda: config.items('global')['baseStationName'])
     
     return responder
@@ -183,7 +185,6 @@ current_button_state = ''
 
 gpioState = ''
 
-
 currentClientLEDPin = ''
 def sendGPIOUpdate(state):
     global clients
@@ -193,14 +194,32 @@ def sendGPIOUpdate(state):
         tryCounter = 0
         global currentClientLEDPin
         for ip in clients.keys():
-            gc.collect()
-                        
-            cliendIDForThisIP  = clients[ip]
             currentClientLEDPin = config.items("tallyLEDStatus")["tally"+clients[ip]].split(',')[0]
-            
-            asyncio.run(sendTo1Client(state, clients, ip,cliendIDForThisIP,currentClientLEDPin ))
+            gc.collect()   
+            asyncio.run(sendTo1Client(state, clients, ip, int(clients[ip])))
 
-async def sendTo1Client(state, clients, ip,cliendIDForThisIP,currentClientLEDPin):
+async def setBrightness(red, green, blue, ip,):
+            tryCounter = 0 
+            while True:
+                try:
+                    gc.collect()
+                    tryCounter += 1
+                    # sending Post to IP and endpoint URL from config file with the red, green, blue values
+                    url = f"http://{ip}:8080" + config.items('api')['setTallyBrightness']  # Replace with your client's endpoint
+                    headers = {'red':red, 'green':green, 'blue':blue}
+                    response = requests.post(url,headers=headers,timeout = 1)
+
+                    if response.status_code != 200:
+                        await asyncio.sleep(.3)
+                        if tryCounter > 5:
+                            gc.collect()
+                            break
+
+                except Exception as e:
+                    gc.collect()
+                    await asyncio.sleep(.3)
+ 
+async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
            # print('    cliendIDForThisIP: ', cliendIDForThisIP, 'currentClientLEDPin: ',currentClientLEDPin)
             tryCounter = 0 
             while True:
@@ -223,7 +242,8 @@ async def sendTo1Client(state, clients, ip,cliendIDForThisIP,currentClientLEDPin
                         if tryCounter > 5:
                          #   print(f"             {ip} is not avaialable, errdor: {e}, removing from clients",ip,currentClientLEDPin)
                             del clients[ip]
-                            ledPWM(int(currentClientLEDPin), 0)
+                            setNeo((0,0,0), 0, tallyIDForThisIP - 1)
+
                             gc.collect()
                             break
 
@@ -330,10 +350,10 @@ if __name__ == "__main__":
     gc.collect()
     
     #seutp Wifi or AP mode
-    baseIP = mainFunc(configFileName)
+    myIP,config = mainFunc()
     gc.collect()
     #make hostname.local available
-    resp = announce_service(baseIP)
+    resp = announce_service(myIP)
     gc.collect()
     responder(resp)
     gc.collect()
@@ -342,9 +362,3 @@ if __name__ == "__main__":
     setupIRQ()
     gc.collect()
     asyncio.run(mainThreads())
-    # Main thread continues running while the other threads execute
-
-
-
-
-

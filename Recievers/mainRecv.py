@@ -1,22 +1,25 @@
 # Recievers Main Function
 """
-v1.6
-Reads the dip switches and sends a post request to the base station with the IP and Tally ID
-Takes PST and PGM values from the POST request and sets the LED colors accordingly
+v2.1
+# 
 Functions and classes:
     getDipSwitch() - Reads the dip switches and sets the tallyID
-    setNeo(color, level) - Sets the color and brightness
-    hello(request) - Returns the index.html file
-    led(request) - Sets the LED colors
-    shutdown(request) - Shuts down the server
-    recvSetup() - Sends a POST request to the base station with the IP and Tally ID
+    hello(/) - Returns the index.html file
+    led(/led) - Sets the LED colors
+    setBrightness(/setBrightness) - Sets the brightness of the LED red, green, blue
+    shutdown(/shutdown) - Shuts down the server
+    recvSetup post baseIP(/recvSetup) - Sends a POST request to the base station with the IP and Tally ID
     mainThreads() - Main function that runs the server and the recvSetup function
     
 """
 
-# add tallyBrightness api endpiont to set it 
+from machine import Pin
 
-from machine import Pin, PWM
+# changing clock feq normal = 125000000
+#machine.freq(62500000)
+
+
+
 from time import sleep
 import asyncio
 import requests
@@ -29,11 +32,11 @@ app = Microdot()
 from mdns_client import Client
 
 
-from getConfig import getConf
+#from getConfig import getConf
 
-configFileName = 'recvConfig.json'
+#configFileName = 'recvConfig.json'
 
-config = getConf(configFileName)
+#config = getConf(configFileName)
 
 
 green = (255, 0, 0)
@@ -99,7 +102,7 @@ async def query_mdns_and_dns_address(myIP):
             await asyncio.sleep(1)
             
     printF("starting recvSetu ln 75")
-    await recvSetup()
+    #await recvSetup()
 
 
 ##### Reading 2 Dip Switches ####
@@ -142,6 +145,27 @@ async def hello(request):
     return response
     #return html, 200, {'Content-Type': 'text/html'}
 
+@app.post('/setBrightness')
+async def setBrightness(request):
+    printW(request.url, request.json, request.headers)
+    try:
+        red = int(request.headers['red'])
+        green = int(request.headers['green'])
+        blue = int(request.headers['blue'])
+        printW(f"red: {red}, green: {green}, blue: {blue}")
+        config.items('tallyBrightness')['red'] = red
+        config.items('tallyBrightness')['green'] = green
+        config.items('tallyBrightness')['blue'] = blue
+
+        config.write('recvConfig.json')
+
+        return 'Brightness Set', 200, {'Content-Type': 'text/html'}
+    
+    except Exception as E:
+        printF(f'Line 165: {E}')
+        status = str(E) + " line 165 /set brightness"
+        return status, 418, {'Content-Type': 'text/html'}
+    
 @app.post('/led')
 async def led(request):
     printW(request.url, request.json, request.headers) #('/led', None, {'ledStatus': '00000100', 'Host': '192.168.88.229', 'Connection': 'close'})
@@ -236,7 +260,7 @@ async def mainThreads():
 
    # asyncio.create_task(keepAlive())
     
-    task = asyncio.create_task(recvSetup())
+    #task = asyncio.create_task(recvSetup())
 
 
     #app.run has to be last and .run
@@ -248,7 +272,7 @@ if __name__ == "__main__":
     # get Dip switch value
     getDipSwitch()
 
-    myIP = mainFunc()
+    myIP,config = mainFunc()
     try:
         printF('228')
         if isinstance(config.items('global')['baseStationIP'], str):

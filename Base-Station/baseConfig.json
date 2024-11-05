@@ -1,1 +1,56 @@
-{"_comments/sections": {"global": "Global configuration", "tallyEnabled": "Tally LED enabled or disabled", "tallyBrightness": "Tally LED brightness 0 - 65000", "title": "Base station configuration", "tallyLEDStatus": "Tally LED GPIO pins that show Connection status and brightness ", "gpioInput": "GPIO pins that are used for input buttons for now", "api": "API configuration"}, "global": {"version": "1.9", "baseStationName": "tally2", "apMode": false, "apSSID": "TallySystemSSID", "apPassword": "KakDela!", "wlanSSID": "OC-Staff", "wlanPassword": "loveGodloveothers"}, "tallyEnabled": {"tally1": true, "tally2": true, "tally3": true, "tally4": true}, "tallyBrightness": {"tally1": 40000, "tally2": 40000, "tally3": 40000, "tally4": 40000}, "tallyLEDStatus": {"tally1": [12, 35000], "tally2": [13, 35000], "tally3": [14, 35000], "tally4": [15, 35000]}, "gpioInput": {"tally1": [17, 16], "tally2": [19, 18], "tally3": [21, 20], "tally4": [26, 22]}, "api": {"ledControlEndpoint": "led", "receiverSetup": "recvSetup"}}
+[Sections]
+
+tallyLEDStatus = Brightness of Led for each Tally on the Base
+tallyBrightness = Brightness on the Recievers, red, green, blue order
+
+
+[global]
+title = Global Settings
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
+wlanPassword = GodIsGood!, loveGodloveothers
+apSSID = TallySystemSSID
+apPassword = KakDela!
+baseStationName = tallybase
+
+[tallyBrightness]
+title = How bright is the tally, red, green, blue level 0-255
+tally1 = 200, 200, 100
+tally4 = 200, 200, 100
+tally3 = 200, 200, 100
+tally2 = 200, 200, 100
+
+[tallyLEDStatus]
+tally1 = 12, 100
+tally4 = 15, 100
+tally3 = 14, 100
+tally2 = 13, 100
+
+[tallyEnabled]
+title = Which Tally is enabled, false or true
+tally1 = true
+tally4 = true
+tally3 = true
+tally2 = true
+
+[ledOutGpio]
+title = hidden
+neoPixel = 28
+
+[gpioInput]
+title = Pins for input, PGM First then PST
+tally1 = 16,17
+tally4 = 22,26
+tally3 = 20,21
+tally2 = 18,19
+
+
+[ledOutGpio]
+title = hidden
+neoPin = 28
+
+[api]
+title = hidden
+ledControlEndpoint = /led
+receiverSetup = /recvSetup
+setTallyBrightness = /setBrightness
+

@@ -3,7 +3,7 @@ import time, socket, network
 apMode = False
 
 if apMode == True:
-    import myLibrary.apWorks as apWorks
+    import myLibrary.archive.apWorks as apWorks
     apWorks.setup_ap()
 elif apMode == False:
     import Recievers.connectToWlan as connectToWlan
