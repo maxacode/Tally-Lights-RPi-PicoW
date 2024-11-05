@@ -1,3 +1,9 @@
+[Sections]
+
+tallyLEDStatus = Brightness of Led for each Tally on the Base
+tallyBrightness = Brightness on the Recievers, red, green, blue order
+
+
 [global]
 title = Global Settings
 wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
@@ -19,13 +25,6 @@ tally4 = 15, 100
 tally3 = 14, 100
 tally2 = 13, 100
 
-[gpioInput]
-title = Pins for input, PGM First then PST
-tally1 = 16,17
-tally4 = 22,26
-tally3 = 20,21
-tally2 = 18,19
-
 [tallyEnabled]
 title = Which Tally is enabled, false or true
 tally1 = true
@@ -37,6 +36,14 @@ tally2 = true
 title = hidden
 neoPixel = 28
 
+[gpioInput]
+title = Pins for input, PGM First then PST
+tally1 = 16,17
+tally4 = 22,26
+tally3 = 20,21
+tally2 = 18,19
+
+
 [ledOutGpio]
 title = hidden
 neoPin = 28
@@ -46,3 +53,4 @@ title = hidden
 ledControlEndpoint = /led
 receiverSetup = /recvSetup
 setTallyBrightness = /setBrightness
+

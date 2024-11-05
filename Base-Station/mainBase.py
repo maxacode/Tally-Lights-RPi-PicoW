@@ -1,5 +1,5 @@
 """
-base-Station - Main: v3.1
+base-Station - Main: v3.4 - Thonny
 
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
@@ -12,7 +12,6 @@ Functions and classes:
     - getGPIOState: Function to read the GPIO state when an interrupt is triggered.
     - sendGPIOUpdate: Function to send the GPIO state to all connected clients.
     - mainThreads: Main function to start the API server and the main threads.
-    - ledPWM: Function to handle the PWM for the LED pins.
     - setupMappings: Function to setup the GPIO mappings based on the configuration.
     
 
@@ -20,83 +19,92 @@ Functions and classes:
     """
 
 
-import time, socket, network, json, requests, asyncio, uasyncio, gc
-from machine import Pin, PWM
+import network, json, requests, asyncio, gc, os
+from machine import Pin
+from printF import printF, printFF, printW
 
 ## External Files:
-from getConfig import getConf
-
-from microdot import Microdot, send_file, Response
-from utemplate import Template
-
+from lib.microdot.microdot import Microdot, send_file, Response
 from cors import CORS
+
+from utemplate import Template
 
 from mdns_client import Client
 from mdns_client.responder import Responder
  
 from connectToWlan import mainFunc
 
-from npDone import setNeo
+from lib.neopixel.npDone import setNeo
 
-# Config file to read data
 
-#configFileName = 'baseConfig.json'
+def getConfig():
+    from lib.getConfig import getConf
+    curDir = str(os.listdir())
+    if "recvConfig" in curDir:
+        baseStation = False
+        configFileName = 'recvConfig.json'
+    elif "baseConfig" in curDir:
+        baseStation = True
+        configFileName = 'baseConfig.json'
+    
+    config = getConf(configFileName)
+    #print(config, config.sections())
+    gc.collect()
+    del getConf
+    return config, baseStation
 
-#config = getConf(configFileName)
 
-#print(config)
-#print(config.sections())
-   
 
-#tallyEnabled = []
-current_button_map = []
-def setupMappings():
-    global current_button_map, hostName
-    tallyEnabled = (list(config.items('tallyEnabled').values()))
-    y = 1
+def setupMappings(config):
+    current_button_map = [] 
+    tallyEnabled = (list({key: config.items('tallyEnabled')[key] for key in config.items('tallyEnabled') if key != 'title'}.values()))
+    printF(tallyEnabled)
     gpioInput = config.items('gpioInput')
+   # gpioInput.pop('title')
+    y = 1
+
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
+    y = 1
     for x in tallyEnabled:
         if x:
             current_button_map.append(gpioInput['tally'+str(y)])
+             #Setting IRQ for pins that are enalbed
+            gpioIN = Pin(int(gpioInput['tally'+str(y)].split(',')[0]), Pin.OUT, Pin.PULL_UP)
+            gpioIN.on()
+            gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
+                # Second Pin
+            gpioIN = Pin(int(gpioInput['tally'+str(y)].split(',')[1]), Pin.OUT, Pin.PULL_UP)
+            gpioIN.on()
+            gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
+        
         elif x == False:
             current_button_map.append([0,0])
         y += 1
     #current map [[16, 17], [18, 19], [20, 21], [22, 26]]
+    
+    del current_button_map, tallyEnabled, gpioInput, gpioIN
+    
+    gc.collect()
+
+
  
 
-# function to handle PIN PWM for LED
-# neo pixel eventually
-def ledPWM(pin, level):
-    global output
-    #print('Pin: ', pin, 'Freq: ', freq, 'Duty: ', duty)
-    pinLed = Pin(int(pin))
-    pinLedPWM = PWM(pinLed)
-    pinLedPWM.freq(500)
-    pinLedPWM.duty_ns(int(level))
-    #print("returning pin freq duty")
-    return f"(ledPWM: {pin}, {level})"
-
-for x in (12,13,14,15):
-    ledPWM(x, 0)
-
 def announce_service(myIP):
+    # Client is a mdns object 
     client = Client(myIP)
-    #print(config.items('global')['baseStationName'])
+    printF(config.items('global')['baseStationName'])
     
     responder = Responder(
         client,
         own_ip=lambda: myIP,
         host=lambda: config.items('global')['baseStationName'])
-    
+    gc.collect()
     return responder
-    #responder.advertise()
 
-    # If you want to set a dedicated service host name
-   
 
 def responder(responder):
     responder.advertise("tallyAdver8080", "_hello._tcp", port=8080, data={"tallySetup": "/recvSetup"})
+    gc.collect()
 
 
 
@@ -110,30 +118,33 @@ current_button_state = []  # Initialize global variable for button state
 
 curButMap = []
 def setupIRQ():
+    # Create Interupts based on if Tally is Enabled in config and with the pins in config
     global gpioIN,curButMap
-    tallyEnabled = config.items('tallyEnabled').values() # tallyEnabled:  dict_values(['true', 'true', 'true', 'true'])
-    y = 1
-    gpioInput = config.items('gpioInput') #gpioInput:  {'tally1': '17, 16', 'tally4': '26, 22', 'tally3': '21, 20', 'tally2': '19, 18'}
+    tallyEnabled = (list({key: config.items('tallyEnabled')[key] for key in config.items('tallyEnabled') if key != 'title'}.values())) # ['true', 'true', 'true', 'true'])
+    gpioInput = config.items('gpioInput')
+    printF('tallyEnabled ln 123', tallyEnabled) #{'tally3': '20,21', 'tally2': '18,19', 'tally4': '22,26', 'tally1': '16,17'})
 
+    
+    y = 1
     for x in tallyEnabled:
         if x:
             curButMap.append(gpioInput['tally'+str(y)])
         elif x == False:
             curButMap.append([0,0])
         y += 1
-    #print('cur but map: ', curButMap) # cur but map:  ['17, 16', '19, 18', '21, 20', '26, 22']
+    printF('cur but map: ', curButMap) # cur but map:  ['17, 16', '19, 18', '21, 20', '26, 22']
 
     for x in curButMap:
-        #print('x2: ', x)
         for y in x.split(','):
-            #print(' 134 y: ', y)
-            #print('x; y: ', x, y)
+           # printF(' 134 y: ', y)
+            #printF('x; y: ', x, y)
             gpioIN = Pin(int(y), Pin.OUT, Pin.PULL_UP)
             gpioIN.on()
             gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
         
-    #print('gpioINput: ', gpioInput, 'curButMap: ', curButMap)
-    
+    printF('gpioINput: ', gpioInput, 'curButMap: ', curButMap)
+    gc.collect()
+
     
 async def testLeds():
     but1 = Pin(16, Pin.OUT, Pin.PULL_DOWN)
@@ -144,6 +155,8 @@ async def testLeds():
         await asyncio.sleep(1)
         but1.off()
         but2.on()
+    gc.collect()
+
 
 curGpioState = ''
 
@@ -178,7 +191,8 @@ def getGPIOState(pin):
       #  print('same states')
     
  
- 
+    gc.collect()
+
 current_button_state = ''
 
 
@@ -197,6 +211,7 @@ def sendGPIOUpdate(state):
             currentClientLEDPin = config.items("tallyLEDStatus")["tally"+clients[ip]].split(',')[0]
             gc.collect()   
             asyncio.run(sendTo1Client(state, clients, ip, int(clients[ip])))
+    gc.collect()
 
 async def setBrightness(red, green, blue, ip,):
             tryCounter = 0 
@@ -257,14 +272,15 @@ async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
                    #
                 #   print(f"\n            {ip} is not avaialable, errdor: {e}, removing from clients \n")
                         del clients[ip]
-                        ledPWM(int(currentClientLEDPin), 0)
+                        setNeo((0,0,0), 0, tallyIDForThisIP - 1)
+
                         gc.collect()
                         break
-                
+   
 
 ####### baseAPI #################
 # recvSetup
-@app.post(config.items('api')['receiverSetup'])
+@app.post('/recvSetup')
 async def create_client(request):
     gc.collect()
 
@@ -274,9 +290,8 @@ async def create_client(request):
     
     tallyID = "tally"+request.headers['tallyID']
 
-    tallyID2 = int(config.items('tallyLEDStatus')[tallyID].split(',')[0])
-    bright = int(config.items('tallyLEDStatus')[tallyID].split(',')[1]) 
-    ledPWM(tallyID2, bright)
+    bright = int(config.items('tallyLEDStatus')[tallyID]) 
+    setNeo(blue, bright, tallyID - 1)
 
     # print('All Clients: ', clients)
      
@@ -338,27 +353,32 @@ async def mainThreads():
 
     #asyncio.create_task(testLeds())
     #app.run has to be last and .run
+    gc.collect()
     asyncio.run(app.run(debug=True))
+    gc.collect()
 
 
 
 # Main program execution
 if __name__ == "__main__":
-    # config = getConf() runs first to setup files
-    #print("SetupMappings()")
-    setupMappings()
+    printFF("ln 366 staritng getConfig")
+    
+    config, baseStation = getConfig() #GC Done
+    
+    setupMappings(config) #GC Done
     gc.collect()
     
     #seutp Wifi or AP mode
-    myIP,config = mainFunc()
+    myIP = mainFunc(config,baseStation) # GC Done
+    printFF(myIP)
+    
     gc.collect()
     #make hostname.local available
-    resp = announce_service(myIP)
+    responder(announce_service(myIP)) # GC Done
     gc.collect()
-    responder(resp)
+    
+   # responder(resp)
+    
     gc.collect()
-
-    #setup pins to be interupted based on config file
-    setupIRQ()
-    gc.collect()
+ 
     asyncio.run(mainThreads())

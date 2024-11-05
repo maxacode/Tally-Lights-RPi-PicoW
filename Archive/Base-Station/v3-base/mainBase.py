@@ -1,5 +1,5 @@
 """
-base-Station - Main: v3.3 - Thonny
+base-Station - Main: v3.1
 
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
@@ -20,61 +20,41 @@ Functions and classes:
     """
 
 
-import time, socket, network, json, requests, asyncio, uasyncio, gc, os
+import time, socket, network, json, requests, asyncio, uasyncio, gc
 from machine import Pin, PWM
 
 ## External Files:
 from getConfig import getConf
 
-from lib.microdot.microdot import Microdot, send_file, Response
-from cors import CORS
-
+from microdot import Microdot, send_file, Response
 from utemplate import Template
+
+from cors import CORS
 
 from mdns_client import Client
 from mdns_client.responder import Responder
  
 from connectToWlan import mainFunc
 
-from lib.neopixel.npDone import setNeo
+from npDone import setNeo
 
+# Config file to read data
 
-def getConfig():
-    from lib.getConfig import getConf
-    curDir = str(os.listdir())
-    if "recvConfig" in curDir:
-        baseStation = False
-        configFileName = 'recvConfig.json'
-    elif "baseConfig" in curDir:
-        baseStation = True
-        configFileName = 'baseConfig.json'
-    
-    config = getConf(configFileName)
-    #print(config, config.sections())
-    return config, baseStation
+#configFileName = 'baseConfig.json'
 
+#config = getConf(configFileName)
 
+#print(config)
+#print(config.sections())
+   
+
+#tallyEnabled = []
 current_button_map = []
-def setupMappings(config):
-    global current_button_map
-    
-    #{'tally1': 'true', 'tally4': 'true', 'tally3': 'true', 'tally2': 'true'}
-
-   # tally_enabled = {key: config.items('tallyEnabled')[key] for key in config.items('tallyEnabled') if key != 'title'}
-   # print(tally_enabled)
-
-
-    tallyEnabled = (list({key: config.items('tallyEnabled')[key] for key in config.items('tallyEnabled') if key != 'title'}.values()))
-    print(tallyEnabled)
-    gpioInput = config.items('gpioInput')
-    gpioInput.pop('title')
-    
+def setupMappings():
+    global current_button_map, hostName
+    tallyEnabled = (list(config.items('tallyEnabled').values()))
     y = 1
-    print(config.sections())
-    print(gpioInput)
-  #  for x in config.sections():
-     #   print(x, ' : ' , config.options(x))
-        
+    gpioInput = config.items('gpioInput')
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
     for x in tallyEnabled:
         if x:
@@ -284,7 +264,7 @@ async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
 
 ####### baseAPI #################
 # recvSetup
-@app.post('/recvSetup')
+@app.post(config.items('api')['receiverSetup'])
 async def create_client(request):
     gc.collect()
 
@@ -366,14 +346,11 @@ async def mainThreads():
 if __name__ == "__main__":
     # config = getConf() runs first to setup files
     #print("SetupMappings()")
-    # get config;
-    config, baseStation = getConfig()
-    
-    setupMappings(config)
+    setupMappings()
     gc.collect()
     
     #seutp Wifi or AP mode
-    myIP = mainFunc(config,baseStation)
+    myIP,config = mainFunc()
     gc.collect()
     #make hostname.local available
     resp = announce_service(myIP)

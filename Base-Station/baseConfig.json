@@ -1,9 +1,3 @@
-[Sections]
-
-tallyLEDStatus = Brightness of Led for each Tally on the Base
-tallyBrightness = Brightness on the Recievers, red, green, blue order
-
-
 [global]
 title = Global Settings
 wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
@@ -13,28 +7,17 @@ apPassword = KakDela!
 baseStationName = tallybase
 
 [tallyBrightness]
-title = How bright is the tally, red, green, blue level 0-255
+title = Tally level: red,green,blue  0-255
 tally1 = 200, 200, 100
 tally4 = 200, 200, 100
 tally3 = 200, 200, 100
 tally2 = 200, 200, 100
 
 [tallyLEDStatus]
-tally1 = 12, 100
-tally4 = 15, 100
-tally3 = 14, 100
-tally2 = 13, 100
-
-[tallyEnabled]
-title = Which Tally is enabled, false or true
-tally1 = true
-tally4 = true
-tally3 = true
-tally2 = true
-
-[ledOutGpio]
-title = hidden
-neoPixel = 28
+tally1 = 100
+tally4 = 100
+tally3 = 100
+tally2 = 100
 
 [gpioInput]
 title = Pins for input, PGM First then PST
@@ -43,14 +26,17 @@ tally4 = 22,26
 tally3 = 20,21
 tally2 = 18,19
 
+[tallyEnabled]
+tally1 = true
+tally4 = true
+tally3 = true
+tally2 = true
 
 [ledOutGpio]
 title = hidden
 neoPin = 28
 
 [api]
-title = hidden
 ledControlEndpoint = /led
 receiverSetup = /recvSetup
 setTallyBrightness = /setBrightness
-
