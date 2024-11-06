@@ -4,7 +4,7 @@ wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
 wlanPassword = GodIsGood!, loveGodloveothers
 apSSID = TallySystemSSID
 apPassword = KakDela!
-baseStationName = tallybase
+baseStationName = tally5
 
 [tallyBrightness]
 tally1 = 200, 200, 100
@@ -19,10 +19,10 @@ tally3 = 100
 tally2 = 100
 
 [gpioInput]
-tally1 = 16,17
-tally4 = 22,26
-tally3 = 20,21
-tally2 = 18,19
+tally1 = [16,17]
+tally4 = [22,26]
+tally3 = [20,21]
+tally2 = [18,19]
 
 [tallyEnabled]
 tally1 = true
@@ -32,9 +32,6 @@ tally2 = true
 
 [ledOutGpio]
 neoPixel = 28
-
-[ledOutGpio]
-neoPin = 28
 
 [api]
 ledControlEndpoint = /led

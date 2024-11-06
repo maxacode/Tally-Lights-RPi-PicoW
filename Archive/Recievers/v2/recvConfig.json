@@ -1,6 +1,6 @@
 [tallyBrightness]
-green = 150
 red = 200
+green = 150
 blue = 150
 
 [dipSwitch]
@@ -18,16 +18,16 @@ ledOutGpio = GPIO pin that is used for LED output - DO NOT CHANGE
 global = Global Settings, add Wifi networks seperated with a ","
 api = API configuration - DO NOT CHANGE
 
+[ledOutGpio]
+neoPixel = 28
+
 [global]
 wlanPassword = GodIsGood!, loveGodloveothers, KakDela!
 apSSID = TallySystem-Reciever
-apPassword = KakDela!
 baseStationIP = 192.168.88.234
-wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
+apPassword = KakDela!
 port = 8080
-baseStationName = tallybase.local
+baseStationName = tally4.local
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
 version = 1.4
-
-[ledOutGpio]
-neoPixel = 28
 

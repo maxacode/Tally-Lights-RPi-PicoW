@@ -14,6 +14,11 @@ Functions and classes:
 """
 
 from machine import Pin
+# from machine import WDT
+
+# watchDog = WDT(timeout=60000)
+# watchDog.feed()
+
 
 # changing clock feq normal = 125000000
 #machine.freq(62500000)
@@ -36,7 +41,8 @@ from printF import printF, printFF, printW
 green = (255, 0, 0)
 red = (0, 255, 0)
 blue = (0, 0, 255)
- 
+off = (0,0,0)
+setNeo(blue, 100, 0, True)
 
 def getConfig():
     from lib.getConfig import getConf
@@ -85,7 +91,6 @@ async def query_mdns_and_dns_address(myIP):
 
 
 ##### Reading 2 Dip Switches ####
-tallyID = 1
 
 def getDipSwitch():
     global tallyID
@@ -93,8 +98,13 @@ def getDipSwitch():
     # Dip switch 1
     dip1 = Pin(int(config.items('dipSwitch')['dip1']), Pin.IN, Pin.PULL_UP)
     # Dip switch 2
-    dip2 = Pin(int(config.items('dipSwitch')['dip1']), Pin.IN, Pin.PULL_UP)
+    dip2 = Pin(int(config.items('dipSwitch')['dip2']), Pin.IN, Pin.PULL_UP)
     # create 4 variables to store the values of the dip switches
+#     from time import sleep
+#     while True:
+#         sleep(1)
+#         print(dip1.value(), dip2.value())
+#         
     if dip1.value() == 0:
         if dip2.value() == 0:
             tallyID = 4
@@ -157,70 +167,34 @@ async def led(request):
     if "/PGM" in request.headers:
         print('/PGM')
         if '1' in request.headers['/PGM']:
-            setNeo(red, 0)
-            print('red, 0')
+            
+            setNeo(off, 0)
+           # print('red, off')
             out = 'red off'
+            setNeo(blue, 80, 0, True)
+
 
         else:
-            print('red, ', int(config.items('tallyBrightness')['red']))
+            #print('red, ', int(config.items('tallyBrightness')['red']))
             setNeo(red,int(config.items('tallyBrightness')['red']))
             out = 'red on'
 
     elif '/PST' in request.headers:
         print('/PST')
         if '1' in request.headers['/PST']:
-            setNeo(blue, 0)
-            print('green, 0')
+            setNeo(off, 0)
+            setNeo(blue, 80, 0, True)
+           # print('green, 0')
             out = 'green off'
 
         else:
-            print("green, ", int(config.items('tallyBrightness')['green']))
+           # print("green, ", int(config.items('tallyBrightness')['green']))
             setNeo(green,int(config.items('tallyBrightness')['green']))
             out = 'green on'
         
     return out, 200, {'Content-Type': 'text/html'}
 
-    
-    
-   # result = [list(ledStatus[i:i+2]) for i in range(0, len(ledStatus), 2)] #('ln 148 result', [['0', '0'], ['0', '0'], ['0', '1'], ['0', '0']])
-    #printW('ln 148 result', result)
-    
-#     try:
-#         setNeo(blue, 0)
-#         PGM = int(result[tallyID-1][0]) # PGM live
-#         PST = int(result[tallyID-1][1]) # PST Preview
-#         printW(f'PST/PGM: {PST} : {PGM}')
-#         printW(config.items('tallyBrightness')['red'])
-#         print(type(config.items('tallyBrightness')['red']))
-#         
-#         if PST == 0 and PGM == 0:
-#             printW(f'159')
-# 
-#             out = out + '00' #+ str(setNeo(blue, 50))
-#             return out, 200, {'Content-Type': 'text/html'}
-#         if PGM == 1:
-#             printW(f'164')
-#             out = out + '1,0 red'
-# 
-#             setNeo(red, int(config.items('tallyBrightness')['red']))
-#         if PST == 1:
-#             printW(f'167')
-#             out = out +  '0,1,green '
-#             setNeo(green, int(config.items('tallyBrightness')['green']))
-#             
-#         if PST == 1 and PGM == 1:
-#             out = out + " 1,1 green/red"
-#             setNeo(red, int(config.items('tallyBrightness')['red'], green, int(config.items('tallyBrightness')['green'])))
-#             #etNeo(green, int(config.items('tallyBrightness')['green']))
 
-      #  printW(out)
-        #setNeo(blue, 0)
-
-   # except Exception as E:
-     #   printF(f'Line 172: {E}')
-    #    status = 418
-   #     return E, status, {'Content-Type': 'text/html'}
-         
 @app.route('/shutdown')
 async def shutdown(request):
     request.app.shutdown()
@@ -250,16 +224,17 @@ async def recvSetup(config):
             if response.status_code == 200:
                 printF('Request successful')
                 printF(response.text)
-                setNeo(blue, 0)
+                setNeo(blue, 100, 0, True)
                 break
             else:
                 printF('Request failed')
-                setNeo(blue, 0)
+                setNeo(red, 100,0, True)
                 await asyncio.sleep(1)
+                
 
         except Exception as e:
             printFF(f"Error recvSetup ln 201: {e}")
-            setNeo(blue, 0)
+            setNeo(red,100, 0, True)
             await asyncio.sleep(2)
 
 

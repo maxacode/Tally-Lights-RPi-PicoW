@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v2.2 thonny
+v2.1
 # 
 Functions and classes:
     getDipSwitch() - Reads the dip switches and sets the tallyID
@@ -18,36 +18,58 @@ from machine import Pin
 # changing clock feq normal = 125000000
 #machine.freq(62500000)
 
-from gc import collect
+
 
 from time import sleep
 import asyncio
-from requests import post
+import requests
+import json
 from connectToWlan import mainFunc
-from lib.neopixel.npDone import setNeo
+from npDone import setNeo
 
-from lib.microdot.microdot import Microdot, Response
+from microdot import Microdot, send_file
 app = Microdot()
 from mdns_client import Client
 
-from printF import printF, printFF, printW
+
+#from getConfig import getConf
+
+#configFileName = 'recvConfig.json'
+
+#config = getConf(configFileName)
 
 
 green = (255, 0, 0)
+orange = (100, 200, 0)
+yellow = (255, 230, 0)
 red = (0, 255, 0)
 blue = (0, 0, 255)
- 
+violet = (0, 255, 100)
 
-def getConfig():
-    from lib.getConfig import getConf
+serverIP = ''
+printFOn = True # All Msg
+printFFOn = True # only impt
+printWOn = True
 
-    configFileName = 'recvConfig.json'
-    
-    config = getConf(configFileName)
-    #print(config, config.sections())
+def printF(*args):
+    print("                   ---------                       ")
 
-    collect()
-    return config
+    if printFOn == True:
+        print(args)
+            
+def printFF(*msg):
+    print("                   ---------                       ")
+    if printFFOn == True:
+        print(msg)
+    elif printFOn == True:
+        printF(msg)
+def printW(*msg):
+    print("                   ---------                       ")
+
+    if printWOn == True:
+        print(msg)
+    elif printFon == True:
+        printF(msg)
 
 # Function to start query of MDNS 
 async def query_mdns_and_dns_address(myIP):
@@ -80,8 +102,7 @@ async def query_mdns_and_dns_address(myIP):
             await asyncio.sleep(1)
             
     printF("starting recvSetu ln 75")
-    await recvSetup(config)
-
+    #await recvSetup()
 
 
 ##### Reading 2 Dip Switches ####
@@ -147,89 +168,60 @@ async def setBrightness(request):
     
 @app.post('/led')
 async def led(request):
-    print('led ln 150 start')
     printW(request.url, request.json, request.headers) #('/led', None, {'ledStatus': '00000100', 'Host': '192.168.88.229', 'Connection': 'close'})
-    setNeo(blue, 200)
-    #ledStatus = request.headers['ledStatus']
-    #printW(f"ledStatus: {ledStatus}")
+
+    ledStatus = request.headers['ledStatus']
+    printW(f"ledStatus: {ledStatus}")
     out = 'ack: '
   #  multiplier = 45000
-    if "/PGM" in request.headers:
-        print('/PGM')
-        if '1' in request.headers['/PGM']:
-            setNeo(red, 0)
-            print('red, 0')
-            out = 'red off'
-
-        else:
-            print('red, ', int(config.items('tallyBrightness')['red']))
-            setNeo(red,int(config.items('tallyBrightness')['red']))
-            out = 'red on'
-
-    elif '/PST' in request.headers:
-        print('/PST')
-        if '1' in request.headers['/PST']:
-            setNeo(blue, 0)
-            print('green, 0')
-            out = 'green off'
-
-        else:
-            print("green, ", int(config.items('tallyBrightness')['green']))
-            setNeo(green,int(config.items('tallyBrightness')['green']))
-            out = 'green on'
+    
+    result = [list(ledStatus[i:i+2]) for i in range(0, len(ledStatus), 2)] #('ln 148 result', [['0', '0'], ['0', '0'], ['0', '1'], ['0', '0']])
+    printW('ln 148 result', result)
+    
+    try:
+        setNeo(blue, 0)
+        PGM = int(result[tallyID-1][0]) # PGM live
+        PST = int(result[tallyID-1][1]) # PST Preview
+        printW(f'PST/PGM: {PST} : {PGM}')
+        printW(config.items('tallyBrightness')['red'])
+        print(type(config.items('tallyBrightness')['red']))
         
-    return out, 200, {'Content-Type': 'text/html'}
+        if PST == 0 and PGM == 0:
+            printW(f'159')
 
-    
-    
-   # result = [list(ledStatus[i:i+2]) for i in range(0, len(ledStatus), 2)] #('ln 148 result', [['0', '0'], ['0', '0'], ['0', '1'], ['0', '0']])
-    #printW('ln 148 result', result)
-    
-#     try:
-#         setNeo(blue, 0)
-#         PGM = int(result[tallyID-1][0]) # PGM live
-#         PST = int(result[tallyID-1][1]) # PST Preview
-#         printW(f'PST/PGM: {PST} : {PGM}')
-#         printW(config.items('tallyBrightness')['red'])
-#         print(type(config.items('tallyBrightness')['red']))
-#         
-#         if PST == 0 and PGM == 0:
-#             printW(f'159')
-# 
-#             out = out + '00' #+ str(setNeo(blue, 50))
-#             return out, 200, {'Content-Type': 'text/html'}
-#         if PGM == 1:
-#             printW(f'164')
-#             out = out + '1,0 red'
-# 
-#             setNeo(red, int(config.items('tallyBrightness')['red']))
-#         if PST == 1:
-#             printW(f'167')
-#             out = out +  '0,1,green '
-#             setNeo(green, int(config.items('tallyBrightness')['green']))
-#             
-#         if PST == 1 and PGM == 1:
-#             out = out + " 1,1 green/red"
-#             setNeo(red, int(config.items('tallyBrightness')['red'], green, int(config.items('tallyBrightness')['green'])))
-#             #etNeo(green, int(config.items('tallyBrightness')['green']))
+            out = out + '00' #+ str(setNeo(blue, 50))
+            return out, 200, {'Content-Type': 'text/html'}
+        if PGM == 1:
+            printW(f'164')
+            out = out + '1,0 red'
 
-      #  printW(out)
-        #setNeo(blue, 0)
+            setNeo(red, int(config.items('tallyBrightness')['red']))
+        if PST == 1:
+            printW(f'167')
+            out = out +  '0,1,green '
+            setNeo(green, int(config.items('tallyBrightness')['green']))
+            
+        if PST == 1 and PGM == 1:
+            out = out + " 1,1 green/red"
+            setNeo(red, int(config.items('tallyBrightness')['red'], green, int(config.items('tallyBrightness')['green'])))
+            #etNeo(green, int(config.items('tallyBrightness')['green']))
 
-   # except Exception as E:
-     #   printF(f'Line 172: {E}')
-    #    status = 418
-   #     return E, status, {'Content-Type': 'text/html'}
+        printW(out)
+        return out, 200, {'Content-Type': 'text/html'}
+    except Exception as E:
+        printF(f'Line 172: {E}')
+        status = 418
+        return E, status, {'Content-Type': 'text/html'}
          
 @app.route('/shutdown')
 async def shutdown(request):
     request.app.shutdown()
     return 'The server is shutting down...'
 
-async def recvSetup(config):
+async def recvSetup():
     # Sending a post to base and recvSetup with IP and Tally ID
-    printF(f"ln 163 {serverIP}{config.items('api')['receiverSetup']}")
-    url = f"{serverIP}{config.items('api')['receiverSetup']}"
+    printF('ln 163 recvSetup started')
+    url = serverIP + config.items('api')['receiverSetup']
 
     headers = {'ip':myIP, 'tallyID':str(tallyID)}
     retry = 0    
@@ -245,7 +237,7 @@ async def recvSetup(config):
         try:
             printF(('sending post: ', url, headers))
             setNeo(blue,100)
-            response = post(url,headers=headers,timeout=2)
+            response = requests.post(url,headers=headers,timeout=2)
             printF('post sent')
             if response.status_code == 200:
                 printF('Request successful')
@@ -267,6 +259,8 @@ async def mainThreads():
     printF('ln 207 mainThread start')
 
    # asyncio.create_task(keepAlive())
+    
+    #task = asyncio.create_task(recvSetup())
 
 
     #app.run has to be last and .run
@@ -275,13 +269,10 @@ async def mainThreads():
 
 # Main program execution
 if __name__ == "__main__":
-
-    
-    config = getConfig() #GC Done
-       # get Dip switch value
+    # get Dip switch value
     getDipSwitch()
-    myIP = mainFunc(config,True) # GC Done
-    
+
+    myIP,config = mainFunc()
     try:
         printF('228')
         if isinstance(config.items('global')['baseStationIP'], str):
@@ -295,8 +286,6 @@ if __name__ == "__main__":
         printF(e)
         asyncio.run(query_mdns_and_dns_address(myIP))
         
-    asyncio.create_task(recvSetup(config))
-
     asyncio.run(mainThreads())
     # Main thread continues running while the other threads execute
     printF("xyz")
