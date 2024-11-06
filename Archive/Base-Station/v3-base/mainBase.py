@@ -332,12 +332,7 @@ async def shutdown(request):
 
     
 async def mainThreads():
-    #task2 = asyncio.create_task(app.run(debug=True)())
-    #asyncio.create_task(blink(14, 2))
-   # asyncio.create_task(main_loop())
-
-    #asyncio.create_task(testLeds())
-    #app.run has to be last and .run
+ 
     asyncio.run(app.run(debug=True))
 
 

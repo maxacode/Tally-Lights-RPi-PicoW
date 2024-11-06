@@ -7,7 +7,6 @@ apPassword = KakDela!
 baseStationName = tallybase
 
 [tallyBrightness]
-title = Tally level: red,green,blue  0-255
 tally1 = 200, 200, 100
 tally4 = 200, 200, 100
 tally3 = 200, 200, 100
@@ -20,7 +19,6 @@ tally3 = 100
 tally2 = 100
 
 [gpioInput]
-title = Pins for input, PGM First then PST
 tally1 = 16,17
 tally4 = 22,26
 tally3 = 20,21
@@ -33,7 +31,9 @@ tally3 = true
 tally2 = true
 
 [ledOutGpio]
-title = hidden
+neoPixel = 28
+
+[ledOutGpio]
 neoPin = 28
 
 [api]

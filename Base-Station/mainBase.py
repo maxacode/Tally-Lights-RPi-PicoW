@@ -15,16 +15,17 @@ Functions and classes:
     - setupMappings: Function to setup the GPIO mappings based on the configuration.
     
 
+ """
+from gc import collect
+#print("Memory ln 21:", gc.mem_free())
 
-    """
-
-
-import network, json, requests, asyncio, gc, os
+import network, asyncio
+from requests import post
 from machine import Pin
 from printF import printF, printFF, printW
 
 ## External Files:
-from lib.microdot.microdot import Microdot, send_file, Response
+from lib.microdot.microdot import Microdot, Response
 from cors import CORS
 
 from utemplate import Template
@@ -36,45 +37,54 @@ from connectToWlan import mainFunc
 
 from lib.neopixel.npDone import setNeo
 
+# 48464 , 48512 no sys, 48480 os.listdir only, 48544 no os.listdir, 48656 no if in getConfig
+# 48736 No json import , 48624 only import post, 48720 no send-file
+# no mdns 94416
+
+green = (255, 0, 0)
+red = (0, 255, 0)
+blue = (0, 0, 255)
 
 def getConfig():
     from lib.getConfig import getConf
-    curDir = str(os.listdir())
-    if "recvConfig" in curDir:
-        baseStation = False
-        configFileName = 'recvConfig.json'
-    elif "baseConfig" in curDir:
-        baseStation = True
-        configFileName = 'baseConfig.json'
+
+    configFileName = 'baseConfig.json'
     
     config = getConf(configFileName)
     #print(config, config.sections())
-    gc.collect()
-    del getConf
-    return config, baseStation
+
+    collect()
+    return config
 
 
 
 def setupMappings(config):
     current_button_map = [] 
-    tallyEnabled = (list({key: config.items('tallyEnabled')[key] for key in config.items('tallyEnabled') if key != 'title'}.values()))
-    printF(tallyEnabled)
-    gpioInput = config.items('gpioInput')
-   # gpioInput.pop('title')
-    y = 1
+    tallyEnabled = (list({key: config.items('tallyEnabled')[key] for key in config.items('tallyEnabled') if key != 'title'}.values())) #['true', 'true', 'true', 'true']
+
+    gpioIN = Pin(int(16), Pin.IN, Pin.PULL_UP)
+    gpioIN.on()
+    gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
 
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
     y = 1
     for x in tallyEnabled:
         if x:
-            current_button_map.append(gpioInput['tally'+str(y)])
-             #Setting IRQ for pins that are enalbed
-            gpioIN = Pin(int(gpioInput['tally'+str(y)].split(',')[0]), Pin.OUT, Pin.PULL_UP)
+            gpioInDict = config.items('gpioInput')['tally'+str(y)]
+            splitGpioIn = gpioInDict.split(',')#22 <class 'int'>
+            print(splitGpioIn)
+            #current_button_map.append(gpioInput['tally'+str(y)])
+             #Setting IRQ for pins that are enalbed - this worked when hooked up to board
+            gpioIN = Pin(int(splitGpioIn[0]), Pin.IN, Pin.PULL_UP)
+            print(gpioIN.value())
             gpioIN.on()
+            print(gpioIN.value())
             gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
                 # Second Pin
-            gpioIN = Pin(int(gpioInput['tally'+str(y)].split(',')[1]), Pin.OUT, Pin.PULL_UP)
+            gpioIN = Pin(int(splitGpioIn[1]), Pin.IN, Pin.PULL_UP)
+            print(gpioIN.value())
             gpioIN.on()
+            print(gpioIN.value())
             gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
         
         elif x == False:
@@ -82,13 +92,9 @@ def setupMappings(config):
         y += 1
     #current map [[16, 17], [18, 19], [20, 21], [22, 26]]
     
-    del current_button_map, tallyEnabled, gpioInput, gpioIN
-    
-    gc.collect()
-
-
+    #del current_button_map, tallyEnabled, gpioInput#, gpioIN
+    #collect()
  
-
 def announce_service(myIP):
     # Client is a mdns object 
     client = Client(myIP)
@@ -98,13 +104,13 @@ def announce_service(myIP):
         client,
         own_ip=lambda: myIP,
         host=lambda: config.items('global')['baseStationName'])
-    gc.collect()
+    collect()
     return responder
 
 
 def responder(responder):
     responder.advertise("tallyAdver8080", "_hello._tcp", port=8080, data={"tallySetup": "/recvSetup"})
-    gc.collect()
+    collect()
 
 
 
@@ -143,9 +149,9 @@ def setupIRQ():
             gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
         
     printF('gpioINput: ', gpioInput, 'curButMap: ', curButMap)
-    gc.collect()
+    collect()
 
-    
+
 async def testLeds():
     but1 = Pin(16, Pin.OUT, Pin.PULL_DOWN)
     but2 = Pin(17, Pin.OUT, Pin.PULL_DOWN)
@@ -155,15 +161,16 @@ async def testLeds():
         await asyncio.sleep(1)
         but1.off()
         but2.on()
-    gc.collect()
+    collect()
 
 
 curGpioState = ''
 
 def getGPIOState(pin):
-    #print(' new getGPIOState 156')
+    print(' new getGPIOState 156')
+    setNeo((255,255,0), 100)
     global curGpioState,gpioState, gpioIN, curButMap
-    gpioIN.irq(handler=None)
+    #gpioIN.irq(handler=None)
     pinNum = str(pin)[8:10]
     #print("Pin went high: ", pinNum)
     gpioState = ''
@@ -178,7 +185,7 @@ def getGPIOState(pin):
                     gpioState += '0'
                 else:
                     gpioState += '1'
-                    
+    setNeo(red, 0)        
     #print(f'curGpioState: {curGpioState}  new gpioState: {gpioState}') # current_button_state00000000
     
     if curGpioState != gpioState:
@@ -191,7 +198,7 @@ def getGPIOState(pin):
       #  print('same states')
     
  
-    gc.collect()
+    collect()
 
 current_button_state = ''
 
@@ -209,29 +216,29 @@ def sendGPIOUpdate(state):
         global currentClientLEDPin
         for ip in clients.keys():
             currentClientLEDPin = config.items("tallyLEDStatus")["tally"+clients[ip]].split(',')[0]
-            gc.collect()   
+            collect()   
             asyncio.run(sendTo1Client(state, clients, ip, int(clients[ip])))
-    gc.collect()
+    collect()
 
 async def setBrightness(red, green, blue, ip,):
             tryCounter = 0 
             while True:
                 try:
-                    gc.collect()
+                    collect()
                     tryCounter += 1
                     # sending Post to IP and endpoint URL from config file with the red, green, blue values
                     url = f"http://{ip}:8080" + config.items('api')['setTallyBrightness']  # Replace with your client's endpoint
                     headers = {'red':red, 'green':green, 'blue':blue}
-                    response = requests.post(url,headers=headers,timeout = 1)
+                    response = post(url,headers=headers,timeout = 1)
 
                     if response.status_code != 200:
                         await asyncio.sleep(.3)
                         if tryCounter > 5:
-                            gc.collect()
+                            collect()
                             break
 
                 except Exception as e:
-                    gc.collect()
+                    collect()
                     await asyncio.sleep(.3)
  
 async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
@@ -239,13 +246,13 @@ async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
             tryCounter = 0 
             while True:
                 try:
-                    gc.collect()
+                    collect()
                     tryCounter += 1
                   #  print(f"        Sending to {ip}")
                     # Replace with your actual function to send POST requests (e.g., using sockets)
                     url = f"http://{ip}:8080/led"  # Replace with your client's endpoint
                     headers = {'ledStatus':str(state)}
-                    response = requests.post(url,headers=headers,timeout = 1)
+                    response = post(url,headers=headers,timeout = 1)
 
                     status = response.status_code
 
@@ -259,13 +266,13 @@ async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
                             del clients[ip]
                             setNeo((0,0,0), 0, tallyIDForThisIP - 1)
 
-                            gc.collect()
+                            collect()
                             break
 
                         #await asyncio.sleep(2)
                     break
                 except Exception as e:
-                    gc.collect()
+                    collect()
                  #   print(f'           ln138 {e} ID: {cliendIDForThisIP}')
                     await asyncio.sleep(.3)
                     if tryCounter > 5:
@@ -274,7 +281,7 @@ async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
                         del clients[ip]
                         setNeo((0,0,0), 0, tallyIDForThisIP - 1)
 
-                        gc.collect()
+                        collect()
                         break
    
 
@@ -282,20 +289,20 @@ async def sendTo1Client(state, clients, ip,tallyIDForThisIP):
 # recvSetup
 @app.post('/recvSetup')
 async def create_client(request):
-    gc.collect()
+    collect()
 
-    #  print("#############################  NEW CLIENT: ", request.headers['ip'], "| Tally ID: ", request.headers['tallyID'], " | URL: ", request.url)
+    printW("#############################  NEW CLIENT: ", request.headers['ip'], "| Tally ID: ", request.headers['tallyID'], " | URL: ", request.url)
     
     clients[request.headers['ip']] = request.headers['tallyID'] 
     
     tallyID = "tally"+request.headers['tallyID']
 
     bright = int(config.items('tallyLEDStatus')[tallyID]) 
-    setNeo(blue, bright, tallyID - 1)
+    setNeo(blue, bright, int(request.headers['tallyID'])  - 1)
 
     # print('All Clients: ', clients)
      
-    gc.collect()
+    collect()
     return current_button_state, 200, {'Content-Type': 'text/html'}
  
 
@@ -303,59 +310,41 @@ async def create_client(request):
 @app.route('/', methods=['GET', 'POST'])
 async def index(request):
     global config
-    gc.collect()
+    collect()
+    from utemplate2 import compiled
+ 
+    Template.initialize(loader_class=compiled.Loader)
 
     if request.method == 'POST':
-       # print("POST: ", request.url)
         for section in config.sections():
-            #print('section: ', section)
             for key in config.options(section):
                 form_key = f"{section}_{key}"  # Composite key for each field in the form
-                gc.collect()
+                collect()
                 if form_key in request.form:
                     
                     #Checking if field is diff from saved field, if is pass if diff update config
                     if config.items(section)[key] == request.form[form_key]:
                         pass
-                        #print(request.form[form_key], ' SAME')
                     else:
-                        #print(request.form[form_key], ' DIFFFFF')
                         config.set(section, key, request.form[form_key])
             
-        #name.write('config.ini')
-        gc.collect()
+        collect()
         config.write('baseConfig.json')
         return await Template('index.html').render_async(name=config)
+        #return await Template('index.html').render_async(name=config)
+    
+    
     elif request.method == 'GET':
-       # print("Get on: ", request.url)
-        gc.collect()
- 
- 
+        collect()
         return await Template('index.html').render_async(name=config)
 
-
-   # return config
 
 
 Response.default_content_type = 'text/html'
 
-
-@app.route('/shutdown')
-async def shutdown(request):
-    request.app.shutdown()
-    return 'The server is shutting down...'
-
-    
 async def mainThreads():
-    #task2 = asyncio.create_task(app.run(debug=True)())
-    #asyncio.create_task(blink(14, 2))
-   # asyncio.create_task(main_loop())
-
-    #asyncio.create_task(testLeds())
-    #app.run has to be last and .run
-    gc.collect()
+ 
     asyncio.run(app.run(debug=True))
-    gc.collect()
 
 
 
@@ -363,22 +352,20 @@ async def mainThreads():
 if __name__ == "__main__":
     printFF("ln 366 staritng getConfig")
     
-    config, baseStation = getConfig() #GC Done
+    config = getConfig() #GC Done
+   # irq()
     
-    setupMappings(config) #GC Done
-    gc.collect()
+     #GC Done
+   # collect()
     
     #seutp Wifi or AP mode
-    myIP = mainFunc(config,baseStation) # GC Done
-    printFF(myIP)
+    myIP = mainFunc(config,True) # GC Done
+    printFF('myIP: ', myIP)
     
-    gc.collect()
+    collect()
     #make hostname.local available
     responder(announce_service(myIP)) # GC Done
-    gc.collect()
-    
-   # responder(resp)
-    
-    gc.collect()
- 
+    collect()
+    setupMappings(config)
     asyncio.run(mainThreads())
+   # asyncio.run(app.run(debug=True))

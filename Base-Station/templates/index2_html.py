@@ -7,13 +7,13 @@ def render(name):
     <title>Update Config</title>
 </head>
 <body>
-    <h1>Update Configuration v3</h1>
+    <h1>Update Configuration v1</h1>
     <button type=\"submit\">Save Changes</button>
     <form method=\"POST\">
         """
     for section in name.sections():
         yield """            <h2>"""
-        yield str(section)
+        yield str(name.items(section)['title'])
         yield """</h2>
             """
         for key in name.options(section):
@@ -38,7 +38,6 @@ def render(name):
                 <br><br>
             """
         yield """        """
-    yield """       
-    </form>
+    yield """    </form>
 </body>
 </html>"""

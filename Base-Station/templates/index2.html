@@ -10,14 +10,13 @@
     <button type="submit">Save Changes</button>
     <form method="POST">
         {% for section in name.sections() %}
-            <h2>{{ section }}</h2>
+            <h2>{{ name.items(section)['title'] }}</h2>
             {% for key in name.options(section) %}
                 <label for="{{ section }}_{{ key }}">{{ key }}:</label>
                 <input type="text" id="{{ section }}_{{ key }}" name="{{ section }}_{{ key }}" value="{{ name.items(section)[key] }}" size = "60" >
                 <br><br>
             {% endfor %}
         {% endfor %}
-       
     </form>
 </body>
 </html>
