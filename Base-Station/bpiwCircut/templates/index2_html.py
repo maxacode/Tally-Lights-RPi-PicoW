@@ -41,4 +41,3 @@ def render(name):
     yield """    </form>
 </body>
 </html>"""
-

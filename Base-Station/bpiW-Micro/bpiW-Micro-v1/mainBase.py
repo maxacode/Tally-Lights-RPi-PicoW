@@ -17,7 +17,6 @@ Functions and classes:
 
  """
 from gc import collect, mem_free
-gc1 =  mem_free()
 
 import network, asyncio
 from json import loads
@@ -25,11 +24,9 @@ from requests import post
 from machine import Pin, freq
 from printF import printF, printFF, printW
 #def:
-#125000000 W0rks
-#225000000 # works
-#255000000 # half th etime works 
-#270000000 # SLower and Wifi Scan no return
-freq(225000000)
+#BPI Micro
+#Freq
+freq(240000000)#ValueError: frequency must be 20MHz, 40MHz, 80000000, 160000000 or 240000000 32 didnt work
 
 ## External Files:
 from lib.microdot.microdot import Microdot, Response
@@ -38,11 +35,8 @@ from utemplate import Template
 from mdns_client import Client
 from mdns_client.responder import Responder
 from connectToWlan import mainFunc
-from lib.neopixel.npDone import setNeo
+from lib.npDone import setNeo, red, green, blue, white, off
 from utemplate2 import compiled
-
-gc2 = mem_free()
-print(gc1 - gc2)
 
 """
 131120
@@ -58,24 +52,17 @@ print(gc1 - gc2)
 
 89376 
 """
-print(mem_free())
 
 # 48464 , 48512 no sys, 48480 os.listdir only, 48544 no os.listdir, 48656 no if in getConfig
 # 48736 No json import , 48624 only import post, 48720 no send-file
 # no mdns 94416
 
-green = (255, 0, 0)
-red = (0, 255, 0)
-blue = (0, 0, 255)
-off = (0,0,0)
-white = (255,255,255)
 def getConfig():
     from lib.getConfig import getConf
 
     configFileName = 'baseConfig.json'
     
     config = getConf(configFileName)
-    #printF(config, config.sections())
 
     collect()
     return config
@@ -90,12 +77,12 @@ def setupMappings(config):
     config.remove_option('gpioInput','title')
     for x in range(1,5):
         gpioInMap['tally'+str(x)] = loads(config.get('gpioInput', ('tally'+str(x))))
-        
+
+
+    for x in gpioInMap.values():
       # Find and output the key if the target number is found in any of the lists
     
     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
-    for x in gpioInMap.values():
-        printF(x)
         gpioIN = Pin(int(x[0]), Pin.IN, Pin.PULL_UP)
         gpioIN.on()
         gpioIN.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=getGPIOState)
@@ -132,13 +119,11 @@ def setupMappings(config):
 def announce_service(myIP):
     # Client is a mdns object 
     client = Client(myIP)
-    printF(config.items('global')['baseStationName'])
     
     responder = Responder(
         client,
         own_ip=lambda: myIP,
-        host=lambda: config.items('global')['baseStationName'])
-    collect()
+        host=lambda: str(config.items('global')['baseStationName']))
     return responder
 
 
@@ -162,36 +147,35 @@ curButMap = []
  
  
 def getGPIOState(pin):
-    printF(' new getGPIOState 156')
     setNeo(white, 120)
    # global curGpioState,gpioState, gpioIN, curButMap
     #gpioIN.irq(handler=None)
-    pinNum = str(pin)[8:10]
-    printF(pin)
+    pinNum = str(pin)[4:-1]
     pinValue = pin.value()
-    printF("Pin went high: ", pinNum, pinValue )
+    printF("Pin went high: ", pin,  pinNum, pinValue )
+    printF('Pin 1/2 valu: \n ', Pin(1).value(), Pin(2).value())
     gpioState = ''
     printF('*************** Clients: ', clients)
     tallyID = ''
-    printF(clients)
+    
+    #         curVal += str(Pin(values[0]).value()), str(Pin(values[1]).value())
+#     # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
+
     # Output the matching keys    for key,values in gpioInMap.items():
+    curVal = '' 
     for key,values in gpioInMap.items():
-             
-        if int(pinNum) == values[0]:
-            endPoint = '/PGM'
+        printF(key, values, values[0], values[1]) #tally1 [1, 2] 1 2
+        if int(pinNum) in values:
             tallyID  = key
-
-
-        elif int(pinNum) == values[1]:
-            endPoint = '/PST'
-            tallyID  = key
+            curVal += str(Pin(values[0]).value()) + str(Pin(values[1]).value())
+            printF(tallyID, curVal)
+            break
             
     for key2, val2 in clients.items():
         if val2 in tallyID:
             ip =  key2
-        
-            printF('sending to: ', ip, endPoint, pinValue)
-            asyncio.create_task(sendTo1Client(pinValue, ip, endPoint, tallyID))
+            printF('      sending to: ', ip, curVal)
+            asyncio.run(sendTo1Client(curVal, ip, tallyID))
             
               
     setNeo(blue, 120)
@@ -239,9 +223,9 @@ async def setBrightness(red, green, blue, ip,):
                 except Exception as e:
                     collect()
                     await asyncio.sleep(.3)
- 
-async def sendTo1Client(pinValue, ip,endPoint, tallyID):
-        printFF('snedTo1Client Started: ', pinValue, ip, endPoint)
+
+async def sendTo1Client(curVal, ip, tallyID): #pinValue, ip,endPoint, tallyID):
+        printFF('SendTo1Client Started: ', curVal, ip, tallyID)
             #sendTo1Client(pinValue, ip, endPoint)
         tryCounter = 0 
         while True:
@@ -250,16 +234,15 @@ async def sendTo1Client(pinValue, ip,endPoint, tallyID):
                 tryCounter += 1
                 printF('Sending to and try: ', ip, tryCounter)
                 url = f"http://{ip}:8080/led"  # Replace with your client's endpoint
-                headers = {endPoint:str(pinValue)}
+                headers = {'led':str(curVal)}
                 response = post(url,headers=headers,timeout = 1)
                 status = response.status_code #status: 200 | response: green off
                 printFF(f'status: {status} | response: {response.text}') 
                 if status != 200:
                     await asyncio.sleep(.5)
                     if tryCounter > 5:
-                        printFF(f" Reg            {ip} is not avaialable, removing from clients",ip)
+                        printFF(f"           {ip} is not avaialable, removing from clients",ip)
                         del clients[ip]
-                        printF(tallyID)
                         printF(setNeo(off, 0, int(tallyID[-1])))
                         collect()
                         break
@@ -301,25 +284,23 @@ async def create_client(request):
 @app.route('/', methods=['GET', 'POST'])
 async def index(request):
     global config
-    print('299: ', mem_free())
-    collect()
-    print('301: ', mem_free())
-
+    printF('hit on /', request.method)
+     # enable this to not compline html on th efly but once and done
     #Template.initialize(loader_class=compiled.Loader)
 
     if request.method == 'POST':
+        formData = loads(request.body.decode('utf-8'))
         for section in config.sections():
             for key in config.options(section):
                 form_key = f"{section}_{key}"  # Composite key for each field in the form
-                collect()
-                if form_key in request.form:
+                if form_key in formData:
                     #Checking if field is diff from saved field, if is pass if diff update config
-                    if config.items(section)[key] == request.form[form_key]:
+                    if config.items(section)[key] == formData[form_key]:
                         pass
                     else:
-                        config.set(section, key, request.form[form_key])
+                        printF(f'form key DIFF {config.items(section)[key]} {formData[form_key]} ')
+                        config.set(section, key, formData[form_key])
             
-        collect()
         config.write('baseConfig.json')
         return await Template('index2.html').render_async(name=config)
         #return await Template('index.html').render_async(name=config)
@@ -341,7 +322,6 @@ async def mainThreads():
 
 # Main program execution
 if __name__ == "__main__":
-    printFF("ln 366 staritng getConfig")
     
     config = getConfig() #GC Done
    # irq()
@@ -353,11 +333,8 @@ if __name__ == "__main__":
     myIP = mainFunc(config,True) # GC Done
     printFF('myIP: ', myIP)
     
-    collect()
-    #make hostname.local available
-    responder(announce_service(myIP)) # GC Done
-    collect()
+     #make hostname.local available
+    #responder(announce_service(myIP)) # GC Done
     setupMappings(config)
     asyncio.run(mainThreads())
    # asyncio.run(app.run(debug=True))
-

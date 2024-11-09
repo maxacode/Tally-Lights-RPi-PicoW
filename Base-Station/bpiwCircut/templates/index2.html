@@ -1,0 +1,22 @@
+{% args name %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Config</title>
+</head>
+<body>
+    <h1>Update Configuration v1</h1>
+    <button type="submit">Save Changes</button>
+    <form method="POST">
+        {% for section in name.sections() %}
+            <h2>{{ name.items(section)['title'] }}</h2>
+            {% for key in name.options(section) %}
+                <label for="{{ section }}_{{ key }}">{{ key }}:</label>
+                <input type="text" id="{{ section }}_{{ key }}" name="{{ section }}_{{ key }}" value="{{ name.items(section)[key] }}" size = "60" >
+                <br><br>
+            {% endfor %}
+        {% endfor %}
+    </form>
+</body>
+</html>

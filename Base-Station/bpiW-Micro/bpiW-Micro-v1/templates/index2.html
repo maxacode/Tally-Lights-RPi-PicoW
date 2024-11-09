@@ -5,20 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuration Editor</title>
+    <style>
+    /* Center the form element */
+    form {
+      position: absolute;
+      top: 8%;
+      left: 15%;
+    }
+    </style>
 </head>
 <body>
-    <h1>Edit Configuration</h1>
-    <form id="configForm">
-        {% for section in name.sections() %}
-        <h2>{{ name.items(section)['title'] }}</h2>
+<form id="configForm">
+<h1>Edit Configuration</h1>
+<button type="button" onclick="submitConfig()">Save Changes</button>
+{% for section in name.sections() %}
+    {% if name.items(section)['title'] != "hidden"  %}
+    <h4> {{section }} : {{ name.items(section)['title'] }}</h4>
         {% for key in name.options(section) %}
-            <label for="{{ section }}_{{ key }}">{{ key }}:</label>
-            <input type="text" id="{{ section }}_{{ key }}" name="{{ section }}_{{ key }}" value="{{ name.items(section)[key] }}" size = "60" >
-            <br><br>
-        {% endfor %}
-        <button type="button" onclick="submitConfig()">Save Changes</button>
+            {% if key != "title"  %}
+                <label for=" {{ section }}_{{ key }}">{{ key }}:</label>
+                <input type="text" id="{{ section }}_{{ key }}" name="{{ section }}_{{ key }}" value="{{ name.items(section)[key] }}" size = "40" >
+                <br><br>
+            {% endif %}
+         {% endfor %}     
+    {% endif %}
+{% endfor %}
     </form>
-
     <script>
         function submitConfig() {
             const form = document.getElementById('configForm');
@@ -50,3 +62,4 @@
     </script>
 </body>
 </html>
+

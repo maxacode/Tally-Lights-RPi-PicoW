@@ -38,10 +38,10 @@ neoPixel = 28
 
 [gpioInput]
 title = Pins for input, PGM First then PST
-tally1 = 16,17
-tally4 = 22,26
-tally3 = 20,21
-tally2 = 18,19
+tally1 = [16,17]
+tally4 = [22,26]
+tally3 = [20,21]
+tally2 = [18,19]
 
 
 [ledOutGpio]

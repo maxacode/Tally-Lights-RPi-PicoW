@@ -1,0 +1,3 @@
+Adafruit CircuitPython 9.2.0 on 2024-10-28; BPI-PicoW-S3 with ESP32S3
+Board ID:bpi_picow_s3
+UID:84722ED0384C

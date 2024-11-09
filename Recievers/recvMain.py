@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v2.2 thonny
+v4.1 thonny
 # 
 Functions and classes:
     getDipSwitch() - Reads the dip switches and sets the tallyID
@@ -24,7 +24,7 @@ from machine import Pin
 #machine.freq(62500000)
 
 from gc import collect
-
+from json import loads
 from time import sleep
 import asyncio
 from requests import post
@@ -32,8 +32,13 @@ from connectToWlan import mainFunc
 from lib.neopixel.npDone import setNeo
 
 from lib.microdot.microdot import Microdot, Response
+from cors import CORS
+from utemplate import Template
+from utemplate2 import compiled
+
+
 app = Microdot()
-from mdns_client import Client
+from lib.mdns_client import Client
 
 from printF import printF, printFF, printW
 
@@ -71,9 +76,9 @@ async def query_mdns_and_dns_address(myIP):
         try:
             retry += 1
             
-            serverIP1 = (list(await client.getaddrinfo(config.items('global')['baseStationName'], config.items('global')['port'])))
+            serverIP1 = (list(await client.getaddrinfo(config.items('global')['baseStationName'], config.items('api')['port'])))
            # serverIP1 = (list(await client.getaddrinfo("tally2", 8080)))
-            serverIP = "http://"+serverIP1[0][4][0] + ":" + config.items('global')['port']
+            serverIP = "http://"+serverIP1[0][4][0] + ":" + config.items('api')['port']
             printFF(("           !!!! MDNS address found: ", serverIP))
 
             config.items('global')['baseStationIP'] = str(serverIP1[0][4][0])
@@ -125,17 +130,41 @@ async def keepAlive():
         lastTime = currentTime
         await recvSetup()
 
-@app.route('/')
-async def hello(request):
-    printW(request.url, request.json, request.headers)
-    
-    response = send_file('index.html')
-    return response
-    #return html, 200, {'Content-Type': 'text/html'}
+@app.route('/', methods=['GET', 'POST'])
+async def index(request):
+    global config
+    printF('hit on /', request.method)
+     # enable this to not compline html on th efly but once and done
+    #Template.initialize(loader_class=compiled.Loader)
 
+    if request.method == 'POST':
+        formData = loads(request.body.decode('utf-8'))
+        for section in config.sections():
+            for key in config.options(section):
+                form_key = f"{section}_{key}"  # Composite key for each field in the form
+                if form_key in formData:
+                    #Checking if field is diff from saved field, if is pass if diff update config
+                    if config.items(section)[key] == formData[form_key]:
+                        pass
+                    else:
+                        printF(f'form key DIFF {config.items(section)[key]} {formData[form_key]} ')
+                        config.set(section, key, formData[form_key])
+            
+        config.write('recvConfig.json')
+        return await Template('index2.html').render_async(name=config)
+        #return await Template('index.html').render_async(name=config)
+    
+    
+    elif request.method == 'GET':
+        collect()
+        return await Template('index2.html').render_async(name=config)
+
+
+
+Response.default_content_type = 'text/html'
 @app.post('/setBrightness')
 async def setBrightness(request):
-    printW(request.url, request.json, request.headers)
+    printW(request.url, request.headers)
     try:
         red = int(request.headers['red'])
         green = int(request.headers['green'])
@@ -204,7 +233,7 @@ async def recvSetup(config):
         printF('ln 169 while True')
         # We are trying to get MDNS IP if server does not reply after 5 attemps
         retry += 1
-        if retry >= 2:
+        if retry >= 4:
             #printF('retry more that 5')
             retry = 0
             await query_mdns_and_dns_address(myIP)

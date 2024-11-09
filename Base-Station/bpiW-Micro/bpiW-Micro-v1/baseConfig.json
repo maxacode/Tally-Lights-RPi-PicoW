@@ -1,0 +1,46 @@
+[tallyBrightness]
+tally3 = 100, 200, 100
+tally2 = 200, 200, 100
+tally4 = 200, 200, 100
+tally1 = 200, 200, 100
+title = How bright is the tally, red, green, blue level 0-255
+
+[tallyLEDStatus]
+tally3 = 100
+tally2 = 100
+tally4 = 100
+tally1 = 100
+title = brightness of status LED
+
+[gpioInput]
+tally3 = [5,6]
+tally2 = [3,4]
+tally4 = [7,8]
+tally1 = [1,2]
+title = !!pins that are from video switcher
+
+[tallyEnabled]
+tally3 = true
+tally2 = true
+tally4 = true
+tally1 = true
+title = Which Tally is enabled, false or true
+
+[api]
+ledControlEndpoint = /led
+title = hidden
+setTallyBrightness = /setBrightness
+receiverSetup = /recvSetup
+
+[global]
+wlanPassword = GodIsGood!, loveGodloveothers
+apSSID = TallySystemSSID
+baseStationName = tallybase
+apPassword = KakDela!
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff
+title = Global Settings
+
+[ledOutGpio]
+neoPixel = 10
+title = hidden
+

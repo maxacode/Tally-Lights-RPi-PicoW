@@ -1,33 +1,29 @@
 [tallyBrightness]
-green = 150
-red = 200
-blue = 150
+blue = 30
+title = Brightness of these Colors
+red = 70
+green = 70
 
 [dipSwitch]
+title = hidden
 dip2 = 14
 dip1 = 15
 
-[api]
-ledControlEndpoint = /led
-receiverSetup = /recvSetup
-
-[Section Descriptions]
-tallyBrightness = Tally LED brightness 0 - 300
-dipSwitch = The Pins for DIP Switches - DO NOT CHANGE
-ledOutGpio = GPIO pin that is used for LED output - DO NOT CHANGE
-global = Global Settings, add Wifi networks seperated with a ","
-api = API configuration - DO NOT CHANGE
+[ledOutGpio]
+neoPixel = 28
+title = hidden
 
 [global]
 wlanPassword = GodIsGood!, loveGodloveothers, KakDela!
-apSSID = TallySystem-Reciever
-apPassword = KakDela!
-baseStationIP = 192.168.88.234
-wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
-port = 8080
 baseStationName = tallybase.local
-version = 1.4
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
+version = 1.5
+baseStationIP = 192.168.88.108
+title = Global Settings, add Wifi networks seperated with a ","
 
-[ledOutGpio]
-neoPixel = 28
+[api]
+ledControlEndpoint = /led
+title = hidden
+port = 8080
+receiverSetup = /recvSetup
 

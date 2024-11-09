@@ -10,6 +10,6 @@ Tally Lights system for Live Streaming via RPi Pico W
 
 Last notes: 
 - brightenss endpoint on recievers to chagne the brightness of the LED red, green, blue
-- GPIO LED pins on Base needs to be just one NeoPixel GPIO PIn. 
 - red/green WS2812B LED on the Base to show when preview/program is on
-- fix NP donen reciver-v2
+  - Possible but might take to much cpu time to update the LED with just PICO
+- When tally goes offline, the others should still be able to be used, right now they wait for try to finish
