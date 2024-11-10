@@ -1,28 +1,25 @@
 [tallyBrightness]
 blue = 30
 title = Brightness of these Colors
-green = 70
 red = 70
+green = 70
 
 [dipSwitch]
 title = hidden
 dip2 = 14
 dip1 = 15
 
-[hidden]
-heartbeat = 3
-keepAlivePush = 10
+[ledOutGpio]
 neoPixel = 28
 title = hidden
 
 [global]
-version = 1.5
-apSSID = tallyReciever
-baseStationIP = 192.168.88.108
-wlanSSID = Tell My Wi-Fi Love Her,OC-Staff
+wlanPassword = GodIsGood!, loveGodloveothers, KakDela!
 baseStationName = tallybase.local
-title = Global Settings, add Wifi networks seperated with a "," and no spaces between entries.
-wlanPassword = GodIsGood!,loveGodloveothers
+wlanSSID = Tell My Wi-Fi Love Her, OC-Staff, TallySystemSSID
+version = 1.5
+baseStationIP = 192.168.88.108
+title = Global Settings, add Wifi networks seperated with a ","
 
 [api]
 ledControlEndpoint = /led

@@ -19,6 +19,12 @@ def render(name):
 <body>
 <form id=\"configForm\">
 <h1>Edit Configuration</h1>
+<h2><a href=\"/clients\">Online Clients</a></h2>
+
+<h4>1. Add Wifi credentials in Global Settings section, then select save settings.</h4>
+<h4>2. Navigate to Online Clients page, and power on every Tally.<h4>
+<h4>3. Once all the Tally's are showing up in online list, select button to send them the new Wifi Configuration</h4>
+
 <div id=\"banner-container\"></div>
 <br>
 <button type=\"button\" onclick=\"submitConfig()\">Save Changes</button>

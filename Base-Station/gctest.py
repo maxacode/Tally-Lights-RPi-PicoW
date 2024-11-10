@@ -32,8 +32,50 @@
 # curVal = ''
 # curVal += str(12) + str(123)
 
-# print(curVal)
-tally = []
-a = 'tally1'
-tally.append(a)
-print(a.split())
+# # print(curVal)
+# tally = []
+# a = 'tally1'
+# tally.append(a)
+# print(a.split())
+
+
+# import asyncio
+
+# async def testFunc2():
+#     print("abc")
+#     #await asyncio.sleep(1)
+#     print("def")
+
+# async def testFunc(a, b):
+#     print(a, b)
+#     asyncio.create_task(testFunc2())
+#     return("Inner Function")
+
+
+# async def main():
+#     print("Main Function")
+#     a = await testFunc(1, 2)
+#     print(a)
+    
+# asyncio.run(main())
+
+
+# clients = {'192.168.88.247': '1', '192.168.88.232': '2', '192.168.88.238': '3'}
+# for ip in clients:
+#     print(ip)
+#     print('----')
+
+
+            
+kA = '1'
+def keepAlive():
+    global kA
+    print(kA)
+    kA = 2
+    print(kA)
+
+print(kA)
+
+keepAlive()
+
+print(kA)

@@ -3,12 +3,9 @@ from json import loads
 
 config  = getConf('baseConfig.json')
 print(config.sections())
-print(config.items('api'))
-print(config.items('api')['updatewifi'])
-
-# for section in config.sections():
-#     for key in config.options(section):
-#         print(key)
+for section in config.sections():
+    for key in config.options(section):
+        print(key)
 # for section in config.sections():
 #     for key in config.options(section):
 #         form_key = f"{section}_{key}"  # Composite key for each field in the form

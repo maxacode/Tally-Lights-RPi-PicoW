@@ -196,39 +196,7 @@ async def setBrightness(keys):
                             if tryCounter > 5:
                                 printF('set brigh failed, break')
                                 break
-                            
-#TODO: a general func to send request.posts to and error handle instead of multiples timesasync def sendRequest(url: str, headers: dict):
-    
-async def updateWifi():
-    for ip in clients:
-        printF('updateWifi Started: ', ip)
-            #sendTo1Client(pinValue, ip, endPoint)
-        tryCounter = 0 
-        while True:
-            try:
-                tryCounter += 1
-                printF('Sending to and try: ', ip, tryCounter)
-                url = f"http://{ip}:8080"+ config.items('api')['updatewifi']  # Replace with your client's endpoint
-                headers = {
-                    'SSID':str(config.items('global')['wlanSSID']),
-                    'PASS':str(config.items('global')['wlanPassword'])
-                           }
-                    #TODO Finish
-                response = post(url,headers=headers,timeout = 1)
-                status = response.status_code #status: 200 | response: green off
-                printFF(f's2: {status} | r: {response.text}') 
-                if status != 200:
-                    await asyncio.sleep(.2)
-                    if tryCounter > 5:
-                        break
-                if status == 200:
-                    break
-                
-            except Exception as e:
-                printW(f'           timeout {ip}',e)
-                await asyncio.sleep(.4)
-                tryCounter +=1
-        
+
 async def sendTo1Client(curVal, ip, tallyID): #pinValue, ip,endPoint, tallyID):
         printF('SendTo1Client Started: ', curVal, ip, tallyID)
             #sendTo1Client(pinValue, ip, endPoint)
@@ -238,7 +206,7 @@ async def sendTo1Client(curVal, ip, tallyID): #pinValue, ip,endPoint, tallyID):
                 collect()
                 tryCounter += 1
                 printF('Sending to and try: ', ip, tryCounter)
-                url = f"http://{ip}:8080" + config.items('api')['ledControlEndpoint'] # Replace with your client's endpoint
+                url = f"http://{ip}:8080/led"  # Replace with your client's endpoint
                 headers = {'led':str(curVal)}
                 response = post(url,headers=headers,timeout = 1)
                 status = response.status_code #status: 200 | response: green off
@@ -272,7 +240,7 @@ async def clientsOnline(request):
         pass
     if request.method == 'GET':
         # Getting site so return whos online
-        return await Template('clientsOnline.html').render_async(clients=clients)#, updated = False)
+        return await Template('clientsOnline.html').render_async(name=clients)#, updated = False)
 
 ####### baseAPI #################
 # recvSetup
@@ -302,31 +270,23 @@ async def index(request):
     brightChange = False
     keys = []
     if request.method == 'POST':
-        # Chekcing if POST is to send Wifi to tallys
-        
-        if request.headers['Send-Wifi'] == 'True':
-            # Access any Config change
-            printFF('wifi update requested')
-            asyncio.create_task(updateWifi())
-            
-        else:
-            formData = loads(request.body.decode('utf-8'))
-            for section in config.sections():
-                for key in config.options(section):
-                    form_key = f"{section}_{key}"  # Composite key for each field in the form
-                    if form_key in formData:
-                        #Checking if field is diff from saved field, if is pass if diff update config
-                        if config.items(section)[key] == formData[form_key]:
-                            pass
-                        else:
-                            printFF(f'form key DIFF {config.items(section)[key]} {formData[form_key]} ') #('form key DIFF 100, 200, 100 80, 81, 82 ',)
+        formData = loads(request.body.decode('utf-8'))
+        for section in config.sections():
+            for key in config.options(section):
+                form_key = f"{section}_{key}"  # Composite key for each field in the form
+                if form_key in formData:
+                    #Checking if field is diff from saved field, if is pass if diff update config
+                    if config.items(section)[key] == formData[form_key]:
+                        pass
+                    else:
+                        printFF(f'form key DIFF {config.items(section)[key]} {formData[form_key]} ') #('form key DIFF 100, 200, 100 80, 81, 82 ',)
+                    
+                        if 'tallyBrightness' in section:
+                            brightChange = True
+                            keys.append(key)
                         
-                            if 'tallyBrightness' in section:
-                                brightChange = True
-                                keys.append(key)
-                            
-                            config.set(section, key, formData[form_key])
-            
+                        config.set(section, key, formData[form_key])
+        
         config.write('baseConfig.json')
          
         if brightChange == True:
