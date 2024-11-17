@@ -1,6 +1,6 @@
 """
-base-Station - Main: # V3.4 - Thonnty 12;35
-
+base-Station - Main:
+v.3.5 
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
     
@@ -10,14 +10,14 @@ Functions and classes:
     - setupWLAN: Function to setup the WLAN connection or AP mode based on the configuration.
     - setupIRQ: Function to setup the GPIO interrupts for reading the button state.
     - getGPIOState: Function to read the GPIO state when an interrupt is triggered.
-    - sendGPIOUpdate: Function to send the GPIO state to all connected clients.
+    - scfdcendGPIOUpdate: Function to send the GPIO state to all connected clients.
     - mainThreads: Main function to start the API server and the main threads.
     - setupMappings: Function to setup the GPIO mappings based on the configuration.
     
 
 
 
-
+#TODO. boot.py file to run mainBase.py like in recivers setup
 
 
  """
@@ -217,7 +217,7 @@ async def create_client(request):
         asyncio.create_task(setBrightness(tallyID.split()))
         return 'recvS:OK', 200, {'Content-Type': 'text/html'}
     else:
-        return 'recvS:dupe', 200, {'Content-Type': 'text/html'}
+        return 'recvS:dupe', 208, {'Content-Type': 'text/html'}
 
 
 async def setBrightness(keys: set[str]):
