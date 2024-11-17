@@ -68,14 +68,16 @@
 
             
 kA = '1'
-def keepAlive():
-    global kA
-    print(kA)
-    kA = 2
-    print(kA)
+# def keepAlive():
+#     global kA
+#     print(kA)
+#     kA = 2
+#     print(kA)
 
-print(kA)
+# print(kA)
 
-keepAlive()
+# # keepAlive()
 
-print(kA)
+# # print(kA)
+# import datetime
+# print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))

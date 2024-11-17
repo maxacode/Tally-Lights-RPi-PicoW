@@ -11,36 +11,37 @@ def render(name):
     form """
     yield """{
       position: absolute;
-      top: 8%;
-      left: 15%;
+      top: 55%;
+      left: 30%;
+      transform: translate(-50%, -50%); 
     }
     </style>
 </head>
 <body>
-<form id=\"configForm\">
-<h1>Edit Configuration</h1>
-<button type=\"button\" onclick=\"submitConfig()\">Save Changes</button>
-"""
+    <form id=\"configForm\">
+    <h1>Edit Configuration</h1>
+    <button type=\"button\" onclick=\"submitConfig()\">Save Changes</button>
+    """
     for section in name.sections():
-        yield """    """
+        yield """        """
         if name.items(section)['title'] != "hidden":
-            yield """    <h4> """
+            yield """            <h2> """
             yield str(section)
             yield """ : """
             yield str(name.items(section)['title'])
-            yield """</h4>
-        """
+            yield """</h2>
+            """
             for key in name.options(section):
-                yield """            """
+                yield """                """
                 if key != "title":
-                    yield """                <label for=\" """
+                    yield """                    <label for=\" """
                     yield str(section)
                     yield """_"""
                     yield str(key)
                     yield """\">"""
                     yield str(key)
                     yield """:</label>
-                <input type=\"text\" id=\""""
+                    <input type=\"text\" id=\""""
                     yield str(section)
                     yield """_"""
                     yield str(key)
@@ -50,13 +51,15 @@ def render(name):
                     yield str(key)
                     yield """\" value=\""""
                     yield str(name.items(section)[key])
-                    yield """\" size = \"40\" >
-                <br><br>
-            """
-                yield """         """
+                    yield """\" size = \"30\" >
+                    <br><br>
+                """
+                yield """             """
             yield """     
-    """
+        """
+        yield """    """
     yield """    </form>
+
     <script>
         function submitConfig() """
     yield """{
@@ -96,5 +99,6 @@ def render(name):
     </script>
 </body>
 </html>
+
 
 """

@@ -9,28 +9,30 @@
     /* Center the form element */
     form {
       position: absolute;
-      top: 8%;
-      left: 15%;
+      top: 55%;
+      left: 30%;
+      transform: translate(-50%, -50%); 
     }
     </style>
 </head>
 <body>
-<form id="configForm">
-<h1>Edit Configuration</h1>
-<button type="button" onclick="submitConfig()">Save Changes</button>
-{% for section in name.sections() %}
-    {% if name.items(section)['title'] != "hidden"  %}
-    <h4> {{section }} : {{ name.items(section)['title'] }}</h4>
-        {% for key in name.options(section) %}
-            {% if key != "title"  %}
-                <label for=" {{ section }}_{{ key }}">{{ key }}:</label>
-                <input type="text" id="{{ section }}_{{ key }}" name="{{ section }}_{{ key }}" value="{{ name.items(section)[key] }}" size = "40" >
-                <br><br>
-            {% endif %}
-         {% endfor %}     
-    {% endif %}
-{% endfor %}
+    <form id="configForm">
+    <h1>Edit Configuration</h1>
+    <button type="button" onclick="submitConfig()">Save Changes</button>
+    {% for section in name.sections() %}
+        {% if name.items(section)['title'] != "hidden"  %}
+            <h2> {{section }} : {{ name.items(section)['title'] }}</h2>
+            {% for key in name.options(section) %}
+                {% if key != "title"  %}
+                    <label for=" {{ section }}_{{ key }}">{{ key }}:</label>
+                    <input type="text" id="{{ section }}_{{ key }}" name="{{ section }}_{{ key }}" value="{{ name.items(section)[key] }}" size = "30" >
+                    <br><br>
+                {% endif %}
+             {% endfor %}     
+        {% endif %}
+    {% endfor %}
     </form>
+
     <script>
         function submitConfig() {
             const form = document.getElementById('configForm');
@@ -62,4 +64,5 @@
     </script>
 </body>
 </html>
+
 

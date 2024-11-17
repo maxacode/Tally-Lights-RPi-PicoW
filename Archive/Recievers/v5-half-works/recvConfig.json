@@ -1,0 +1,34 @@
+[tallyBrightness]
+green = 70
+red = 70
+blue = 30
+
+[dipSwitch]
+dip2 = 14
+dip1 = 15
+
+[api]
+ledControlEndpoint = /led
+receiverSetup = /recvSetup
+
+[Section Descriptions]
+tallyBrightness = Tally LED brightness 0 - 300
+dipSwitch = The Pins for DIP Switches - DO NOT CHANGE
+ledOutGpio = GPIO pin that is used for LED output - DO NOT CHANGE
+global = Global Settings, add Wifi networks seperated with a ","
+api = API configuration - DO NOT CHANGE
+
+[global]
+wlanPassword = loveGodloveothers, KakDela!
+apSSID = TallySystem-Reciever
+apPassword = KakDela!
+baseStationIP = 10.1.23.28
+port = 8080
+wlanSSID = OC-Staff, TallySystemSSID
+baseStationName = tallybase.local
+version = 1.4
+
+[ledOutGpio]
+neoPixel = 28
+
+

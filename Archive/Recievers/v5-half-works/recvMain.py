@@ -1,7 +1,7 @@
 # Recievers Main Function
 """
-v6.3 done 12:09 11/18  WORKS - connectWlan, recvConf, boot.py
-# adding single func for Ruquest Posts'
+v4.1 thonny
+# 
 Functions and classes:
     getDipSwitch() - Reads the dip switches and sets the tallyID
     hello(/) - Returns the index.html file
@@ -10,11 +10,10 @@ Functions and classes:
     shutdown(/shutdown) - Shuts down the server
     recvSetup post baseIP(/recvSetup) - Sends a POST request to the base station with the IP and Tally ID
     mainThreads() - Main function that runs the server and the recvSetup function
-    keepAlive() - Sleeps for 10seconds then adds 10 to counter, if over 30 triggers recvSetup. kA is reset on every postMade
+    
 """
-#TODO all LED's brigtness msut be from config file not static
 
-from machine import Pin, reset
+from machine import Pin
 # from machine import WDT
 
 # watchDog = WDT(timeout=60000)
@@ -28,9 +27,9 @@ from gc import collect
 from json import loads
 from time import sleep
 import asyncio
-from requests import post,get
+from requests import post
 from connectToWlan import mainFunc
-from lib.neopixel.npDone import setNeo, green, red, blue, off, white
+from lib.neopixel.npDone import setNeo
 
 from lib.microdot.microdot import Microdot, Response
 from cors import CORS
@@ -44,10 +43,11 @@ from lib.mdns_client import Client
 from printF import printF, printFF, printW
 
 
-
-setNeo(blue, 100, 0, True)
-
-reqTimeOut = 4
+green = (255, 0, 0)
+red = (0, 255, 0)
+blue = (0, 0, 255)
+off = (0,0,0)
+setNeo(blue, int(config.items('tallyBrightness')['blue']), 0, True)
 
 def getConfig():
     from lib.getConfig import getConf
@@ -83,16 +83,14 @@ async def query_mdns_and_dns_address(myIP):
 
             config.items('global')['baseStationIP'] = str(serverIP1[0][4][0])
             config.write('recvConfig.json')
-            
-            return serverIP
+            break
         except Exception as e:
             retry += 1
             printFF(("        MDNS address not found: ",e))
             await asyncio.sleep(1)
-    return serverIP
-      
-    #printF("starting recvSetu ln 75")
-    #await asyncio.run_until_complete(recvSetup(config))
+            
+    printF("starting recvSetu ln 75")
+    await recvSetup(config)
 
 
 
@@ -123,45 +121,15 @@ def getDipSwitch():
             tallyID = 2       
     printFF(f"Tally ID: {tallyID}")
  
+async def keepAlive():
+    # tracking last comm time
+  #  currentTime = time.time()
+    global lastTime
+    if currentTime - lastTime > 10:
+        printF('No communication for 10 seconds')
+        lastTime = currentTime
+        await recvSetup()
 
-async def makePost(method: str, url:str, headers: dict[str, str or int])-> list[bool, int]:
-        """
-        Function to make a post from given Params
-        Params:
-            method: str, GET OR POST
-            url (str): Full URL to send to
-            Headers dict[str, str]:  ех: {'led':str(curVal), '234', 'on'}
-            
-        Returns:
-            str: True if Success or False or Failed and MSG Error message
-        
-        """
-        try:
-            printF(f'makePost Start : {url} {headers}')
-
-            if method == 'POST':
-                #response = post(url,headers=headers)
-                response = post(url,headers=headers,timeout = reqTimeOut)
-                #response = post(url,headers=headers)
-# TODO: why timeout = reqTimeOut does not work? to short of a time? or wrong syntax?
-
-            elif method == "GET":
-                response = get(url,headers=headers,timeout = reqTimeOut)
-                
-            status = response.status_code #status: 200 | response: green off
-            printFF(f's2: {status} | r: {response.text}') 
-            if status != 200:
-                return  [False, status]
-            elif status == 200:
-                return [True, status]
-        except Exception as e:
-            printW(f'ln 167           timeout {url}', e)
-            return [False, 400]
-
-
-
-    
-    
 @app.route('/', methods=['GET', 'POST'])
 async def index(request):
     global config
@@ -194,36 +162,9 @@ async def index(request):
 
 
 Response.default_content_type = 'text/html'
-
-
-
-@app.post('/updatewifi')
-async def updateWifi(request):
-    global kA
-    kA = 0
-    printFF('hit on /updateWifi', request.method, request.headers)
-    try:
-        SSID = request.headers['SSID']
-        PASS = request.headers['PASS']
-        printW(f"SSID: {SSID}, PASS: {PASS}")
-        
-        config.items('global')['wlanSSID'] = SSID
-        config.items('global')['wlanPassword'] = PASS
- 
-        config.write('recvConfig.json')
-        printW("Updated Wifi")
-        return 'Updated Wifi', 200, {'Content-Type': 'text/html'}
-    
-    except Exception as E:
-        printF(f'Line 165: {E}')
-        status = str(E) + " line 165 /set brightness"
-        return status, 418, {'Content-Type': 'text/html'}
-    
 @app.post('/setBrightness')
 async def setBrightness(request):
-    global kA
-    kA = 0
-    printFF('hit on /setBrightness', request.method, request.client_addr)
+    printW(request.url, request.headers)
     try:
         red = int(request.headers['red'])
         green = int(request.headers['green'])
@@ -234,7 +175,7 @@ async def setBrightness(request):
         config.items('tallyBrightness')['blue'] = blue
 
         config.write('recvConfig.json')
-
+        
         return 'Brightness Set', 200, {'Content-Type': 'text/html'}
     
     except Exception as E:
@@ -244,11 +185,9 @@ async def setBrightness(request):
     
 @app.post('/led')
 async def led(request):
-    global kA
-    kA = 0
-    printFF('hit on /', request.method, request.client_addr)
-    #printF(request.url, request.client_addr, request.headers['led']) #('/led', None, {'ledStatus': '00000100', 'Host': '192.168.88.229', 'Connection': 'close'})
-    setNeo(blue, 200)
+    printF('led ln 150 start')
+    printF(request.url, request.client_addr, request.headers['led']) #('/led', None, {'ledStatus': '00000100', 'Host': '192.168.88.229', 'Connection': 'close'})
+    setNeo(blue, int(config.items('tallyBrightness')['blue']))
     #ledStatus = request.headers['ledStatus']
     #printW(f"ledStatus: {ledStatus}")
     out = 'Code Error recv main 164: '
@@ -272,7 +211,7 @@ async def led(request):
         if "1" == head[0]:
             out = 'green off'
     else:
-        setNeo(blue, 80, 0)
+        setNeo(blue, int(config.items('tallyBrightness')['blue']), 0)
         out = 'FAILED'
         
     return out, 200, {'Content-Type': 'text/html'}
@@ -283,102 +222,78 @@ async def shutdown(request):
     request.app.shutdown()
     return 'The server is shutting down...'
 
-async def recvSetup(config,serverIP,myIP):
-    retry = 0 
-    global kA
-    kA = 0
-    while True:
-        setNeo(off, 0)
+async def recvSetup(config):
+    # Sending a post to base and recvSetup with IP and Tally ID
+    printF(f"ln 163 {serverIP}{config.items('api')['receiverSetup']}")
+    url = f"{serverIP}{config.items('api')['receiverSetup']}"
 
+    headers = {'ip':myIP, 'tallyID':str(tallyID)}
+    retry = 0    
+    while True:
+        printF('ln 169 while True')
         # We are trying to get MDNS IP if server does not reply after 5 attemps
         retry += 1
-        if retry >= 3:
-            printF('starting query mdns ln 237')
+        if retry >= 4:
+            #printF('retry more that 5')
             retry = 0
-            #await query_mdns_and_dns_address(myIP)
-            serverIP = await query_mdns_and_dns_address(myIP)
-            printF('ln 238 serverIp: ', serverIP)
-           # break
-                    # Sending a post to base and recvSetup with IP and Tally ID
-        printF(f"ln 311 {serverIP}{config.items('api')['receiverSetup']}")
-        url = f"{serverIP}{config.items('api')['receiverSetup']}"
-        headers = {'ip':myIP, 'tallyID':str(tallyID)}
-      #  status = response.status_code
-        status = await makePost('POST', url, headers)
-        if status[0] >= 200 or status[0] < 300:
-       # if status == 200:
-            setNeo(blue, 100)
+            await query_mdns_and_dns_address(myIP)
             break
-        #elif status[0] == 208:
-        else:
-            setNeo((255,165,0), int(config.items('tallyBrightness')['blue']))
-            #TODO: do something if status is not 200, like disable red/green light if resonse is recvS:dupe
-            
-kA = 0
-async def keepAlive():
-    global kA
-    printF(291, kA)
-    while True:
         try:
-            await asyncio.sleep(int(config.items('hidden')['heartbeat']))
-            kA += int(config.items('hidden')['heartbeat'])
-            
-            printF(294, kA)
-            
-            if kA >= int(config.items('hidden')['keepAlivePush']):
-                printF(297,kA)
-                kA = 0
-                asyncio.create_task(recvSetup(config,serverIP,myIP))
-                
-        except Exception as e:
-            printFF(302, e)
-            await asyncio.sleep(30)
-            machine.reset()
-            
-        
-async def mainThreads(apMode, myIP):
-    printF('ln 207 mainThread start')
-    global serverIP
-    if apMode:
-        pass
-    elif apMode == False:
-        # iF not AP mode try connect to server
-        try:
-            printF('228')
-            # if IP is in config try to connect just in case its the same as last time
-            if isinstance(config.items('global')['baseStationIP'], str):
-                printF('ln 230')
-                serverIP = "http://"+str(config.items('global')['baseStationIP']) + ":8080"
+            printFF(('sending post: ', url, headers))
+            setNeo(blue,int(config.items('tallyBrightness')['blue']))
+            response = post(url,headers=headers,timeout=6)
+            printF('post sent')
+            if response.status_code == 200:
+                printFF('Request successful', response.text)
+                setNeo(blue, int(config.items('tallyBrightness')['blue']), 0, True)
+                break
             else:
-                printF(('ln 233: ', config.items('global')['baseStationIP']))
-                await asyncio.run(query_mdns_and_dns_address(myIP))
-        except Exception as e:
-            printFF(235, e)
-            await asyncio.run(query_mdns_and_dns_address(myIP))
-            
-        asyncio.create_task(recvSetup(config,serverIP,myIP))
+                printF('Request failed')
+                setNeo(red, 100,0, True)
+                await asyncio.sleep(1)
+                
 
-        asyncio.create_task(keepAlive())
-        
+        except Exception as e:
+            printFF(f"Error recvSetup ln 201: {e}")
+            setNeo(red,100, 0, True)
+            await asyncio.sleep(2)
+
+
+async def mainThreads():
+    printF('ln 207 mainThread start')
+
+   # asyncio.create_task(keepAlive())
+
+
+    #app.run has to be last and .run
     asyncio.run(app.run(debug=True))
 
 
-
-config = getConfig()
 # Main program execution
-#def main():
-serverIP = ''
-#GC Done
-   # get Dip switch value
-getDipSwitch()
-apMode, myIP = mainFunc(config,True) # GC Done
-printFF(myIP, apMode)
-asyncio.run(mainThreads(apMode, myIP))
-# Main thread continues running while the other threads execute
-
 if __name__ == "__main__":
-    main()
 
+    
+    config = getConfig() #GC Done
+       # get Dip switch value
+    getDipSwitch()
+    myIP = mainFunc(config,True) # GC Done
+    printFF(myIP)
+    try:
+        printF('228')
+        if isinstance(config.items('global')['baseStationIP'], str):
+            printF('ln 230')
+            serverIP = "http://"+str(config.items('global')['baseStationIP']) + ":8080"
+        else:
+            printF(('ln 233: ', config.items('global')['baseStationIP']))
+            asyncio.run(query_mdns_and_dns_address(myIP))
+    except Exception as e:
+        printF(235)
+        printF(e)
+        asyncio.run(query_mdns_and_dns_address(myIP))
+        
+    asyncio.create_task(recvSetup(config))
 
-
-
+    asyncio.run(mainThreads())
+    # Main thread continues running while the other threads execute
+    printF("xyz")
+ 

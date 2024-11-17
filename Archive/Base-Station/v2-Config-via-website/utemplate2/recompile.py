@@ -1,9 +1,9 @@
-# (c) 2014-2020 Paul Sokolovsky. MIT license.
 try:
     from uos import stat, remove
 except:
     from os import stat, remove
-from . import source
+import source # ignore this error
+#from . import source # ignore this error
 
 
 class Loader(source.Loader):

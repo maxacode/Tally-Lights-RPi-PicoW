@@ -19,6 +19,8 @@ def render(name):
 <body>
 <form id=\"configForm\">
 <h1>Edit Configuration</h1>
+<div id=\"banner-container\"></div>
+<br>
 <button type=\"button\" onclick=\"submitConfig()\">Save Changes</button>
 """
     for section in name.sections():
@@ -83,18 +85,18 @@ def render(name):
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => """
-    yield """{
-                console.log('Success:', data);
-            })
-            .catch((error) => """
-    yield """{
-                console.error('Error:', error);
-            });
-        }
-    </script>
-</body>
-</html>
+            // Display the banner immediately
+            const banner = document.createElement('div');
+            banner.classList.add('banner');
+            banner.textContent = 'Configuration saved successfully!';
+            document.getElementById('banner-container').appendChild(banner);
 
-"""
+            // Hide the banner after a few seconds
+            setTimeout(() => """
+    yield """{
+                banner.remove();
+            }, 30000); // Adjust the time as needed
+    }
+</script>
+</body>
+</html>"""

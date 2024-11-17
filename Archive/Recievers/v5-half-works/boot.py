@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v6.3 done 12:09 11/18  WORKS - connectWlan, recvConf, boot.py
+v5.1 done 7:18 11/16
 # adding single func for Ruquest Posts'
 Functions and classes:
     getDipSwitch() - Reads the dip switches and sets the tallyID
@@ -14,7 +14,7 @@ Functions and classes:
 """
 #TODO all LED's brigtness msut be from config file not static
 
-from machine import Pin, reset
+from machine import Pin
 # from machine import WDT
 
 # watchDog = WDT(timeout=60000)
@@ -47,7 +47,7 @@ from printF import printF, printFF, printW
 
 setNeo(blue, 100, 0, True)
 
-reqTimeOut = 4
+reqTimeOut = 5
 
 def getConfig():
     from lib.getConfig import getConf
@@ -89,8 +89,7 @@ async def query_mdns_and_dns_address(myIP):
             retry += 1
             printFF(("        MDNS address not found: ",e))
             await asyncio.sleep(1)
-    return serverIP
-      
+            
     #printF("starting recvSetu ln 75")
     #await asyncio.run_until_complete(recvSetup(config))
 
@@ -124,7 +123,7 @@ def getDipSwitch():
     printFF(f"Tally ID: {tallyID}")
  
 
-async def makePost(method: str, url:str, headers: dict[str, str or int])-> list[bool, int]:
+async def makePost(method: str, url:str, headers: dict[str, str or int])-> str:
         """
         Function to make a post from given Params
         Params:
@@ -136,30 +135,42 @@ async def makePost(method: str, url:str, headers: dict[str, str or int])-> list[
             str: True if Success or False or Failed and MSG Error message
         
         """
-        try:
-            printF(f'makePost Start : {url} {headers}')
+        tryCounter = 0 
 
-            if method == 'POST':
-                #response = post(url,headers=headers)
-                response = post(url,headers=headers,timeout = reqTimeOut)
-                #response = post(url,headers=headers)
-# TODO: why timeout = reqTimeOut does not work? to short of a time? or wrong syntax?
+        printF(f'makePost Start try: {tryCounter}')
+            #sendTo1Client(pinValue, ip, endPoint)
+        while True:
+            tryCounter += 1
+            try:
+                printF(f'makePost Start : {url} {headers}')
 
-            elif method == "GET":
-                response = get(url,headers=headers,timeout = reqTimeOut)
+                if method == 'POST':
+                    #response = post(url,headers=headers)
+               #     response = post(url,headers=headers,timeout = reqTimeOut)
+                    response = post(url,headers=headers)
+
+                elif method == "GET":
+                    response = get(url,headers=headers,timeout = reqTimeOut)
+                    
+                status = response.status_code #status: 200 | response: green off
+                printFF(f's2: {status} | r: {response.text}') 
+                if status != 200:
+                    if tryCounter > 5:
+                        #printFF(f" 			makePost Fails")
+                        return  [False, 'makePost Fails']
+                    await asyncio.sleep(.5)
+
+                if status == 200:
+                    return [True, 200]
+                    
+            except Exception as e:
+                printW(f'           timeout {url}', e)
+                await asyncio.sleep(.5)
                 
-            status = response.status_code #status: 200 | response: green off
-            printFF(f's2: {status} | r: {response.text}') 
-            if status != 200:
-                return  [False, status]
-            elif status == 200:
-                return [True, status]
-        except Exception as e:
-            printW(f'ln 167           timeout {url}', e)
-            return [False, 400]
-
-
-
+                if tryCounter > 5:
+                    return 'makePost Failes with E'
+ 
+    
     
     
 @app.route('/', methods=['GET', 'POST'])
@@ -288,11 +299,10 @@ async def recvSetup(config,serverIP,myIP):
     global kA
     kA = 0
     while True:
-        setNeo(off, 0)
 
         # We are trying to get MDNS IP if server does not reply after 5 attemps
         retry += 1
-        if retry >= 3:
+        if retry >= 4:
             printF('starting query mdns ln 237')
             retry = 0
             #await query_mdns_and_dns_address(myIP)
@@ -305,14 +315,11 @@ async def recvSetup(config,serverIP,myIP):
         headers = {'ip':myIP, 'tallyID':str(tallyID)}
       #  status = response.status_code
         status = await makePost('POST', url, headers)
-        if status[0] >= 200 or status[0] < 300:
+        if status[0]:
        # if status == 200:
             setNeo(blue, 100)
             break
-        #elif status[0] == 208:
-        else:
-            setNeo((255,165,0), int(config.items('tallyBrightness')['blue']))
-            #TODO: do something if status is not 200, like disable red/green light if resonse is recvS:dupe
+            
             
 kA = 0
 async def keepAlive():
@@ -358,26 +365,26 @@ async def mainThreads(apMode, myIP):
             
         asyncio.create_task(recvSetup(config,serverIP,myIP))
 
-        asyncio.create_task(keepAlive())
+        #asyncio.create_task(keepAlive())
         
     asyncio.run(app.run(debug=True))
 
 
 
-config = getConfig()
 # Main program execution
-#def main():
-serverIP = ''
-#GC Done
-   # get Dip switch value
-getDipSwitch()
-apMode, myIP = mainFunc(config,True) # GC Done
-printFF(myIP, apMode)
-asyncio.run(mainThreads(apMode, myIP))
-# Main thread continues running while the other threads execute
-
 if __name__ == "__main__":
-    main()
+
+    serverIP = ''
+    config = getConfig() #GC Done
+       # get Dip switch value
+    getDipSwitch()
+    apMode, myIP = mainFunc(config,True) # GC Done
+    printFF(myIP, apMode)
+
+    
+    asyncio.run(mainThreads(apMode, myIP))
+    # Main thread continues running while the other threads execute
+  
 
 
 
