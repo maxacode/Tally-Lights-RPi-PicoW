@@ -1,6 +1,7 @@
 """
 base-Station - Main:
-v.3.5 
+5.2
+
 This is the main script for the base station API. It is responsible for handling the API requests and sending updates to the clients.
 Functions and classes:
     
@@ -16,6 +17,17 @@ Functions and classes:
     
 
 
+5.2 11/20:
+- Works: adding KA checking if wlanIs Connected
+- recvSetup:
+    - Works: changed tallyID to distinguage bettween jsut str(int) = '1' and str(str) (tally1)
+    - Works: Add check if new tally connects with same IP but differnt ID, it will update it. 
+- kA works so far in 10, 20 and 33 min increments, need to test longer.
+
+
+v.5.1 11/19
+- PrintF.py
+    - Works: Testing time now done
 
 #TODO. boot.py file to run mainBase.py like in recivers setup
 
@@ -32,7 +44,7 @@ from machine import Pin, freq # type: ignore
 #def:
 #BPI Micro
 #Freq
-#freq(240000000)#ValueError: frequency must be 20MHz, 40MHz, 80000000, 160000000 or 240000000 32 didnt work
+freq(240000000) #ValueError: frequency must be 20MHz, 40MHz, 80000000, 160000000 or 240000000 32 didnt work
 print(freq())
 ## External Files:
 from lib.microdot.microdot import Microdot, Response,send_file, redirect
@@ -96,7 +108,7 @@ CORS(app, allowed_origins='*', allow_credentials=True)
 
 clients: dict[str, str] = {} # clients example: {'192.168.88.1': '1'}
 
-#wlan = network.WLAN()
+wlan = network.WLAN()
 pSt = ''
 def getGPIOState(pin: object) -> None:
     """
@@ -108,7 +120,7 @@ def getGPIOState(pin: object) -> None:
         None
     """
     Pin(int(int(str(pin)[4:-1])), Pin.IN, Pin.PULL_UP).irq(handler=None)
-    #print(f'wlan con: {wlan.isconnected()}')
+   # print(f'wlan con: {wlan.isconnected()}')
     setNeo(white, 120)
     global pSt#, timeNow
     #print(((time()) - timeNow) / 60)
@@ -191,6 +203,7 @@ async def sendTo1Client(curVal: str, ip: str, tallyIDStr: str) -> None: #pinValu
                     printF(setNeo(off, 0, int(tallyIDStr[-1])))
                     break
  
+
 @app.post('/recvSetup') #type: ignore
 async def create_client(request):
     """
@@ -207,18 +220,27 @@ async def create_client(request):
    # timeNow = time()
 
     printFF('hit on /', request.method, request.client_addr)
-    if request.headers['ip'] not in clients:
+    #Todo: if new client connects but different tally its still gets recvDupe but needs to be updated
+    incomingIP = request.headers['ip']
+    tallyIDJustInt: str = request.headers['tallyID']
+
+    if incomingIP not in clients or clients[incomingIP] != tallyIDJustInt:
         printFF("#############  New Tally: ", request.headers['ip'], "| Tally ID: ", request.headers['tallyID'])
-        clients[request.headers['ip']] = request.headers['tallyID']
-        printFF(clients)
-        tallyID = "tally"+request.headers['tallyID']
-        bright = int(config.items('tallyLEDStatus')[tallyID])  #type: ignore
+        clients[incomingIP] = tallyIDJustInt
+        printFF(f'{clients=}')
+        tallyIDFullString: str = "tally"+tallyIDJustInt
+        bright = int(config.items('tallyLEDStatus')[tallyIDFullString])  #type: ignore
         setNeo(blue, bright, int(request.headers['tallyID']))     
-        asyncio.create_task(setBrightness(tallyID.split()))
+        asyncio.create_task(setBrightness(tallyIDFullString.split()))
         return 'recvS:OK', 200, {'Content-Type': 'text/html'}
     else:
+        printF('dupe recvSetup')
         return 'recvS:dupe', 208, {'Content-Type': 'text/html'}
-
+    
+async def keepAlive():
+    while True:
+        printFF(f'kA wifiCon: {wlan.isconnected()}')
+        await asyncio.sleep(30)
 
 async def setBrightness(keys: set[str]):
     """
@@ -229,12 +251,13 @@ async def setBrightness(keys: set[str]):
         None
     """
     tryCounter = 0
-    #await asyncio.sleep(1)
+    # sleeping so create_client has time to send response back 
+    await asyncio.sleep(.5)
     global clients
     for tallyToUpdate in keys:
         for key, value in clients.items():
             if value in tallyToUpdate:
-                printFF(f'{tallyToUpdate} send brightness')
+                printFF(f'{tallyToUpdate=} send brightness')
                 red: str = config.items('tallyBrightness')[tallyToUpdate].split(',')[0] #type: ignore
                 green: str = config.items('tallyBrightness')[tallyToUpdate].split(',')[1] #type: ignore
                 blue:str = config.items('tallyBrightness')[tallyToUpdate].split(',')[2] #type: ignore
@@ -387,7 +410,7 @@ async def mainThreads()-> None:
     returns:
         None
     """
-
+    asyncio.create_task(keepAlive())
     setNeo(blue, 80, 0, True)
     asyncio.run(app.run(debug=True)) #type: ignore
 
@@ -399,6 +422,7 @@ if __name__ == "__main__":
     printFF('myIP/ApMode: ', myIP, apMode)
     setupMappings(config)
     asyncio.run(mainThreads())
+
 
 
 
