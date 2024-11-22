@@ -14,9 +14,9 @@ setNeo = np.setNeo
 
 # this way works but then every file would need it instead of just passing NP object to each other file func and getting colors liek that.
 
-green, red, blue, white, off = np.green, np.red, np.blue, np.white, np.off
+#green, red, blue, white, off = np.green, np.red, np.blue, np.white, np.off
 
-setNeo(green)
+setNeo(np.green)
 
 from test2 import sayHi
 from time import sleep
