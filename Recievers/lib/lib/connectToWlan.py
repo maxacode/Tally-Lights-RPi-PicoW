@@ -1,4 +1,4 @@
-# v6.4  Recivers connectTowLan.py VSCode
+# V3.3  Recivers connectTowLan.py VSCode
 # Scan all SSID's
 # based on config file on Flash it will use the saved SSID either base/recv config
 # Connect to one if its in Config File
@@ -13,28 +13,29 @@
 # Red On = Failed to connect to any wifi
 
 """
-6.4 testing PM
-        wlan.config(pm=wlan.PM_NONE)
-
-
 Default power management mode
 CYW43_DEFAULT_PM = 0xA11142
+
 Aggressive power management mode for optimal power usage at the cost of performance
 CYW43_AGGRESSIVE_PM = 0xA11C82
+
 Performance power management mode where more power is used to increase performance
 CYW43_PERFORMANCE_PM = 0x111022
-#wlan.config(pm = 0xa11140) usualy one used
-wlan.config(pm = 0xA11C82)
 
-0xA11C82
+    #wlan.config(pm = 0xa11140) usualy one used
+        wlan.config(pm = 0xA11C82)
 
-PM_PERFORMANCE: enable WiFi power management to balance power savings and WiFi performance
+    0xA11C82
+    
+    PM_PERFORMANCE: enable WiFi power management to balance power savings and WiFi performance
+
 PM_POWERSAVE: enable WiFi power management with additional power savings and reduced WiFi performance
+
 PM_NONE: disable wifi power management
 
-wlan.config(pm = network.WLAN.PM_NONE)
-#wlan.config(pm = 0x111022)
-
+    wlan.config(pm = network.WLAN.PM_NONE)
+    #wlan.config(pm = 0x111022)
+    
 """
 
 import network #type: ignore
@@ -45,7 +46,7 @@ from random import getrandbits
 from json import loads
 
 # my Libs
-from lib.neopixel.npDone import setNeo, red, green, blue, white, off #type: ignore
+from lib.neopixel.npDone import setNeo, red, green, blue, white #type: ignore
 from lib.printF import printF, printFF, printW #type: ignore
 
 
@@ -67,8 +68,8 @@ def scanSSID(config: object, baseStation: bool) -> tuple[bool, str, str]:
     wlan = network.WLAN()
     wlan.active(False)
     wlan.active(True)
-   # wlan.config(pm = network.WLAN.PM_NONE)
-    wlan.config(pm = 0x111022)
+    wlan.config(pm = network.WLAN.PM_NONE)
+    #wlan.config(pm = 0x111022)
 
     # set power mode to get WiFi power-saving off (if needed)
     #wlan.config(pm = 0xa11140) 
@@ -129,7 +130,7 @@ def connectWLAN(apMode: bool, wlanSSID:str, wlanPass:str, config: object) -> tup
             sleep(1)
             
         printF("Access Point active with IP:", ap.ifconfig())
-        setNeo(blue, int(config.items('tallyBrightness')['blue']))
+        setNeo(blue, 200)
         # Display AP's IP configuration
         collect()
         return(apMode, str(ap.ifconfig()[0]))
@@ -139,25 +140,23 @@ def connectWLAN(apMode: bool, wlanSSID:str, wlanPass:str, config: object) -> tup
         wlan.active(False)
         wlan.active(True)
         # set power mode to get WiFi power-saving off (if needed)
-        #wlan.config(pm = network.WLAN.PM_NONE)
+        wlan.config(pm = network.WLAN.PM_NONE)
         #wlan.config(pm = 0x111022)
-        #wlan.config(pm=0)
-        wlan.config(pm=wlan.PM_NONE)
 
         wlan.connect(wlanSSID, wlanPass)
         #wait for connect or fail
         while 20 > 0:
-            setNeo(white, 0)
+            setNeo(green, 0)
             if wlan.status() < 0 or wlan.status() >= 3:
                 break
             printF('waiting for WLAN Connection... ', wlan.status())
-            setNeo(white, int(config.items('tallyBrightness')['white']))
+            setNeo(green, 200)
             sleep(1)
 
         collect()
         # Handle connection error
         if wlan.status() != 3:
-            setNeo(red, int(config.items('tallyBrightness')['red']))
+            setNeo(red, 200)
             return(apMode, 'customRaise: network connection failed')
             
         else:
@@ -186,7 +185,7 @@ if __name__ == "__main__":
     
     from getConfig import getConf
     config = getConf('recvConfig.json')
-   # print(f'MDNS: ',config.items('global')['baseStationName']) #type: ignore
+    print(f'MDNS: ',config.items('global')['baseStationName']) #type: ignore
     mainFunc(config, False)
 
 

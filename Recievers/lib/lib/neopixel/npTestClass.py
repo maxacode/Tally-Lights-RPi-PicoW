@@ -1,24 +1,15 @@
 """
  v1.1 - works 11/20 
  - added docs to each function
- - gets defualt brightness for each color if brighenss not passed in, for non mapped colors it will use default of 50
- #Todo get config and add those to colors mpas
- 
 """
 from lib.neopixel.neopixel import Neopixel
 
-green = (255, 0, 0)
-red = (0, 255, 0)
-blue = (0, 0, 255)
-white = (255, 255, 255)
-off = (0, 0, 0)
-
 # Global dictionary to store brightness levels for each color
 color_brightness = {
-    red: 100,
-    green: 20,
-    blue: 30,
-    white: 50,
+    "red": 50,
+    "green": 50,
+    "blue": 30,
+    "white": 50,
 }
 
 class NeoPixelController:
@@ -40,13 +31,13 @@ class NeoPixelController:
         self.strip.brightness(self.brightness_level)
 
         # Predefined colors
-        self.green = green
-        self.red = red
-        self.blue = blue
-        self.white = white
-        self.off = off
+        self.green = (255, 0, 0)
+        self.red = (0, 255, 0)
+        self.blue = (0, 0, 255)
+        self.white = (255, 255, 255)
+        self.off = (0, 0, 0)
 
-    def setNeo(self, color, level=None, pixel_id=0, reset=False) -> tuple[str, int]:
+    def set_neo(self, color, level=None, pixel_id=0, reset=False) -> tuple[str, int]:
         """
         Set a NeoPixel to a specific color and brightness level.
 
@@ -63,7 +54,7 @@ class NeoPixelController:
             self.strip.fill(self.off)
 
         # Get brightness from color name or global dictionary
-        brightness = level if level is not None else color_brightness.get(color)
+        brightness = level if level is not None else color_brightness.get(color.lower())
 
         if brightness is None:
             # Handle case where color is not found in the dictionary
@@ -73,13 +64,12 @@ class NeoPixelController:
         self.strip.brightness(brightness)
         self.strip.set_pixel(pixel_id, color)
         self.strip.show()
-        return color, pixel_id
+        return color.lower(), pixel_id
 
 if __name__ == '__main__':
     # Create a NeoPixelController instance with a static brightness level of 100
     controller = NeoPixelController(brightness_level=100)
     # Use the controller to set NeoPixel colors
-    controller.setNeo("green")  # Uses greenBrightness
-    controller.setNeo("red", level=50)  # Uses level 50
-    print(controller.setNeo((255, 255, 0)))  # Uses default brightness for white
-
+    controller.set_neo("green")  # Uses greenBrightness
+    controller.set_neo("red", level=50)  # Uses level 50
+    print(controller.set_neo((255, 255, 0)))  # Uses default brightness for white

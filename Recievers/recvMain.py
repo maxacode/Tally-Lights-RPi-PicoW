@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v7.2
+v7.4
 
 Functions and classes:
     getconfig() - reads the config file
@@ -15,6 +15,16 @@ Functions and classes:
     recvSetup post baseIP(/recvSetup) - Sends a POST request to the base station with the IP and Tally ID
     keepAlive() - Sleeps for 10seconds then adds 10 to counter, if over 30 triggers recvSetup. kA is reset on every postMade
     mainThreads() - Main function that runs the server and the recvSetup function
+
+v7.v4 11/23 - 1am -
+minor code changes
+started to return response.text in makePost
+  File "recvMain.py", line 54, in <module>
+NameError: name 'machine' isn't defined
+imported machine.freq to fix. now just freq(int) to call
+
+v 7.3 -11/22
+- clock at start set to 250 then 133 after imports
 
 v 7.2 10pm 11/20
 ka disabled !!
@@ -38,18 +48,14 @@ v7.1 10pm 11/19
  - connectWlan, recvConf, boot.py
 # Works: adding single func for Ruquest Posts'
 
-#TODO lower clock freq but wifi still works
 """
 
-from machine import Pin, reset
-# from machine import WDT
 
-# watchDog = WDT(timeout=60000)
-# watchDog.feed()
-
-
+from machine import Pin, reset, freq
+ 
 # changing clock feq normal = 125000000
-#machine.freq(62500000)
+freq(250000000)
+
 
 from json import loads
 from time import sleep
@@ -144,7 +150,7 @@ def getDipSwitch():
     printFF(f"Tally ID: {tallyID}")
  
 
-async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 5 ) -> list[bool, int]:
+async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 5 ) -> list[bool, int, string]:
         """
         Function to make a request.post or get with Passed Method,Headers, Timeout
         
@@ -155,7 +161,7 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
             reqTimeOut: timeout whe making a request default 5 seconds ( tested and this seems sufficiuent but also on lower side)
             
         Returns:
-            list[bool, str]: True if Success or False or Failed and MSG Error message
+            list[bool, str, str]: sucess: true 200-300 false else, str: 
         
         """
 
@@ -172,11 +178,12 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
                 response = get(url,headers=headers,timeout = reqTimeOut)
                 
             status = response.status_code #status: 200 | response: green off
-            printFF(f'{status=} | {response.text=}') 
+            printF(f'{status=} | {response.text=}') 
             if status != 200:
                 return  [False, status]
             elif status >= 200 and status < 300:
                 return [True, status]
+            #Todo add response.text
         except Exception as e:
             printW(f'        ln 167 timeout {e=}')
             
@@ -346,13 +353,24 @@ async def recvSetup(config,serverIP,myIP):
 kA = 0
 async def keepAlive():
     global kA
+ 
+    heartBeat = int(config.items('hidden')['heartbeat'])
+    keepAlivePush = int(config.items('hidden')['keepAlivePush'])
     while True:
         try:
             await asyncio.sleep(int(config.items('hidden')['heartbeat']))
-            kA += int(config.items('hidden')['heartbeat'])
+            kA += heartBeat
                         
-            if kA >= int(config.items('hidden')['keepAlivePush']):
+            if kA >= keepAlivePush:
+#                 freq -= 1000000
+#                 print(f'{freq/1000000=}')
+# 
+#                 machine.freq(freq)
+                #print('frew machine.freq(75000000)')
+                freq(133000000)
+
                 printF(f'{kA=}')
+                printF(f'{kA/60=}')
                 kA = 0
                 asyncio.create_task(recvSetup(config,serverIP,myIP))
                 
@@ -384,7 +402,7 @@ async def mainThreads(apMode, myIP):
     asyncio.create_task(recvSetup(config,serverIP,myIP))
 
     asyncio.create_task(keepAlive())
-        
+    
     asyncio.run(app.run(debug=True))
 
 
@@ -396,7 +414,7 @@ greenLevel = int(config.items('tallyBrightness')['green'])
 whiteLevel = int(config.items('tallyBrightness')['white'])
 
 
-setNeo(blue, 50, 0, True)
+setNeo(blue, blueLevel, 0, True)
 
 
 
@@ -407,9 +425,6 @@ apMode, myIP = mainFunc(config,True) # GC Done
 printFF(myIP, apMode)
 asyncio.run(mainThreads(apMode, myIP))
 # Main thread continues running while the other threads execute
-
-if __name__ == "__main__":
-    main()
 
 
 

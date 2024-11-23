@@ -184,7 +184,7 @@ async def sendTo1Client(curVal: str, ip: str, tallyIDStr: str) -> None: #pinValu
                 printFF(f's2: {status} | r: {response.text}') 
                 if status != 200:
                     if tryCounter > 5:
-                        printFF(f"           {ip=} is not avaialable, removing from clients")
+                        printFF(f"           {ip} is not avaialable, removing from clients",ip)
                         del clients[ip]
                         printF(setNeo(off, 0, int(tallyIDStr[-1])))
                         break
@@ -194,11 +194,11 @@ async def sendTo1Client(curVal: str, ip: str, tallyIDStr: str) -> None: #pinValu
                     break
                     
             except Exception as e:
-                printW(f'           timeout {ip=} {e=}')
+                printW(f'           timeout {ip}', e)
                 await asyncio.sleep(.1)
                 
                 if tryCounter > 5:
-                    printFF(f"    ln 270  {ip=} ooo, removing ", tallyIDStr[-1])
+                    printFF(f"    ln 270  {ip} ooo, removing ", tallyIDStr[-1])
                     del clients[ip]
                     printF(setNeo(off, 0, int(tallyIDStr[-1])))
                     break

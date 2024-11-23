@@ -14,9 +14,9 @@ setNeo = np.setNeo
 
 # this way works but then every file would need it instead of just passing NP object to each other file func and getting colors liek that.
 
-#green, red, blue, white, off = np.green, np.red, np.blue, np.white, np.off
+green, red, blue, white, off = np.green, np.red, np.blue, np.white, np.off
 
-setNeo(np.green)
+setNeo(green)
 
 from test2 import sayHi
 from time import sleep
@@ -39,4 +39,3 @@ sayHi(np, colors, sleep)
 #controller.set_neo(controller.white, reset=True)  # Set first pixel to green
 #result = controller.set_neo((255, 255, 0), level=100, pixel_id=2)  # Set third pixel to yellow
 #print(result)  # Output the result
-
