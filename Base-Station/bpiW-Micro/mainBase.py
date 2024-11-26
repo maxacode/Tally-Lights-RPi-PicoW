@@ -16,6 +16,26 @@ Functions and classes:
     - setupMappings: Function to setup the GPIO mappings based on the configuration.
     
 
+NEW VERSION actual TALLY
+TODO:  Disable WLAN Before enalbe since soft reset doesnt clear it
+Set WIFI to known state on startup: MicroPython does not reset the wifi peripheral after a soft reset. This can lead to unexpected behaviour. To guarantee the wifi is reset to a known state after a soft reset make sure you deactivate the STA_IF and AP_IF before setting them to the desired state at startup, eg.:
+
+
+import network, time
+
+def wifi_reset():   # Reset wifi to AP_IF off, STA_IF on and disconnected
+  sta = network.WLAN(network.STA_IF); sta.active(False)
+  ap = network.WLAN(network.AP_IF); ap.active(False)
+  sta.active(True)
+  while not sta.active():
+      time.sleep(0.1)
+  sta.disconnect()   # For ESP8266
+  while sta.isconnected():
+      time.sleep(0.1)
+  return sta, ap
+
+sta, ap = wifi_reset()
+
 
 5.2 11/20:
 - Works: adding KA checking if wlanIs Connected

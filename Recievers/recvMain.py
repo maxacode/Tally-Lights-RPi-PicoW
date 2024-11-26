@@ -19,9 +19,6 @@ Functions and classes:
 v7.v4 11/23 - 1am -
 minor code changes
 started to return response.text in makePost
-  File "recvMain.py", line 54, in <module>
-NameError: name 'machine' isn't defined
-imported machine.freq to fix. now just freq(int) to call
 
 v 7.3 -11/22
 - clock at start set to 250 then 133 after imports
@@ -50,12 +47,11 @@ v7.1 10pm 11/19
 
 """
 
-
 from machine import Pin, reset, freq
  
+
 # changing clock feq normal = 125000000
 freq(250000000)
-
 
 from json import loads
 from time import sleep
@@ -158,7 +154,7 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
             method: str, GET OR POST
             url (str): Full URL to send to
             Headers dict[str, str]:  ех: {'led':str(curVal), '234', 'on'}
-            reqTimeOut: timeout whe making a request default 5 seconds ( tested and this seems sufficiuent but also on lower side)
+            reqTimeOut: timeout whe making a5 request default 5 seconds ( tested and this seems sufficiuent but also on lower side)
             
         Returns:
             list[bool, str, str]: sucess: true 200-300 false else, str: 
@@ -170,8 +166,8 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
 
             if method == 'POST':
                 #response = post(url,headers=headers)`
-                response = post(url,headers=headers,timeout = reqTimeOut)
-               # response = post(url,headers=headers)
+               # response = post(url,headers=headers,timeout = reqTimeOut)
+                response = post(url,headers=headers)
 # TODO: why timeout = reqTimeOut does not work? to short of a time? or wrong syntax?
 
             elif method == "GET":
@@ -327,7 +323,7 @@ async def recvSetup(config,serverIP,myIP):
         # We are trying to get MDNS IP if server does not reply after 5 attemps
         retry += 1
         printF(f'recvSetup {retry=}')
-        if retry >= 3:
+        if retry >= 5:
             printF('starting query mdns ln 237')
             retry = 0
             #await query_mdns_and_dns_address(myIP)
@@ -414,7 +410,7 @@ greenLevel = int(config.items('tallyBrightness')['green'])
 whiteLevel = int(config.items('tallyBrightness')['white'])
 
 
-setNeo(blue, blueLevel, 0, True)
+setNeo(blue, 50, 0, True)
 
 
 
@@ -425,6 +421,9 @@ apMode, myIP = mainFunc(config,True) # GC Done
 printFF(myIP, apMode)
 asyncio.run(mainThreads(apMode, myIP))
 # Main thread continues running while the other threads execute
+
+if __name__ == "__main__":
+    main()
 
 
 

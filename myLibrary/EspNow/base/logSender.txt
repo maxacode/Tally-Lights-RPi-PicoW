@@ -1,0 +1,1031 @@
+785800746 || 
+
+ NEW INTSTANCE 
+ 
+785800746 || SEND: sleep=0.3 | counter=1 | timeElap=HR=0 min=0, sec=0 
+785800746 ||  Received: recv0k:  counter=1  
+785800746 || SEND: sleep=0.3 | counter=2 | timeElap=HR=0 min=0, sec=0 
+785800747 ||  Received: recv0k:  counter=2  
+785800747 || SEND: sleep=0.3 | counter=3 | timeElap=HR=0 min=0, sec=1 
+785800747 ||  Received: recv0k:  counter=3  
+785800747 || SEND: sleep=0.3 | counter=4 | timeElap=HR=0 min=0, sec=1 
+785800748 ||  Received: recv0k:  counter=4  
+785800748 || SEND: sleep=0.3 | counter=5 | timeElap=HR=0 min=0, sec=2 
+785800748 ||  Received: recv0k:  counter=5  
+785800748 || SEND: sleep=0.3 | counter=6 | timeElap=HR=0 min=0, sec=2 
+785800748 ||  Received: recv0k:  counter=6  
+785800748 || SEND: sleep=0.3 | counter=7 | timeElap=HR=0 min=0, sec=2 
+785800749 ||  Received: recv0k:  counter=7  
+785800749 || SEND: sleep=0.3 | counter=8 | timeElap=HR=0 min=0, sec=3 
+785800749 ||  Received: recv0k:  counter=8  
+785800749 || SEND: sleep=0.3 | counter=9 | timeElap=HR=0 min=0, sec=3 
+785800749 ||  Received: recv0k:  counter=9  
+785800750 || SEND: sleep=0.3 | counter=10 | timeElap=HR=0 min=0, sec=4 
+785800750 ||  Received: recv0k:  counter=10  
+785800750 || SEND: sleep=0.3 | counter=11 | timeElap=HR=0 min=0, sec=4 
+785800750 ||  Received: recv0k:  counter=11  
+785800750 || SEND: sleep=0.3 | counter=12 | timeElap=HR=0 min=0, sec=4 
+785800751 ||  Received: recv0k:  counter=12  
+785800751 || SEND: sleep=0.3 | counter=13 | timeElap=HR=0 min=0, sec=5 
+785800751 ||  Received: recv0k:  counter=13  
+785800751 || SEND: sleep=0.3 | counter=14 | timeElap=HR=0 min=0, sec=5 
+785800752 ||  Received: recv0k:  counter=14  
+785800752 || SEND: sleep=0.3 | counter=15 | timeElap=HR=0 min=0, sec=6 
+785800765 || 
+
+ NEW INTSTANCE 
+ 
+785800766 || SEND: sleep=0.3 | counter=1 | timeElap=HR=0 min=0, sec=0 
+785800766 || SEND: sleep=0.3 | counter=2 | timeElap=HR=0 min=0, sec=0 
+785800767 || SEND: sleep=0.3 | counter=3 | timeElap=HR=0 min=0, sec=1 
+785800767 || SEND: sleep=0.3 | counter=4 | timeElap=HR=0 min=0, sec=1 
+785800767 ||  Received: recv0k:  counter=4  
+785800767 || SEND: sleep=0.3 | counter=5 | timeElap=HR=0 min=0, sec=1 
+785800768 || SEND: sleep=0.3 | counter=6 | timeElap=HR=0 min=0, sec=2 
+785800768 || SEND: sleep=0.3 | counter=7 | timeElap=HR=0 min=0, sec=2 
+785800769 || SEND: sleep=0.3 | counter=8 | timeElap=HR=0 min=0, sec=3 
+785800769 || SEND: sleep=0.3 | counter=9 | timeElap=HR=0 min=0, sec=3 
+785800770 || SEND: sleep=0.3 | counter=10 | timeElap=HR=0 min=0, sec=4 
+785800770 || SEND: sleep=0.3 | counter=11 | timeElap=HR=0 min=0, sec=4 
+785800770 ||  Received: recv0k:  counter=11  
+785800770 || SEND: sleep=0.3 | counter=12 | timeElap=HR=0 min=0, sec=4 
+785800771 ||  Received: recv0k:  counter=12  
+785800771 || SEND: sleep=0.3 | counter=13 | timeElap=HR=0 min=0, sec=5 
+785800771 || SEND: sleep=0.3 | counter=14 | timeElap=HR=0 min=0, sec=5 
+785800772 || SEND: sleep=0.3 | counter=15 | timeElap=HR=0 min=0, sec=6 
+785800772 || SEND: sleep=0.3 | counter=16 | timeElap=HR=0 min=0, sec=6 
+785800772 ||  Received: recv0k:  counter=16  
+785800773 || SEND: sleep=0.3 | counter=17 | timeElap=HR=0 min=0, sec=7 
+785800773 || SEND: sleep=0.3 | counter=18 | timeElap=HR=0 min=0, sec=7 
+785800773 ||  Received: recv0k:  counter=18  
+785800774 || SEND: sleep=0.3 | counter=19 | timeElap=HR=0 min=0, sec=8 
+785800774 || SEND: sleep=0.3 | counter=20 | timeElap=HR=0 min=0, sec=8 
+785800775 || SEND: sleep=0.3 | counter=21 | timeElap=HR=0 min=0, sec=9 
+785800775 || SEND: sleep=0.3 | counter=22 | timeElap=HR=0 min=0, sec=9 
+785800775 || SEND: sleep=0.3 | counter=23 | timeElap=HR=0 min=0, sec=9 
+785800776 || SEND: sleep=0.3 | counter=24 | timeElap=HR=0 min=0, sec=10 
+785800776 || SEND: sleep=0.3 | counter=25 | timeElap=HR=0 min=0, sec=10 
+785800776 ||  Received: recv0k:  counter=25  
+785800777 || SEND: sleep=0.3 | counter=26 | timeElap=HR=0 min=0, sec=11 
+785800777 || SEND: sleep=0.3 | counter=27 | timeElap=HR=0 min=0, sec=11 
+785800778 || SEND: sleep=0.3 | counter=28 | timeElap=HR=0 min=0, sec=12 
+785800778 ||  Received: recv0k:  counter=28  
+785800778 || SEND: sleep=0.3 | counter=29 | timeElap=HR=0 min=0, sec=12 
+785800778 || SEND: sleep=0.3 | counter=30 | timeElap=HR=0 min=0, sec=12 
+785800779 || SEND: sleep=0.3 | counter=31 | timeElap=HR=0 min=0, sec=13 
+785800779 || SEND: sleep=0.3 | counter=32 | timeElap=HR=0 min=0, sec=13 
+785800780 ||  Received: recv0k:  counter=32  
+785800780 || SEND: sleep=0.3 | counter=33 | timeElap=HR=0 min=0, sec=14 
+785800780 || SEND: sleep=0.3 | counter=34 | timeElap=HR=0 min=0, sec=14 
+785800780 || SEND: sleep=0.3 | counter=35 | timeElap=HR=0 min=0, sec=14 
+785800781 ||  Received: recv0k:  counter=35  
+785800781 || SEND: sleep=0.3 | counter=36 | timeElap=HR=0 min=0, sec=15 
+785800781 ||  Received: recv0k:  counter=36  
+785800781 || SEND: sleep=0.3 | counter=37 | timeElap=HR=0 min=0, sec=15 
+785800782 ||  Received: recv0k:  counter=37  
+785800782 || SEND: sleep=0.3 | counter=38 | timeElap=HR=0 min=0, sec=16 
+785800782 ||  Received: recv0k:  counter=38  
+785800782 || SEND: sleep=0.3 | counter=39 | timeElap=HR=0 min=0, sec=16 
+785800782 ||  Received: recv0k:  counter=39  
+785800782 || SEND: sleep=0.3 | counter=40 | timeElap=HR=0 min=0, sec=16 
+785800783 ||  Received: recv0k:  counter=40  
+785800783 || SEND: sleep=0.3 | counter=41 | timeElap=HR=0 min=0, sec=17 
+785800783 ||  Received: recv0k:  counter=41  
+785800783 || SEND: sleep=0.3 | counter=42 | timeElap=HR=0 min=0, sec=17 
+785800784 ||  Received: recv0k:  counter=42  
+785800784 || SEND: sleep=0.3 | counter=43 | timeElap=HR=0 min=0, sec=18 
+785800784 || SEND: sleep=0.3 | counter=44 | timeElap=HR=0 min=0, sec=18 
+785800785 || SEND: sleep=0.3 | counter=45 | timeElap=HR=0 min=0, sec=19 
+785800785 || SEND: sleep=0.3 | counter=46 | timeElap=HR=0 min=0, sec=19 
+785800785 || SEND: sleep=0.3 | counter=47 | timeElap=HR=0 min=0, sec=19 
+785800786 || SEND: sleep=0.3 | counter=48 | timeElap=HR=0 min=0, sec=20 
+785800786 || SEND: sleep=0.3 | counter=49 | timeElap=HR=0 min=0, sec=20 
+785800787 || SEND: sleep=0.3 | counter=50 | timeElap=HR=0 min=0, sec=21 
+785800787 || SEND: sleep=0.3 | counter=51 | timeElap=HR=0 min=0, sec=21 
+785800787 || SEND: sleep=0.3 | counter=52 | timeElap=HR=0 min=0, sec=21 
+785800788 || SEND: sleep=0.3 | counter=53 | timeElap=HR=0 min=0, sec=22 
+785800788 || SEND: sleep=0.3 | counter=54 | timeElap=HR=0 min=0, sec=22 
+785800789 || SEND: sleep=0.3 | counter=55 | timeElap=HR=0 min=0, sec=23 
+785800789 || SEND: sleep=0.3 | counter=56 | timeElap=HR=0 min=0, sec=23 
+785800790 || SEND: sleep=0.3 | counter=57 | timeElap=HR=0 min=0, sec=24 
+785800790 || SEND: sleep=0.3 | counter=58 | timeElap=HR=0 min=0, sec=24 
+785800790 || SEND: sleep=0.3 | counter=59 | timeElap=HR=0 min=0, sec=24 
+785800791 || SEND: sleep=0.3 | counter=60 | timeElap=HR=0 min=0, sec=25 
+785800791 || SEND: sleep=0.3 | counter=61 | timeElap=HR=0 min=0, sec=25 
+785800792 || SEND: sleep=0.3 | counter=62 | timeElap=HR=0 min=0, sec=26 
+785800792 || SEND: sleep=0.3 | counter=63 | timeElap=HR=0 min=0, sec=26 
+785800793 || SEND: sleep=0.3 | counter=64 | timeElap=HR=0 min=0, sec=27 
+785800793 || SEND: sleep=0.3 | counter=65 | timeElap=HR=0 min=0, sec=27 
+785800793 || SEND: sleep=0.3 | counter=66 | timeElap=HR=0 min=0, sec=27 
+785800794 || SEND: sleep=0.3 | counter=67 | timeElap=HR=0 min=0, sec=28 
+785800795 || SEND: sleep=0.3 | counter=68 | timeElap=HR=0 min=0, sec=29 
+785800795 || SEND: sleep=0.3 | counter=69 | timeElap=HR=0 min=0, sec=29 
+785800796 || SEND: sleep=0.3 | counter=70 | timeElap=HR=0 min=0, sec=30 
+785800796 || SEND: sleep=0.3 | counter=71 | timeElap=HR=0 min=0, sec=30 
+785800796 || SEND: sleep=0.3 | counter=72 | timeElap=HR=0 min=0, sec=30 
+785800797 || SEND: sleep=0.3 | counter=73 | timeElap=HR=0 min=0, sec=31 
+785800797 || SEND: sleep=0.3 | counter=74 | timeElap=HR=0 min=0, sec=31 
+785800798 || SEND: sleep=0.3 | counter=75 | timeElap=HR=0 min=0, sec=32 
+785800798 || SEND: sleep=0.3 | counter=76 | timeElap=HR=0 min=0, sec=32 
+785800799 || SEND: sleep=0.3 | counter=77 | timeElap=HR=0 min=0, sec=33 
+785800799 || SEND: sleep=0.3 | counter=78 | timeElap=HR=0 min=0, sec=33 
+785800800 || SEND: sleep=0.3 | counter=79 | timeElap=HR=0 min=0, sec=34 
+785800800 || SEND: sleep=0.3 | counter=80 | timeElap=HR=0 min=0, sec=34 
+785800800 || SEND: sleep=0.3 | counter=81 | timeElap=HR=0 min=0, sec=34 
+785800801 || SEND: sleep=0.3 | counter=82 | timeElap=HR=0 min=0, sec=35 
+785800801 || SEND: sleep=0.3 | counter=83 | timeElap=HR=0 min=0, sec=35 
+785800802 || SEND: sleep=0.3 | counter=84 | timeElap=HR=0 min=0, sec=36 
+785800802 || SEND: sleep=0.3 | counter=85 | timeElap=HR=0 min=0, sec=36 
+785800802 || SEND: sleep=0.3 | counter=86 | timeElap=HR=0 min=0, sec=36 
+785800803 || SEND: sleep=0.3 | counter=87 | timeElap=HR=0 min=0, sec=37 
+785800803 || SEND: sleep=0.3 | counter=88 | timeElap=HR=0 min=0, sec=37 
+785800804 || SEND: sleep=0.3 | counter=89 | timeElap=HR=0 min=0, sec=38 
+785800804 || SEND: sleep=0.3 | counter=90 | timeElap=HR=0 min=0, sec=38 
+785800804 || SEND: sleep=0.3 | counter=91 | timeElap=HR=0 min=0, sec=38 
+785800805 || SEND: sleep=0.3 | counter=92 | timeElap=HR=0 min=0, sec=39 
+785800805 || SEND: sleep=0.3 | counter=93 | timeElap=HR=0 min=0, sec=39 
+785800806 || SEND: sleep=0.3 | counter=94 | timeElap=HR=0 min=0, sec=40 
+785800806 || SEND: sleep=0.3 | counter=95 | timeElap=HR=0 min=0, sec=40 
+785800806 || SEND: sleep=0.3 | counter=96 | timeElap=HR=0 min=0, sec=40 
+785800807 || SEND: sleep=0.3 | counter=97 | timeElap=HR=0 min=0, sec=41 
+785800807 || SEND: sleep=0.3 | counter=98 | timeElap=HR=0 min=0, sec=41 
+785800808 || SEND: sleep=0.3 | counter=99 | timeElap=HR=0 min=0, sec=42 
+785800808 || SEND: sleep=0.3 | counter=100 | timeElap=HR=0 min=0, sec=42 
+785800809 || SEND: sleep=0.3 | counter=101 | timeElap=HR=0 min=0, sec=43 
+785800809 || SEND: sleep=0.3 | counter=102 | timeElap=HR=0 min=0, sec=43 
+785800809 || SEND: sleep=0.3 | counter=103 | timeElap=HR=0 min=0, sec=43 
+785800810 || SEND: sleep=0.3 | counter=104 | timeElap=HR=0 min=0, sec=44 
+785800810 || SEND: sleep=0.3 | counter=105 | timeElap=HR=0 min=0, sec=44 
+785800811 || SEND: sleep=0.3 | counter=106 | timeElap=HR=0 min=0, sec=45 
+785800811 || SEND: sleep=0.3 | counter=107 | timeElap=HR=0 min=0, sec=45 
+785800811 || SEND: sleep=0.3 | counter=108 | timeElap=HR=0 min=0, sec=45 
+785800812 || SEND: sleep=0.3 | counter=109 | timeElap=HR=0 min=0, sec=46 
+785800812 || SEND: sleep=0.3 | counter=110 | timeElap=HR=0 min=0, sec=46 
+785800813 || SEND: sleep=0.3 | counter=111 | timeElap=HR=0 min=0, sec=47 
+785800813 || SEND: sleep=0.3 | counter=112 | timeElap=HR=0 min=0, sec=47 
+785800814 || SEND: sleep=0.3 | counter=113 | timeElap=HR=0 min=0, sec=48 
+785800814 || SEND: sleep=0.3 | counter=114 | timeElap=HR=0 min=0, sec=48 
+785800814 || SEND: sleep=0.3 | counter=115 | timeElap=HR=0 min=0, sec=48 
+785800815 || SEND: sleep=0.3 | counter=116 | timeElap=HR=0 min=0, sec=49 
+785800815 || SEND: sleep=0.3 | counter=117 | timeElap=HR=0 min=0, sec=49 
+785800816 || SEND: sleep=0.3 | counter=118 | timeElap=HR=0 min=0, sec=50 
+785800816 || SEND: sleep=0.3 | counter=119 | timeElap=HR=0 min=0, sec=50 
+785800817 || SEND: sleep=0.3 | counter=120 | timeElap=HR=0 min=0, sec=51 
+785800817 || SEND: sleep=0.3 | counter=121 | timeElap=HR=0 min=0, sec=51 
+785800817 || SEND: sleep=0.3 | counter=122 | timeElap=HR=0 min=0, sec=51 
+785800818 || SEND: sleep=0.3 | counter=123 | timeElap=HR=0 min=0, sec=52 
+785800818 || SEND: sleep=0.3 | counter=124 | timeElap=HR=0 min=0, sec=52 
+785800819 || SEND: sleep=0.3 | counter=125 | timeElap=HR=0 min=0, sec=53 
+785800819 ||  Received: recv0k:  counter=125  
+785800819 || SEND: sleep=0.3 | counter=126 | timeElap=HR=0 min=0, sec=53 
+785800820 || SEND: sleep=0.3 | counter=127 | timeElap=HR=0 min=0, sec=54 
+785800820 ||  Received: recv0k:  counter=127  
+785800820 || SEND: sleep=0.3 | counter=128 | timeElap=HR=0 min=0, sec=54 
+785800821 || SEND: sleep=0.3 | counter=129 | timeElap=HR=0 min=0, sec=55 
+785800821 || SEND: sleep=0.3 | counter=130 | timeElap=HR=0 min=0, sec=55 
+785800821 ||  Received: recv0k:  counter=130  
+785800822 || SEND: sleep=0.3 | counter=131 | timeElap=HR=0 min=0, sec=56 
+785800822 ||  Received: recv0k:  counter=131  
+785800822 || SEND: sleep=0.3 | counter=132 | timeElap=HR=0 min=0, sec=56 
+785800823 || SEND: sleep=0.3 | counter=133 | timeElap=HR=0 min=0, sec=57 
+785800823 ||  Received: recv0k:  counter=133  
+785800823 || SEND: sleep=0.3 | counter=134 | timeElap=HR=0 min=0, sec=57 
+785800824 || SEND: sleep=0.3 | counter=135 | timeElap=HR=0 min=0, sec=58 
+785800824 || SEND: sleep=0.3 | counter=136 | timeElap=HR=0 min=0, sec=58 
+785800824 || SEND: sleep=0.3 | counter=137 | timeElap=HR=0 min=0, sec=58 
+785800825 || SEND: sleep=0.3 | counter=138 | timeElap=HR=0 min=0, sec=59 
+785800825 || SEND: sleep=0.3 | counter=139 | timeElap=HR=0 min=0, sec=59 
+785800826 || SEND: sleep=0.3 | counter=140 | timeElap=HR=0 min=1, sec=0 
+785800826 ||  Received: recv0k:  counter=140  
+785800826 || SEND: sleep=0.3 | counter=141 | timeElap=HR=0 min=1, sec=0 
+785800826 ||  Received: recv0k:  counter=141  
+785800826 || SEND: sleep=0.3 | counter=142 | timeElap=HR=0 min=1, sec=0 
+785800827 || SEND: sleep=0.3 | counter=143 | timeElap=HR=0 min=1, sec=1 
+785800827 ||  Received: recv0k:  counter=143  
+785800827 || SEND: sleep=0.3 | counter=144 | timeElap=HR=0 min=1, sec=1 
+785800828 || SEND: sleep=0.3 | counter=145 | timeElap=HR=0 min=1, sec=2 
+785800828 || SEND: sleep=0.3 | counter=146 | timeElap=HR=0 min=1, sec=2 
+785800828 || SEND: sleep=0.3 | counter=147 | timeElap=HR=0 min=1, sec=2 
+785800829 ||  Received: recv0k:  counter=147  
+785800829 || SEND: sleep=0.3 | counter=148 | timeElap=HR=0 min=1, sec=3 
+785800829 || SEND: sleep=0.3 | counter=149 | timeElap=HR=0 min=1, sec=3 
+785800829 ||  Received: recv0k:  counter=149  
+785800830 || SEND: sleep=0.3 | counter=150 | timeElap=HR=0 min=1, sec=4 
+785800830 || SEND: sleep=0.3 | counter=151 | timeElap=HR=0 min=1, sec=4 
+785800830 ||  Received: recv0k:  counter=151  
+785800830 || SEND: sleep=0.3 | counter=152 | timeElap=HR=0 min=1, sec=4 
+785800831 ||  Received: recv0k:  counter=152  
+785800831 || SEND: sleep=0.3 | counter=153 | timeElap=HR=0 min=1, sec=5 
+785800831 || SEND: sleep=0.3 | counter=154 | timeElap=HR=0 min=1, sec=5 
+785800832 || SEND: sleep=0.3 | counter=155 | timeElap=HR=0 min=1, sec=6 
+785800832 || SEND: sleep=0.3 | counter=156 | timeElap=HR=0 min=1, sec=6 
+785800832 ||  Received: recv0k:  counter=156  
+785800832 || SEND: sleep=0.3 | counter=157 | timeElap=HR=0 min=1, sec=6 
+785800833 || SEND: sleep=0.3 | counter=158 | timeElap=HR=0 min=1, sec=7 
+785800833 ||  Received: recv0k:  counter=158  
+785800833 || SEND: sleep=0.3 | counter=159 | timeElap=HR=0 min=1, sec=7 
+785800833 ||  Received: recv0k:  counter=159  
+785800834 || SEND: sleep=0.3 | counter=160 | timeElap=HR=0 min=1, sec=8 
+785800834 ||  Received: recv0k:  counter=160  
+785800834 || SEND: sleep=0.3 | counter=161 | timeElap=HR=0 min=1, sec=8 
+785800834 ||  Received: recv0k:  counter=161  
+785800835 || SEND: sleep=0.3 | counter=162 | timeElap=HR=0 min=1, sec=9 
+785800835 ||  Received: recv0k:  counter=162  
+785800835 || SEND: sleep=0.3 | counter=163 | timeElap=HR=0 min=1, sec=9 
+785800835 || SEND: sleep=0.3 | counter=164 | timeElap=HR=0 min=1, sec=9 
+785800836 || SEND: sleep=0.3 | counter=165 | timeElap=HR=0 min=1, sec=10 
+785800836 ||  Received: recv0k:  counter=165  
+785800836 || SEND: sleep=0.3 | counter=166 | timeElap=HR=0 min=1, sec=10 
+785800836 ||  Received: recv0k:  counter=166  
+785800837 || SEND: sleep=0.3 | counter=167 | timeElap=HR=0 min=1, sec=11 
+785800837 || SEND: sleep=0.3 | counter=168 | timeElap=HR=0 min=1, sec=11 
+785800838 || SEND: sleep=0.3 | counter=169 | timeElap=HR=0 min=1, sec=12 
+785800838 ||  Received: recv0k:  counter=169  
+785800838 || SEND: sleep=0.3 | counter=170 | timeElap=HR=0 min=1, sec=12 
+785800839 || SEND: sleep=0.3 | counter=171 | timeElap=HR=0 min=1, sec=13 
+785800839 || SEND: sleep=0.3 | counter=172 | timeElap=HR=0 min=1, sec=13 
+785800840 || SEND: sleep=0.3 | counter=173 | timeElap=HR=0 min=1, sec=14 
+785800840 || SEND: sleep=0.3 | counter=174 | timeElap=HR=0 min=1, sec=14 
+785800841 || SEND: sleep=0.3 | counter=175 | timeElap=HR=0 min=1, sec=15 
+785800841 || SEND: sleep=0.3 | counter=176 | timeElap=HR=0 min=1, sec=15 
+785800842 || SEND: sleep=0.3 | counter=177 | timeElap=HR=0 min=1, sec=16 
+785800842 ||  Received: recv0k:  counter=177  
+785800842 || SEND: sleep=0.3 | counter=178 | timeElap=HR=0 min=1, sec=16 
+785800843 || SEND: sleep=0.3 | counter=179 | timeElap=HR=0 min=1, sec=16 
+785800844 || 
+
+ NEW INTSTANCE 
+ 
+785800845 || SEND: sleep=1 | counter=1 | timeElap=HR=0 min=0, sec=1 
+785800846 || SEND: sleep=1 | counter=2 | timeElap=HR=0 min=0, sec=2 
+785800847 || SEND: sleep=1 | counter=3 | timeElap=HR=0 min=0, sec=3 
+785800848 || SEND: sleep=1 | counter=4 | timeElap=HR=0 min=0, sec=4 
+785800848 ||  Received: recv0k:  counter=4  
+785800849 || SEND: sleep=1 | counter=5 | timeElap=HR=0 min=0, sec=5 
+785800850 || SEND: sleep=1 | counter=6 | timeElap=HR=0 min=0, sec=6 
+785800850 ||  Received: recv0k:  counter=6  
+785800851 || SEND: sleep=1 | counter=7 | timeElap=HR=0 min=0, sec=7 
+785800852 || SEND: sleep=1 | counter=8 | timeElap=HR=0 min=0, sec=8 
+785800853 || SEND: sleep=1 | counter=9 | timeElap=HR=0 min=0, sec=9 
+785800855 || SEND: sleep=1 | counter=10 | timeElap=HR=0 min=0, sec=11 
+785800856 || SEND: sleep=1 | counter=11 | timeElap=HR=0 min=0, sec=12 
+785800856 ||  Received: recv0k:  counter=11  
+785800857 || SEND: sleep=1 | counter=12 | timeElap=HR=0 min=0, sec=13 
+785800858 || SEND: sleep=1 | counter=13 | timeElap=HR=0 min=0, sec=14 
+785800858 ||  Received: recv0k:  counter=13  
+785800859 || SEND: sleep=1 | counter=14 | timeElap=HR=0 min=0, sec=15 
+785800859 ||  Received: recv0k:  counter=14  
+785800860 || SEND: sleep=1 | counter=15 | timeElap=HR=0 min=0, sec=16 
+785800861 || SEND: sleep=1 | counter=16 | timeElap=HR=0 min=0, sec=17 
+785800862 ||  Received: recv0k:  counter=16  
+785800862 || SEND: sleep=1 | counter=17 | timeElap=HR=0 min=0, sec=18 
+785800863 ||  Received: recv0k:  counter=17  
+785800863 || SEND: sleep=1 | counter=18 | timeElap=HR=0 min=0, sec=19 
+785800864 ||  Received: recv0k:  counter=18  
+785800865 || SEND: sleep=1 | counter=19 | timeElap=HR=0 min=0, sec=21 
+785800865 ||  Received: recv0k:  counter=19  
+785800866 || SEND: sleep=1 | counter=20 | timeElap=HR=0 min=0, sec=22 
+785800867 || SEND: sleep=1 | counter=21 | timeElap=HR=0 min=0, sec=23 
+785800867 ||  Received: recv0k:  counter=21  
+785800868 || SEND: sleep=1 | counter=22 | timeElap=HR=0 min=0, sec=24 
+785800868 ||  Received: recv0k:  counter=22  
+785800869 || SEND: sleep=1 | counter=23 | timeElap=HR=0 min=0, sec=25 
+785800870 || SEND: sleep=1 | counter=24 | timeElap=HR=0 min=0, sec=26 
+785800871 || SEND: sleep=1 | counter=25 | timeElap=HR=0 min=0, sec=27 
+785800872 || SEND: sleep=1 | counter=26 | timeElap=HR=0 min=0, sec=28 
+785800874 || SEND: sleep=1 | counter=27 | timeElap=HR=0 min=0, sec=30 
+785800875 || SEND: sleep=1 | counter=28 | timeElap=HR=0 min=0, sec=31 
+785800876 || SEND: sleep=1 | counter=29 | timeElap=HR=0 min=0, sec=32 
+785800876 ||  Received: recv0k:  counter=29  
+785800877 || SEND: sleep=1 | counter=30 | timeElap=HR=0 min=0, sec=33 
+785800878 || SEND: sleep=1 | counter=31 | timeElap=HR=0 min=0, sec=34 
+785800879 || SEND: sleep=1 | counter=32 | timeElap=HR=0 min=0, sec=35 
+785800880 || SEND: sleep=1 | counter=33 | timeElap=HR=0 min=0, sec=36 
+785800880 ||  Received: recv0k:  counter=33  
+785800881 || SEND: sleep=1 | counter=34 | timeElap=HR=0 min=0, sec=37 
+785800882 ||  Received: recv0k:  counter=34  
+785800883 || SEND: sleep=1 | counter=35 | timeElap=HR=0 min=0, sec=39 
+785800883 ||  Received: recv0k:  counter=35  
+785800884 || SEND: sleep=1 | counter=36 | timeElap=HR=0 min=0, sec=40 
+785800884 ||  Received: recv0k:  counter=36  
+785800885 || SEND: sleep=1 | counter=37 | timeElap=HR=0 min=0, sec=41 
+785800885 ||  Received: recv0k:  counter=37  
+785800886 || SEND: sleep=1 | counter=38 | timeElap=HR=0 min=0, sec=42 
+785800888 || SEND: sleep=1 | counter=39 | timeElap=HR=0 min=0, sec=44 
+785800889 || SEND: sleep=1 | counter=40 | timeElap=HR=0 min=0, sec=45 
+785800890 || SEND: sleep=1 | counter=41 | timeElap=HR=0 min=0, sec=46 
+785800891 || SEND: sleep=1 | counter=42 | timeElap=HR=0 min=0, sec=47 
+785800892 || SEND: sleep=1 | counter=43 | timeElap=HR=0 min=0, sec=48 
+785800893 || SEND: sleep=1 | counter=44 | timeElap=HR=0 min=0, sec=49 
+785800894 || SEND: sleep=1 | counter=45 | timeElap=HR=0 min=0, sec=50 
+785800896 || SEND: sleep=1 | counter=46 | timeElap=HR=0 min=0, sec=52 
+785800897 || SEND: sleep=1 | counter=47 | timeElap=HR=0 min=0, sec=53 
+785800898 || SEND: sleep=1 | counter=48 | timeElap=HR=0 min=0, sec=54 
+785800899 || SEND: sleep=1 | counter=49 | timeElap=HR=0 min=0, sec=55 
+785800900 || SEND: sleep=1 | counter=50 | timeElap=HR=0 min=0, sec=56 
+785800901 || SEND: sleep=1 | counter=51 | timeElap=HR=0 min=0, sec=57 
+785800902 || SEND: sleep=1 | counter=52 | timeElap=HR=0 min=0, sec=58 
+785800903 || SEND: sleep=1 | counter=53 | timeElap=HR=0 min=0, sec=59 
+785800904 || SEND: sleep=1 | counter=54 | timeElap=HR=0 min=1, sec=0 
+785800905 || SEND: sleep=1 | counter=55 | timeElap=HR=0 min=1, sec=1 
+785800907 || SEND: sleep=1 | counter=56 | timeElap=HR=0 min=1, sec=3 
+785800908 || SEND: sleep=1 | counter=57 | timeElap=HR=0 min=1, sec=4 
+785800909 || SEND: sleep=1 | counter=58 | timeElap=HR=0 min=1, sec=5 
+785800909 ||  Received: recv0k:  counter=58  
+785800910 || SEND: sleep=1 | counter=59 | timeElap=HR=0 min=1, sec=6 
+785800911 || SEND: sleep=1 | counter=60 | timeElap=HR=0 min=1, sec=7 
+785800912 || SEND: sleep=1 | counter=61 | timeElap=HR=0 min=1, sec=8 
+785800913 || SEND: sleep=1 | counter=62 | timeElap=HR=0 min=1, sec=9 
+785800914 || SEND: sleep=1 | counter=63 | timeElap=HR=0 min=1, sec=10 
+785800915 || SEND: sleep=1 | counter=64 | timeElap=HR=0 min=1, sec=11 
+785800917 || SEND: sleep=1 | counter=65 | timeElap=HR=0 min=1, sec=13 
+785800918 || SEND: sleep=1 | counter=66 | timeElap=HR=0 min=1, sec=14 
+785800919 || SEND: sleep=1 | counter=67 | timeElap=HR=0 min=1, sec=15 
+785800920 || SEND: sleep=1 | counter=68 | timeElap=HR=0 min=1, sec=16 
+785800921 || SEND: sleep=1 | counter=69 | timeElap=HR=0 min=1, sec=17 
+785800922 || SEND: sleep=1 | counter=70 | timeElap=HR=0 min=1, sec=18 
+785800923 || SEND: sleep=1 | counter=71 | timeElap=HR=0 min=1, sec=19 
+785800924 || SEND: sleep=1 | counter=72 | timeElap=HR=0 min=1, sec=20 
+785800925 || SEND: sleep=1 | counter=73 | timeElap=HR=0 min=1, sec=21 
+785800927 || SEND: sleep=1 | counter=74 | timeElap=HR=0 min=1, sec=23 
+785800928 || SEND: sleep=1 | counter=75 | timeElap=HR=0 min=1, sec=24 
+785800929 || SEND: sleep=1 | counter=76 | timeElap=HR=0 min=1, sec=25 
+785800930 || SEND: sleep=1 | counter=77 | timeElap=HR=0 min=1, sec=26 
+785800931 || SEND: sleep=1 | counter=78 | timeElap=HR=0 min=1, sec=27 
+785800932 || SEND: sleep=1 | counter=79 | timeElap=HR=0 min=1, sec=28 
+785800933 || SEND: sleep=1 | counter=80 | timeElap=HR=0 min=1, sec=29 
+785800934 || SEND: sleep=1 | counter=81 | timeElap=HR=0 min=1, sec=30 
+785800936 || SEND: sleep=1 | counter=82 | timeElap=HR=0 min=1, sec=32 
+785800937 || SEND: sleep=1 | counter=83 | timeElap=HR=0 min=1, sec=33 
+785800938 || SEND: sleep=1 | counter=84 | timeElap=HR=0 min=1, sec=34 
+785800939 || SEND: sleep=1 | counter=85 | timeElap=HR=0 min=1, sec=35 
+785800940 || SEND: sleep=1 | counter=86 | timeElap=HR=0 min=1, sec=36 
+785800941 || SEND: sleep=1 | counter=87 | timeElap=HR=0 min=1, sec=37 
+785800942 || SEND: sleep=1 | counter=88 | timeElap=HR=0 min=1, sec=38 
+785800943 || SEND: sleep=1 | counter=89 | timeElap=HR=0 min=1, sec=39 
+785800945 || SEND: sleep=1 | counter=90 | timeElap=HR=0 min=1, sec=41 
+785800946 || SEND: sleep=1 | counter=91 | timeElap=HR=0 min=1, sec=42 
+785800947 || SEND: sleep=1 | counter=92 | timeElap=HR=0 min=1, sec=43 
+785800948 || SEND: sleep=1 | counter=93 | timeElap=HR=0 min=1, sec=44 
+785800949 || SEND: sleep=1 | counter=94 | timeElap=HR=0 min=1, sec=45 
+785800950 || SEND: sleep=1 | counter=95 | timeElap=HR=0 min=1, sec=46 
+785800951 || SEND: sleep=1 | counter=96 | timeElap=HR=0 min=1, sec=47 
+785800953 || SEND: sleep=1 | counter=97 | timeElap=HR=0 min=1, sec=49 
+785800954 || SEND: sleep=1 | counter=98 | timeElap=HR=0 min=1, sec=50 
+785800955 || SEND: sleep=1 | counter=99 | timeElap=HR=0 min=1, sec=51 
+785800956 || SEND: sleep=1 | counter=100 | timeElap=HR=0 min=1, sec=52 
+785800958 || SEND: sleep=1 | counter=101 | timeElap=HR=0 min=1, sec=54 
+785800959 || SEND: sleep=1 | counter=102 | timeElap=HR=0 min=1, sec=55 
+785800960 || SEND: sleep=1 | counter=103 | timeElap=HR=0 min=1, sec=56 
+785800961 || SEND: sleep=1 | counter=104 | timeElap=HR=0 min=1, sec=57 
+785800962 || SEND: sleep=1 | counter=105 | timeElap=HR=0 min=1, sec=58 
+785800963 || SEND: sleep=1 | counter=106 | timeElap=HR=0 min=1, sec=59 
+785800964 || SEND: sleep=1 | counter=107 | timeElap=HR=0 min=2, sec=0 
+785800965 || SEND: sleep=1 | counter=108 | timeElap=HR=0 min=2, sec=1 
+785800966 || SEND: sleep=1 | counter=109 | timeElap=HR=0 min=2, sec=2 
+785800968 || SEND: sleep=1 | counter=110 | timeElap=HR=0 min=2, sec=4 
+785800969 || SEND: sleep=1 | counter=111 | timeElap=HR=0 min=2, sec=5 
+785800970 || SEND: sleep=1 | counter=112 | timeElap=HR=0 min=2, sec=6 
+785800971 || SEND: sleep=1 | counter=113 | timeElap=HR=0 min=2, sec=7 
+785800972 || SEND: sleep=1 | counter=114 | timeElap=HR=0 min=2, sec=8 
+785800973 || SEND: sleep=1 | counter=115 | timeElap=HR=0 min=2, sec=9 
+785800974 || SEND: sleep=1 | counter=116 | timeElap=HR=0 min=2, sec=10 
+785800975 || SEND: sleep=1 | counter=117 | timeElap=HR=0 min=2, sec=11 
+785800976 || SEND: sleep=1 | counter=118 | timeElap=HR=0 min=2, sec=12 
+785800977 || SEND: sleep=1 | counter=119 | timeElap=HR=0 min=2, sec=13 
+785800979 || SEND: sleep=1 | counter=120 | timeElap=HR=0 min=2, sec=15 
+785800980 || SEND: sleep=1 | counter=121 | timeElap=HR=0 min=2, sec=16 
+785800981 || SEND: sleep=1 | counter=122 | timeElap=HR=0 min=2, sec=17 
+785800982 || SEND: sleep=1 | counter=123 | timeElap=HR=0 min=2, sec=18 
+785800983 || SEND: sleep=1 | counter=124 | timeElap=HR=0 min=2, sec=19 
+785800984 || SEND: sleep=1 | counter=125 | timeElap=HR=0 min=2, sec=20 
+785800985 || SEND: sleep=1 | counter=126 | timeElap=HR=0 min=2, sec=21 
+785800986 || SEND: sleep=1 | counter=127 | timeElap=HR=0 min=2, sec=22 
+785800987 || SEND: sleep=1 | counter=128 | timeElap=HR=0 min=2, sec=23 
+785800989 || SEND: sleep=1 | counter=129 | timeElap=HR=0 min=2, sec=25 
+785800990 || SEND: sleep=1 | counter=130 | timeElap=HR=0 min=2, sec=26 
+785800991 || SEND: sleep=1 | counter=131 | timeElap=HR=0 min=2, sec=27 
+785800992 || SEND: sleep=1 | counter=132 | timeElap=HR=0 min=2, sec=28 
+785800993 || SEND: sleep=1 | counter=133 | timeElap=HR=0 min=2, sec=29 
+785800994 || SEND: sleep=1 | counter=134 | timeElap=HR=0 min=2, sec=30 
+785800995 || SEND: sleep=1 | counter=135 | timeElap=HR=0 min=2, sec=31 
+785800995 ||  Received: recv0k:  counter=135  
+785800996 || SEND: sleep=1 | counter=136 | timeElap=HR=0 min=2, sec=32 
+785800997 ||  Received: recv0k:  counter=136  
+785800998 || SEND: sleep=1 | counter=137 | timeElap=HR=0 min=2, sec=34 
+785800999 || SEND: sleep=1 | counter=138 | timeElap=HR=0 min=2, sec=35 
+785801000 || SEND: sleep=1 | counter=139 | timeElap=HR=0 min=2, sec=36 
+785801001 || SEND: sleep=1 | counter=140 | timeElap=HR=0 min=2, sec=37 
+785801002 || SEND: sleep=1 | counter=141 | timeElap=HR=0 min=2, sec=38 
+785801003 || SEND: sleep=1 | counter=142 | timeElap=HR=0 min=2, sec=39 
+785801004 || SEND: sleep=1 | counter=143 | timeElap=HR=0 min=2, sec=40 
+785801006 || SEND: sleep=1 | counter=144 | timeElap=HR=0 min=2, sec=41 
+785801007 || SEND: sleep=1 | counter=145 | timeElap=HR=0 min=2, sec=43 
+785801008 || SEND: sleep=1 | counter=146 | timeElap=HR=0 min=2, sec=44 
+785801009 || SEND: sleep=1 | counter=147 | timeElap=HR=0 min=2, sec=45 
+785801010 || SEND: sleep=1 | counter=148 | timeElap=HR=0 min=2, sec=46 
+785801011 || SEND: sleep=1 | counter=149 | timeElap=HR=0 min=2, sec=47 
+785801012 || SEND: sleep=1 | counter=150 | timeElap=HR=0 min=2, sec=48 
+785801013 || SEND: sleep=1 | counter=151 | timeElap=HR=0 min=2, sec=49 
+785801015 || SEND: sleep=1 | counter=152 | timeElap=HR=0 min=2, sec=51 
+785801016 || SEND: sleep=1 | counter=153 | timeElap=HR=0 min=2, sec=52 
+785801017 || SEND: sleep=1 | counter=154 | timeElap=HR=0 min=2, sec=53 
+785801018 || SEND: sleep=1 | counter=155 | timeElap=HR=0 min=2, sec=54 
+785801018 ||  Received: recv0k:  counter=155  
+785801019 || SEND: sleep=1 | counter=156 | timeElap=HR=0 min=2, sec=55 
+785801021 || SEND: sleep=1 | counter=157 | timeElap=HR=0 min=2, sec=57 
+785801022 || SEND: sleep=1 | counter=158 | timeElap=HR=0 min=2, sec=58 
+785801023 || SEND: sleep=1 | counter=159 | timeElap=HR=0 min=2, sec=59 
+785801024 || SEND: sleep=1 | counter=160 | timeElap=HR=0 min=3, sec=0 
+785801025 || SEND: sleep=1 | counter=161 | timeElap=HR=0 min=3, sec=1 
+785801026 || SEND: sleep=1 | counter=162 | timeElap=HR=0 min=3, sec=2 
+785801027 || SEND: sleep=1 | counter=163 | timeElap=HR=0 min=3, sec=3 
+785801028 || SEND: sleep=1 | counter=164 | timeElap=HR=0 min=3, sec=4 
+785801030 || SEND: sleep=1 | counter=165 | timeElap=HR=0 min=3, sec=5 
+785801031 || SEND: sleep=1 | counter=166 | timeElap=HR=0 min=3, sec=7 
+785801032 || SEND: sleep=1 | counter=167 | timeElap=HR=0 min=3, sec=8 
+785801033 || SEND: sleep=1 | counter=168 | timeElap=HR=0 min=3, sec=9 
+785801034 || SEND: sleep=1 | counter=169 | timeElap=HR=0 min=3, sec=10 
+785801035 || SEND: sleep=1 | counter=170 | timeElap=HR=0 min=3, sec=11 
+785801036 || SEND: sleep=1 | counter=171 | timeElap=HR=0 min=3, sec=12 
+785801037 || SEND: sleep=1 | counter=172 | timeElap=HR=0 min=3, sec=13 
+785801038 || SEND: sleep=1 | counter=173 | timeElap=HR=0 min=3, sec=14 
+785801039 || SEND: sleep=1 | counter=174 | timeElap=HR=0 min=3, sec=15 
+785801041 || SEND: sleep=1 | counter=175 | timeElap=HR=0 min=3, sec=17 
+785801042 || SEND: sleep=1 | counter=176 | timeElap=HR=0 min=3, sec=18 
+785801043 || SEND: sleep=1 | counter=177 | timeElap=HR=0 min=3, sec=19 
+785801044 || SEND: sleep=1 | counter=178 | timeElap=HR=0 min=3, sec=20 
+785801045 || SEND: sleep=1 | counter=179 | timeElap=HR=0 min=3, sec=21 
+785801046 || SEND: sleep=1 | counter=180 | timeElap=HR=0 min=3, sec=22 
+785801047 || SEND: sleep=1 | counter=181 | timeElap=HR=0 min=3, sec=23 
+785801048 || SEND: sleep=1 | counter=182 | timeElap=HR=0 min=3, sec=24 
+785801049 || SEND: sleep=1 | counter=183 | timeElap=HR=0 min=3, sec=25 
+785801051 || SEND: sleep=1 | counter=184 | timeElap=HR=0 min=3, sec=27 
+785801052 || SEND: sleep=1 | counter=185 | timeElap=HR=0 min=3, sec=28 
+785801053 || SEND: sleep=1 | counter=186 | timeElap=HR=0 min=3, sec=29 
+785801054 || SEND: sleep=1 | counter=187 | timeElap=HR=0 min=3, sec=30 
+785801055 || SEND: sleep=1 | counter=188 | timeElap=HR=0 min=3, sec=31 
+785801056 || SEND: sleep=1 | counter=189 | timeElap=HR=0 min=3, sec=32 
+785801057 || SEND: sleep=1 | counter=190 | timeElap=HR=0 min=3, sec=33 
+785801058 || SEND: sleep=1 | counter=191 | timeElap=HR=0 min=3, sec=34 
+785801060 || SEND: sleep=1 | counter=192 | timeElap=HR=0 min=3, sec=36 
+785801061 || SEND: sleep=1 | counter=193 | timeElap=HR=0 min=3, sec=37 
+785801062 || SEND: sleep=1 | counter=194 | timeElap=HR=0 min=3, sec=38 
+785801063 || SEND: sleep=1 | counter=195 | timeElap=HR=0 min=3, sec=39 
+785801064 || SEND: sleep=1 | counter=196 | timeElap=HR=0 min=3, sec=40 
+785801065 || SEND: sleep=1 | counter=197 | timeElap=HR=0 min=3, sec=41 
+785801066 || SEND: sleep=1 | counter=198 | timeElap=HR=0 min=3, sec=42 
+785801067 || SEND: sleep=1 | counter=199 | timeElap=HR=0 min=3, sec=43 
+785801069 || SEND: sleep=1 | counter=200 | timeElap=HR=0 min=3, sec=45 
+785801070 || SEND: sleep=1 | counter=201 | timeElap=HR=0 min=3, sec=46 
+785801071 || SEND: sleep=1 | counter=202 | timeElap=HR=0 min=3, sec=47 
+785801072 || SEND: sleep=1 | counter=203 | timeElap=HR=0 min=3, sec=48 
+785801073 || SEND: sleep=1 | counter=204 | timeElap=HR=0 min=3, sec=49 
+785801074 || SEND: sleep=1 | counter=205 | timeElap=HR=0 min=3, sec=50 
+785801075 || SEND: sleep=1 | counter=206 | timeElap=HR=0 min=3, sec=51 
+785801077 || SEND: sleep=1 | counter=207 | timeElap=HR=0 min=3, sec=53 
+785801078 || SEND: sleep=1 | counter=208 | timeElap=HR=0 min=3, sec=54 
+785801079 || SEND: sleep=1 | counter=209 | timeElap=HR=0 min=3, sec=55 
+785801080 || SEND: sleep=1 | counter=210 | timeElap=HR=0 min=3, sec=56 
+785801081 || SEND: sleep=1 | counter=211 | timeElap=HR=0 min=3, sec=57 
+785801082 || SEND: sleep=1 | counter=212 | timeElap=HR=0 min=3, sec=58 
+785801083 || SEND: sleep=1 | counter=213 | timeElap=HR=0 min=3, sec=59 
+785801085 || SEND: sleep=1 | counter=214 | timeElap=HR=0 min=4, sec=1 
+785801086 || SEND: sleep=1 | counter=215 | timeElap=HR=0 min=4, sec=2 
+785801087 || SEND: sleep=1 | counter=216 | timeElap=HR=0 min=4, sec=3 
+785801088 || SEND: sleep=1 | counter=217 | timeElap=HR=0 min=4, sec=4 
+785801089 || SEND: sleep=1 | counter=218 | timeElap=HR=0 min=4, sec=5 
+785801090 || SEND: sleep=1 | counter=219 | timeElap=HR=0 min=4, sec=6 
+785801092 || SEND: sleep=1 | counter=220 | timeElap=HR=0 min=4, sec=8 
+785801093 || SEND: sleep=1 | counter=221 | timeElap=HR=0 min=4, sec=9 
+785801094 || SEND: sleep=1 | counter=222 | timeElap=HR=0 min=4, sec=10 
+785801095 || SEND: sleep=1 | counter=223 | timeElap=HR=0 min=4, sec=11 
+785801096 || SEND: sleep=1 | counter=224 | timeElap=HR=0 min=4, sec=12 
+785801097 || SEND: sleep=1 | counter=225 | timeElap=HR=0 min=4, sec=13 
+785801098 || SEND: sleep=1 | counter=226 | timeElap=HR=0 min=4, sec=14 
+785801099 || SEND: sleep=1 | counter=227 | timeElap=HR=0 min=4, sec=15 
+785801100 || SEND: sleep=1 | counter=228 | timeElap=HR=0 min=4, sec=16 
+785801102 || SEND: sleep=1 | counter=229 | timeElap=HR=0 min=4, sec=17 
+785801103 || SEND: sleep=1 | counter=230 | timeElap=HR=0 min=4, sec=19 
+785801104 || SEND: sleep=1 | counter=231 | timeElap=HR=0 min=4, sec=20 
+785801105 || SEND: sleep=1 | counter=232 | timeElap=HR=0 min=4, sec=21 
+785801106 || SEND: sleep=1 | counter=233 | timeElap=HR=0 min=4, sec=22 
+785801107 || SEND: sleep=1 | counter=234 | timeElap=HR=0 min=4, sec=23 
+785801108 || SEND: sleep=1 | counter=235 | timeElap=HR=0 min=4, sec=24 
+785801109 || SEND: sleep=1 | counter=236 | timeElap=HR=0 min=4, sec=25 
+785801110 || SEND: sleep=1 | counter=237 | timeElap=HR=0 min=4, sec=26 
+785801112 || SEND: sleep=1 | counter=238 | timeElap=HR=0 min=4, sec=28 
+785801113 || SEND: sleep=1 | counter=239 | timeElap=HR=0 min=4, sec=29 
+785801114 || SEND: sleep=1 | counter=240 | timeElap=HR=0 min=4, sec=30 
+785801115 || SEND: sleep=1 | counter=241 | timeElap=HR=0 min=4, sec=31 
+785801116 || SEND: sleep=1 | counter=242 | timeElap=HR=0 min=4, sec=32 
+785801117 || SEND: sleep=1 | counter=243 | timeElap=HR=0 min=4, sec=33 
+785801118 || SEND: sleep=1 | counter=244 | timeElap=HR=0 min=4, sec=34 
+785801119 || SEND: sleep=1 | counter=245 | timeElap=HR=0 min=4, sec=35 
+785801120 || SEND: sleep=1 | counter=246 | timeElap=HR=0 min=4, sec=36 
+785801122 || SEND: sleep=1 | counter=247 | timeElap=HR=0 min=4, sec=38 
+785801123 || SEND: sleep=1 | counter=248 | timeElap=HR=0 min=4, sec=39 
+785801124 || SEND: sleep=1 | counter=249 | timeElap=HR=0 min=4, sec=40 
+785801125 || SEND: sleep=1 | counter=250 | timeElap=HR=0 min=4, sec=41 
+785801126 || SEND: sleep=1 | counter=251 | timeElap=HR=0 min=4, sec=42 
+785801127 || SEND: sleep=1 | counter=252 | timeElap=HR=0 min=4, sec=43 
+785801128 || SEND: sleep=1 | counter=253 | timeElap=HR=0 min=4, sec=44 
+785801130 || SEND: sleep=1 | counter=254 | timeElap=HR=0 min=4, sec=46 
+785801131 || SEND: sleep=1 | counter=255 | timeElap=HR=0 min=4, sec=47 
+785801132 || SEND: sleep=1 | counter=256 | timeElap=HR=0 min=4, sec=48 
+785801133 || SEND: sleep=1 | counter=257 | timeElap=HR=0 min=4, sec=49 
+785801134 || SEND: sleep=1 | counter=258 | timeElap=HR=0 min=4, sec=50 
+785801135 || SEND: sleep=1 | counter=259 | timeElap=HR=0 min=4, sec=51 
+785801136 || SEND: sleep=1 | counter=260 | timeElap=HR=0 min=4, sec=52 
+785801137 || SEND: sleep=1 | counter=261 | timeElap=HR=0 min=4, sec=53 
+785801139 || SEND: sleep=1 | counter=262 | timeElap=HR=0 min=4, sec=55 
+785801140 || SEND: sleep=1 | counter=263 | timeElap=HR=0 min=4, sec=56 
+785801141 || SEND: sleep=1 | counter=264 | timeElap=HR=0 min=4, sec=57 
+785801142 || SEND: sleep=1 | counter=265 | timeElap=HR=0 min=4, sec=58 
+785801143 || SEND: sleep=1 | counter=266 | timeElap=HR=0 min=4, sec=59 
+785801144 || SEND: sleep=1 | counter=267 | timeElap=HR=0 min=5, sec=0 
+785801145 || SEND: sleep=1 | counter=268 | timeElap=HR=0 min=5, sec=1 
+785801147 || SEND: sleep=1 | counter=269 | timeElap=HR=0 min=5, sec=3 
+785801148 || SEND: sleep=1 | counter=270 | timeElap=HR=0 min=5, sec=4 
+785801149 || SEND: sleep=1 | counter=271 | timeElap=HR=0 min=5, sec=5 
+785801150 || SEND: sleep=1 | counter=272 | timeElap=HR=0 min=5, sec=6 
+785801151 || SEND: sleep=1 | counter=273 | timeElap=HR=0 min=5, sec=7 
+785801152 || SEND: sleep=1 | counter=274 | timeElap=HR=0 min=5, sec=8 
+785801153 || SEND: sleep=1 | counter=275 | timeElap=HR=0 min=5, sec=9 
+785801154 || SEND: sleep=1 | counter=276 | timeElap=HR=0 min=5, sec=10 
+785801155 || SEND: sleep=1 | counter=277 | timeElap=HR=0 min=5, sec=11 
+785801157 || SEND: sleep=1 | counter=278 | timeElap=HR=0 min=5, sec=13 
+785801158 || SEND: sleep=1 | counter=279 | timeElap=HR=0 min=5, sec=14 
+785801159 || SEND: sleep=1 | counter=280 | timeElap=HR=0 min=5, sec=15 
+785801160 || SEND: sleep=1 | counter=281 | timeElap=HR=0 min=5, sec=16 
+785801161 || SEND: sleep=1 | counter=282 | timeElap=HR=0 min=5, sec=17 
+785801163 || SEND: sleep=1 | counter=283 | timeElap=HR=0 min=5, sec=19 
+785801164 || SEND: sleep=1 | counter=284 | timeElap=HR=0 min=5, sec=20 
+785801165 || SEND: sleep=1 | counter=285 | timeElap=HR=0 min=5, sec=21 
+785801166 || SEND: sleep=1 | counter=286 | timeElap=HR=0 min=5, sec=22 
+785801167 || SEND: sleep=1 | counter=287 | timeElap=HR=0 min=5, sec=23 
+785801168 || SEND: sleep=1 | counter=288 | timeElap=HR=0 min=5, sec=24 
+785801169 || SEND: sleep=1 | counter=289 | timeElap=HR=0 min=5, sec=25 
+785801170 || SEND: sleep=1 | counter=290 | timeElap=HR=0 min=5, sec=26 
+785801171 || SEND: sleep=1 | counter=291 | timeElap=HR=0 min=5, sec=27 
+785801173 || SEND: sleep=1 | counter=292 | timeElap=HR=0 min=5, sec=29 
+785801174 || SEND: sleep=1 | counter=293 | timeElap=HR=0 min=5, sec=30 
+785801175 || SEND: sleep=1 | counter=294 | timeElap=HR=0 min=5, sec=31 
+785801176 || SEND: sleep=1 | counter=295 | timeElap=HR=0 min=5, sec=32 
+785801177 || SEND: sleep=1 | counter=296 | timeElap=HR=0 min=5, sec=33 
+785801178 || SEND: sleep=1 | counter=297 | timeElap=HR=0 min=5, sec=34 
+785801179 || SEND: sleep=1 | counter=298 | timeElap=HR=0 min=5, sec=35 
+785801180 || SEND: sleep=1 | counter=299 | timeElap=HR=0 min=5, sec=36 
+785801181 || SEND: sleep=1 | counter=300 | timeElap=HR=0 min=5, sec=37 
+785801183 || SEND: sleep=1 | counter=301 | timeElap=HR=0 min=5, sec=39 
+785801184 || SEND: sleep=1 | counter=302 | timeElap=HR=0 min=5, sec=40 
+785801185 || SEND: sleep=1 | counter=303 | timeElap=HR=0 min=5, sec=41 
+785801186 || SEND: sleep=1 | counter=304 | timeElap=HR=0 min=5, sec=42 
+785801187 || SEND: sleep=1 | counter=305 | timeElap=HR=0 min=5, sec=43 
+785801188 || SEND: sleep=1 | counter=306 | timeElap=HR=0 min=5, sec=44 
+785801189 || SEND: sleep=1 | counter=307 | timeElap=HR=0 min=5, sec=45 
+785801190 || SEND: sleep=1 | counter=308 | timeElap=HR=0 min=5, sec=46 
+785801192 || SEND: sleep=1 | counter=309 | timeElap=HR=0 min=5, sec=48 
+785801193 || SEND: sleep=1 | counter=310 | timeElap=HR=0 min=5, sec=49 
+785801194 || SEND: sleep=1 | counter=311 | timeElap=HR=0 min=5, sec=50 
+785801195 || SEND: sleep=1 | counter=312 | timeElap=HR=0 min=5, sec=51 
+785801196 || SEND: sleep=1 | counter=313 | timeElap=HR=0 min=5, sec=52 
+785801197 || SEND: sleep=1 | counter=314 | timeElap=HR=0 min=5, sec=53 
+785801198 || SEND: sleep=1 | counter=315 | timeElap=HR=0 min=5, sec=54 
+785801199 || SEND: sleep=1 | counter=316 | timeElap=HR=0 min=5, sec=55 
+785801201 || SEND: sleep=1 | counter=317 | timeElap=HR=0 min=5, sec=57 
+785801202 || SEND: sleep=1 | counter=318 | timeElap=HR=0 min=5, sec=58 
+785801203 || SEND: sleep=1 | counter=319 | timeElap=HR=0 min=5, sec=59 
+785801204 || SEND: sleep=1 | counter=320 | timeElap=HR=0 min=6, sec=0 
+785801205 || SEND: sleep=1 | counter=321 | timeElap=HR=0 min=6, sec=1 
+785801206 || SEND: sleep=1 | counter=322 | timeElap=HR=0 min=6, sec=2 
+785801207 || SEND: sleep=1 | counter=323 | timeElap=HR=0 min=6, sec=3 
+785801209 || SEND: sleep=1 | counter=324 | timeElap=HR=0 min=6, sec=5 
+785801210 || SEND: sleep=1 | counter=325 | timeElap=HR=0 min=6, sec=6 
+785801211 || SEND: sleep=1 | counter=326 | timeElap=HR=0 min=6, sec=7 
+785801212 || SEND: sleep=1 | counter=327 | timeElap=HR=0 min=6, sec=8 
+785801213 || SEND: sleep=1 | counter=328 | timeElap=HR=0 min=6, sec=9 
+785801214 || SEND: sleep=1 | counter=329 | timeElap=HR=0 min=6, sec=10 
+785801215 || SEND: sleep=1 | counter=330 | timeElap=HR=0 min=6, sec=11 
+785801216 || SEND: sleep=1 | counter=331 | timeElap=HR=0 min=6, sec=12 
+785801218 || SEND: sleep=1 | counter=332 | timeElap=HR=0 min=6, sec=14 
+785801219 || SEND: sleep=1 | counter=333 | timeElap=HR=0 min=6, sec=15 
+785801220 || SEND: sleep=1 | counter=334 | timeElap=HR=0 min=6, sec=16 
+785801221 || SEND: sleep=1 | counter=335 | timeElap=HR=0 min=6, sec=17 
+785801222 || SEND: sleep=1 | counter=336 | timeElap=HR=0 min=6, sec=18 
+785801223 || SEND: sleep=1 | counter=337 | timeElap=HR=0 min=6, sec=19 
+785801224 || SEND: sleep=1 | counter=338 | timeElap=HR=0 min=6, sec=20 
+785801225 || SEND: sleep=1 | counter=339 | timeElap=HR=0 min=6, sec=21 
+785801226 || SEND: sleep=1 | counter=340 | timeElap=HR=0 min=6, sec=22 
+785801228 || SEND: sleep=1 | counter=341 | timeElap=HR=0 min=6, sec=23 
+785801229 || SEND: sleep=1 | counter=342 | timeElap=HR=0 min=6, sec=25 
+785801230 || SEND: sleep=1 | counter=343 | timeElap=HR=0 min=6, sec=26 
+785801231 || SEND: sleep=1 | counter=344 | timeElap=HR=0 min=6, sec=27 
+785801232 || SEND: sleep=1 | counter=345 | timeElap=HR=0 min=6, sec=28 
+785801233 || SEND: sleep=1 | counter=346 | timeElap=HR=0 min=6, sec=29 
+785801235 || SEND: sleep=1 | counter=347 | timeElap=HR=0 min=6, sec=31 
+785801236 || SEND: sleep=1 | counter=348 | timeElap=HR=0 min=6, sec=32 
+785801237 || SEND: sleep=1 | counter=349 | timeElap=HR=0 min=6, sec=33 
+785801238 || SEND: sleep=1 | counter=350 | timeElap=HR=0 min=6, sec=34 
+785801238 ||  Received: recv0k:  counter=350  
+785801239 || SEND: sleep=1 | counter=351 | timeElap=HR=0 min=6, sec=35 
+785801240 || SEND: sleep=1 | counter=352 | timeElap=HR=0 min=6, sec=36 
+785801241 || SEND: sleep=1 | counter=353 | timeElap=HR=0 min=6, sec=37 
+785801242 || SEND: sleep=1 | counter=354 | timeElap=HR=0 min=6, sec=38 
+785801243 || SEND: sleep=1 | counter=355 | timeElap=HR=0 min=6, sec=39 
+785801245 || SEND: sleep=1 | counter=356 | timeElap=HR=0 min=6, sec=41 
+785801246 || SEND: sleep=1 | counter=357 | timeElap=HR=0 min=6, sec=42 
+785801247 || SEND: sleep=1 | counter=358 | timeElap=HR=0 min=6, sec=43 
+785801248 || SEND: sleep=1 | counter=359 | timeElap=HR=0 min=6, sec=44 
+785801249 || SEND: sleep=1 | counter=360 | timeElap=HR=0 min=6, sec=45 
+785801250 || SEND: sleep=1 | counter=361 | timeElap=HR=0 min=6, sec=46 
+785801251 || SEND: sleep=1 | counter=362 | timeElap=HR=0 min=6, sec=47 
+785801252 || SEND: sleep=1 | counter=363 | timeElap=HR=0 min=6, sec=48 
+785801254 || SEND: sleep=1 | counter=364 | timeElap=HR=0 min=6, sec=50 
+785801255 || SEND: sleep=1 | counter=365 | timeElap=HR=0 min=6, sec=51 
+785801256 || SEND: sleep=1 | counter=366 | timeElap=HR=0 min=6, sec=52 
+785801257 || SEND: sleep=1 | counter=367 | timeElap=HR=0 min=6, sec=53 
+785801258 || SEND: sleep=1 | counter=368 | timeElap=HR=0 min=6, sec=54 
+785801259 || SEND: sleep=1 | counter=369 | timeElap=HR=0 min=6, sec=55 
+785801260 || SEND: sleep=1 | counter=370 | timeElap=HR=0 min=6, sec=56 
+785801262 || SEND: sleep=1 | counter=371 | timeElap=HR=0 min=6, sec=58 
+785801263 || SEND: sleep=1 | counter=372 | timeElap=HR=0 min=6, sec=59 
+785801264 || SEND: sleep=1 | counter=373 | timeElap=HR=0 min=7, sec=0 
+785801265 || SEND: sleep=1 | counter=374 | timeElap=HR=0 min=7, sec=1 
+785801266 || SEND: sleep=1 | counter=375 | timeElap=HR=0 min=7, sec=2 
+785801267 || SEND: sleep=1 | counter=376 | timeElap=HR=0 min=7, sec=3 
+785801268 || SEND: sleep=1 | counter=377 | timeElap=HR=0 min=7, sec=4 
+785801269 || SEND: sleep=1 | counter=378 | timeElap=HR=0 min=7, sec=5 
+785801271 || SEND: sleep=1 | counter=379 | timeElap=HR=0 min=7, sec=7 
+785801272 || SEND: sleep=1 | counter=380 | timeElap=HR=0 min=7, sec=8 
+785801273 || SEND: sleep=1 | counter=381 | timeElap=HR=0 min=7, sec=9 
+785801274 || SEND: sleep=1 | counter=382 | timeElap=HR=0 min=7, sec=10 
+785801275 || SEND: sleep=1 | counter=383 | timeElap=HR=0 min=7, sec=11 
+785801276 || SEND: sleep=1 | counter=384 | timeElap=HR=0 min=7, sec=12 
+785801277 || SEND: sleep=1 | counter=385 | timeElap=HR=0 min=7, sec=13 
+785801279 || SEND: sleep=1 | counter=386 | timeElap=HR=0 min=7, sec=15 
+785801280 || SEND: sleep=1 | counter=387 | timeElap=HR=0 min=7, sec=16 
+785801281 || SEND: sleep=1 | counter=388 | timeElap=HR=0 min=7, sec=17 
+785801282 || SEND: sleep=1 | counter=389 | timeElap=HR=0 min=7, sec=18 
+785801283 || SEND: sleep=1 | counter=390 | timeElap=HR=0 min=7, sec=19 
+785801284 || SEND: sleep=1 | counter=391 | timeElap=HR=0 min=7, sec=20 
+785801285 || SEND: sleep=1 | counter=392 | timeElap=HR=0 min=7, sec=21 
+785801286 || SEND: sleep=1 | counter=393 | timeElap=HR=0 min=7, sec=22 
+785801287 || SEND: sleep=1 | counter=394 | timeElap=HR=0 min=7, sec=23 
+785801288 || SEND: sleep=1 | counter=395 | timeElap=HR=0 min=7, sec=24 
+785801290 || SEND: sleep=1 | counter=396 | timeElap=HR=0 min=7, sec=26 
+785801291 || SEND: sleep=1 | counter=397 | timeElap=HR=0 min=7, sec=27 
+785801292 || SEND: sleep=1 | counter=398 | timeElap=HR=0 min=7, sec=28 
+785801293 || SEND: sleep=1 | counter=399 | timeElap=HR=0 min=7, sec=29 
+785801294 || SEND: sleep=1 | counter=400 | timeElap=HR=0 min=7, sec=30 
+785801295 || SEND: sleep=1 | counter=401 | timeElap=HR=0 min=7, sec=31 
+785801296 || SEND: sleep=1 | counter=402 | timeElap=HR=0 min=7, sec=32 
+785801297 || SEND: sleep=1 | counter=403 | timeElap=HR=0 min=7, sec=33 
+785801298 || SEND: sleep=1 | counter=404 | timeElap=HR=0 min=7, sec=34 
+785801300 || SEND: sleep=1 | counter=405 | timeElap=HR=0 min=7, sec=36 
+785801301 || SEND: sleep=1 | counter=406 | timeElap=HR=0 min=7, sec=37 
+785801302 || SEND: sleep=1 | counter=407 | timeElap=HR=0 min=7, sec=38 
+785801303 || SEND: sleep=1 | counter=408 | timeElap=HR=0 min=7, sec=39 
+785801304 || SEND: sleep=1 | counter=409 | timeElap=HR=0 min=7, sec=40 
+785801306 || SEND: sleep=1 | counter=410 | timeElap=HR=0 min=7, sec=42 
+785801307 || SEND: sleep=1 | counter=411 | timeElap=HR=0 min=7, sec=43 
+785801308 || SEND: sleep=1 | counter=412 | timeElap=HR=0 min=7, sec=44 
+785801309 || SEND: sleep=1 | counter=413 | timeElap=HR=0 min=7, sec=45 
+785801310 || SEND: sleep=1 | counter=414 | timeElap=HR=0 min=7, sec=46 
+785801311 || SEND: sleep=1 | counter=415 | timeElap=HR=0 min=7, sec=47 
+785801312 || SEND: sleep=1 | counter=416 | timeElap=HR=0 min=7, sec=48 
+785801313 || SEND: sleep=1 | counter=417 | timeElap=HR=0 min=7, sec=49 
+785801314 || SEND: sleep=1 | counter=418 | timeElap=HR=0 min=7, sec=50 
+785801316 || SEND: sleep=1 | counter=419 | timeElap=HR=0 min=7, sec=52 
+785801317 || SEND: sleep=1 | counter=420 | timeElap=HR=0 min=7, sec=53 
+785801318 || SEND: sleep=1 | counter=421 | timeElap=HR=0 min=7, sec=54 
+785801319 || SEND: sleep=1 | counter=422 | timeElap=HR=0 min=7, sec=55 
+785801320 || SEND: sleep=1 | counter=423 | timeElap=HR=0 min=7, sec=56 
+785801321 || SEND: sleep=1 | counter=424 | timeElap=HR=0 min=7, sec=57 
+785801322 || SEND: sleep=1 | counter=425 | timeElap=HR=0 min=7, sec=58 
+785801324 || SEND: sleep=1 | counter=426 | timeElap=HR=0 min=8, sec=0 
+785801325 || SEND: sleep=1 | counter=427 | timeElap=HR=0 min=8, sec=1 
+785801326 || SEND: sleep=1 | counter=428 | timeElap=HR=0 min=8, sec=2 
+785801327 || SEND: sleep=1 | counter=429 | timeElap=HR=0 min=8, sec=3 
+785801328 || SEND: sleep=1 | counter=430 | timeElap=HR=0 min=8, sec=4 
+785801329 || SEND: sleep=1 | counter=431 | timeElap=HR=0 min=8, sec=5 
+785801330 || SEND: sleep=1 | counter=432 | timeElap=HR=0 min=8, sec=6 
+785801330 ||  Received: recv0k:  counter=432  
+785801331 || SEND: sleep=1 | counter=433 | timeElap=HR=0 min=8, sec=7 
+785801332 ||  Received: recv0k:  counter=433  
+785801333 || SEND: sleep=1 | counter=434 | timeElap=HR=0 min=8, sec=9 
+785801333 ||  Received: recv0k:  counter=434  
+785801334 || SEND: sleep=1 | counter=435 | timeElap=HR=0 min=8, sec=10 
+785801334 ||  Received: recv0k:  counter=435  
+785801335 || SEND: sleep=1 | counter=436 | timeElap=HR=0 min=8, sec=11 
+785801335 ||  Received: recv0k:  counter=436  
+785801336 || SEND: sleep=1 | counter=437 | timeElap=HR=0 min=8, sec=12 
+785801336 ||  Received: recv0k:  counter=437  
+785801337 || SEND: sleep=1 | counter=438 | timeElap=HR=0 min=8, sec=13 
+785801337 ||  Received: recv0k:  counter=438  
+785801338 || SEND: sleep=1 | counter=439 | timeElap=HR=0 min=8, sec=14 
+785801338 ||  Received: recv0k:  counter=439  
+785801339 || SEND: sleep=1 | counter=440 | timeElap=HR=0 min=8, sec=15 
+785801339 ||  Received: recv0k:  counter=440  
+785801340 || SEND: sleep=1 | counter=441 | timeElap=HR=0 min=8, sec=16 
+785801341 ||  Received: recv0k:  counter=441  
+785801342 || SEND: sleep=1 | counter=442 | timeElap=HR=0 min=8, sec=18 
+785801342 ||  Received: recv0k:  counter=442  
+785801343 || SEND: sleep=1 | counter=443 | timeElap=HR=0 min=8, sec=19 
+785801344 || SEND: sleep=1 | counter=444 | timeElap=HR=0 min=8, sec=20 
+785801344 ||  Received: recv0k:  counter=444  
+785801345 || SEND: sleep=1 | counter=445 | timeElap=HR=0 min=8, sec=21 
+785801345 ||  Received: recv0k:  counter=445  
+785801346 || SEND: sleep=1 | counter=446 | timeElap=HR=0 min=8, sec=22 
+785801347 || SEND: sleep=1 | counter=447 | timeElap=HR=0 min=8, sec=23 
+785801348 || SEND: sleep=1 | counter=448 | timeElap=HR=0 min=8, sec=24 
+785801349 || SEND: sleep=1 | counter=449 | timeElap=HR=0 min=8, sec=25 
+785801350 ||  Received: recv0k:  counter=449  
+785801350 || SEND: sleep=1 | counter=450 | timeElap=HR=0 min=8, sec=26 
+785801351 || SEND: sleep=1 | counter=451 | timeElap=HR=0 min=8, sec=27 
+785801353 || SEND: sleep=1 | counter=452 | timeElap=HR=0 min=8, sec=29 
+785801354 || SEND: sleep=1 | counter=453 | timeElap=HR=0 min=8, sec=30 
+785801355 || SEND: sleep=1 | counter=454 | timeElap=HR=0 min=8, sec=31 
+785801356 || SEND: sleep=1 | counter=455 | timeElap=HR=0 min=8, sec=32 
+785801357 || SEND: sleep=1 | counter=456 | timeElap=HR=0 min=8, sec=33 
+785801359 || SEND: sleep=1 | counter=457 | timeElap=HR=0 min=8, sec=35 
+785801360 || SEND: sleep=1 | counter=458 | timeElap=HR=0 min=8, sec=36 
+785801361 || SEND: sleep=1 | counter=459 | timeElap=HR=0 min=8, sec=37 
+785801362 || SEND: sleep=1 | counter=460 | timeElap=HR=0 min=8, sec=38 
+785801363 || SEND: sleep=1 | counter=461 | timeElap=HR=0 min=8, sec=39 
+785801364 || SEND: sleep=1 | counter=462 | timeElap=HR=0 min=8, sec=40 
+785801365 || SEND: sleep=1 | counter=463 | timeElap=HR=0 min=8, sec=41 
+785801366 || SEND: sleep=1 | counter=464 | timeElap=HR=0 min=8, sec=42 
+785801368 || SEND: sleep=1 | counter=465 | timeElap=HR=0 min=8, sec=44 
+785801369 || SEND: sleep=1 | counter=466 | timeElap=HR=0 min=8, sec=45 
+785801370 || SEND: sleep=1 | counter=467 | timeElap=HR=0 min=8, sec=46 
+785801371 || SEND: sleep=1 | counter=468 | timeElap=HR=0 min=8, sec=47 
+785801372 || SEND: sleep=1 | counter=469 | timeElap=HR=0 min=8, sec=48 
+785801373 || SEND: sleep=1 | counter=470 | timeElap=HR=0 min=8, sec=49 
+785801374 || SEND: sleep=1 | counter=471 | timeElap=HR=0 min=8, sec=50 
+785801375 || SEND: sleep=1 | counter=472 | timeElap=HR=0 min=8, sec=51 
+785801377 || SEND: sleep=1 | counter=473 | timeElap=HR=0 min=8, sec=53 
+785801378 || SEND: sleep=1 | counter=474 | timeElap=HR=0 min=8, sec=54 
+785801379 || SEND: sleep=1 | counter=475 | timeElap=HR=0 min=8, sec=55 
+785801380 || SEND: sleep=1 | counter=476 | timeElap=HR=0 min=8, sec=56 
+785801381 || SEND: sleep=1 | counter=477 | timeElap=HR=0 min=8, sec=57 
+785801382 || SEND: sleep=1 | counter=478 | timeElap=HR=0 min=8, sec=58 
+785801382 ||  Received: recv0k:  counter=478  
+785801383 || SEND: sleep=1 | counter=479 | timeElap=HR=0 min=8, sec=59 
+785801385 || SEND: sleep=1 | counter=480 | timeElap=HR=0 min=9, sec=1 
+785801386 || SEND: sleep=1 | counter=481 | timeElap=HR=0 min=9, sec=2 
+785801387 || SEND: sleep=1 | counter=482 | timeElap=HR=0 min=9, sec=3 
+785801388 || SEND: sleep=1 | counter=483 | timeElap=HR=0 min=9, sec=4 
+785801389 || SEND: sleep=1 | counter=484 | timeElap=HR=0 min=9, sec=5 
+785801390 || SEND: sleep=1 | counter=485 | timeElap=HR=0 min=9, sec=6 
+785801391 || SEND: sleep=1 | counter=486 | timeElap=HR=0 min=9, sec=7 
+785801393 || SEND: sleep=1 | counter=487 | timeElap=HR=0 min=9, sec=9 
+785801394 || SEND: sleep=1 | counter=488 | timeElap=HR=0 min=9, sec=10 
+785801395 || SEND: sleep=1 | counter=489 | timeElap=HR=0 min=9, sec=11 
+785801396 || SEND: sleep=1 | counter=490 | timeElap=HR=0 min=9, sec=12 
+785801397 || SEND: sleep=1 | counter=491 | timeElap=HR=0 min=9, sec=13 
+785801398 || SEND: sleep=1 | counter=492 | timeElap=HR=0 min=9, sec=14 
+785801399 || SEND: sleep=1 | counter=493 | timeElap=HR=0 min=9, sec=15 
+785801400 || SEND: sleep=1 | counter=494 | timeElap=HR=0 min=9, sec=16 
+785801401 || SEND: sleep=1 | counter=495 | timeElap=HR=0 min=9, sec=17 
+785801402 || SEND: sleep=1 | counter=496 | timeElap=HR=0 min=9, sec=18 
+785801404 || SEND: sleep=1 | counter=497 | timeElap=HR=0 min=9, sec=20 
+785801405 || SEND: sleep=1 | counter=498 | timeElap=HR=0 min=9, sec=21 
+785801406 || SEND: sleep=1 | counter=499 | timeElap=HR=0 min=9, sec=22 
+785801407 || SEND: sleep=1 | counter=500 | timeElap=HR=0 min=9, sec=23 
+785801408 || SEND: sleep=1 | counter=501 | timeElap=HR=0 min=9, sec=24 
+785801409 || SEND: sleep=1 | counter=502 | timeElap=HR=0 min=9, sec=25 
+785801410 || SEND: sleep=1 | counter=503 | timeElap=HR=0 min=9, sec=26 
+785801411 || SEND: sleep=1 | counter=504 | timeElap=HR=0 min=9, sec=27 
+785801412 || SEND: sleep=1 | counter=505 | timeElap=HR=0 min=9, sec=28 
+785801414 || SEND: sleep=1 | counter=506 | timeElap=HR=0 min=9, sec=30 
+785801415 || SEND: sleep=1 | counter=507 | timeElap=HR=0 min=9, sec=31 
+785801416 || SEND: sleep=1 | counter=508 | timeElap=HR=0 min=9, sec=32 
+785801417 || SEND: sleep=1 | counter=509 | timeElap=HR=0 min=9, sec=33 
+785801418 || SEND: sleep=1 | counter=510 | timeElap=HR=0 min=9, sec=34 
+785801419 || SEND: sleep=1 | counter=511 | timeElap=HR=0 min=9, sec=35 
+785801420 || SEND: sleep=1 | counter=512 | timeElap=HR=0 min=9, sec=36 
+785801421 || SEND: sleep=1 | counter=513 | timeElap=HR=0 min=9, sec=37 
+785801422 || SEND: sleep=1 | counter=514 | timeElap=HR=0 min=9, sec=38 
+785801424 || SEND: sleep=1 | counter=515 | timeElap=HR=0 min=9, sec=39 
+785801424 ||  Received: recv0k:  counter=515  
+785801425 || SEND: sleep=1 | counter=516 | timeElap=HR=0 min=9, sec=41 
+785801426 || SEND: sleep=1 | counter=517 | timeElap=HR=0 min=9, sec=42 
+785801427 || SEND: sleep=1 | counter=518 | timeElap=HR=0 min=9, sec=43 
+785801427 ||  Received: recv0k:  counter=518  
+785801428 || SEND: sleep=1 | counter=519 | timeElap=HR=0 min=9, sec=44 
+785801430 || SEND: sleep=1 | counter=520 | timeElap=HR=0 min=9, sec=46 
+785801431 || SEND: sleep=1 | counter=521 | timeElap=HR=0 min=9, sec=47 
+785801432 || SEND: sleep=1 | counter=522 | timeElap=HR=0 min=9, sec=48 
+785801433 || SEND: sleep=1 | counter=523 | timeElap=HR=0 min=9, sec=49 
+785801434 || SEND: sleep=1 | counter=524 | timeElap=HR=0 min=9, sec=50 
+785801435 || SEND: sleep=1 | counter=525 | timeElap=HR=0 min=9, sec=51 
+785801436 || SEND: sleep=1 | counter=526 | timeElap=HR=0 min=9, sec=52 
+785801437 || SEND: sleep=1 | counter=527 | timeElap=HR=0 min=9, sec=53 
+785801439 || SEND: sleep=1 | counter=528 | timeElap=HR=0 min=9, sec=55 
+785801440 || SEND: sleep=1 | counter=529 | timeElap=HR=0 min=9, sec=56 
+785801441 || SEND: sleep=1 | counter=530 | timeElap=HR=0 min=9, sec=57 
+785801535 || SEND: sleep=1 | counter=531 | timeElap=HR=0 min=9, sec=58 
+785801536 || SEND: sleep=1 | counter=532 | timeElap=HR=0 min=11, sec=32 
+785801537 || SEND: sleep=1 | counter=533 | timeElap=HR=0 min=11, sec=33 
+785801538 || SEND: sleep=1 | counter=534 | timeElap=HR=0 min=11, sec=34 
+785801539 || SEND: sleep=1 | counter=535 | timeElap=HR=0 min=11, sec=35 
+785801540 || SEND: sleep=1 | counter=536 | timeElap=HR=0 min=11, sec=36 
+785801542 || SEND: sleep=1 | counter=537 | timeElap=HR=0 min=11, sec=38 
+785801543 || SEND: sleep=1 | counter=538 | timeElap=HR=0 min=11, sec=39 
+785801544 || SEND: sleep=1 | counter=539 | timeElap=HR=0 min=11, sec=40 
+785801545 || SEND: sleep=1 | counter=540 | timeElap=HR=0 min=11, sec=41 
+785801546 || SEND: sleep=1 | counter=541 | timeElap=HR=0 min=11, sec=42 
+785801547 || SEND: sleep=1 | counter=542 | timeElap=HR=0 min=11, sec=43 
+785801548 || SEND: sleep=1 | counter=543 | timeElap=HR=0 min=11, sec=44 
+785801550 || SEND: sleep=1 | counter=544 | timeElap=HR=0 min=11, sec=46 
+785801551 || SEND: sleep=1 | counter=545 | timeElap=HR=0 min=11, sec=47 
+785801552 || SEND: sleep=1 | counter=546 | timeElap=HR=0 min=11, sec=48 
+785801553 || SEND: sleep=1 | counter=547 | timeElap=HR=0 min=11, sec=49 
+785801554 || SEND: sleep=1 | counter=548 | timeElap=HR=0 min=11, sec=50 
+785801555 || SEND: sleep=1 | counter=549 | timeElap=HR=0 min=11, sec=51 
+785801556 || SEND: sleep=1 | counter=550 | timeElap=HR=0 min=11, sec=52 
+785801557 || SEND: sleep=1 | counter=551 | timeElap=HR=0 min=11, sec=53 
+785801558 || SEND: sleep=1 | counter=552 | timeElap=HR=0 min=11, sec=54 
+785801559 || SEND: sleep=1 | counter=553 | timeElap=HR=0 min=11, sec=55 
+785801561 || SEND: sleep=1 | counter=554 | timeElap=HR=0 min=11, sec=57 
+785801562 || SEND: sleep=1 | counter=555 | timeElap=HR=0 min=11, sec=58 
+785801563 || SEND: sleep=1 | counter=556 | timeElap=HR=0 min=11, sec=59 
+785801564 || SEND: sleep=1 | counter=557 | timeElap=HR=0 min=12, sec=0 
+785801565 || SEND: sleep=1 | counter=558 | timeElap=HR=0 min=12, sec=1 
+785801566 || SEND: sleep=1 | counter=559 | timeElap=HR=0 min=12, sec=2 
+785801567 || SEND: sleep=1 | counter=560 | timeElap=HR=0 min=12, sec=3 
+785801568 || SEND: sleep=1 | counter=561 | timeElap=HR=0 min=12, sec=4 
+785801569 || SEND: sleep=1 | counter=562 | timeElap=HR=0 min=12, sec=5 
+785801571 || SEND: sleep=1 | counter=563 | timeElap=HR=0 min=12, sec=7 
+785801572 || SEND: sleep=1 | counter=564 | timeElap=HR=0 min=12, sec=8 
+785801573 || SEND: sleep=1 | counter=565 | timeElap=HR=0 min=12, sec=9 
+785801574 || SEND: sleep=1 | counter=566 | timeElap=HR=0 min=12, sec=10 
+785801575 || SEND: sleep=1 | counter=567 | timeElap=HR=0 min=12, sec=11 
+785801576 || SEND: sleep=1 | counter=568 | timeElap=HR=0 min=12, sec=12 
+785801577 || SEND: sleep=1 | counter=569 | timeElap=HR=0 min=12, sec=13 
+785801578 || SEND: sleep=1 | counter=570 | timeElap=HR=0 min=12, sec=14 
+785801579 || SEND: sleep=1 | counter=571 | timeElap=HR=0 min=12, sec=15 
+785801581 || SEND: sleep=1 | counter=572 | timeElap=HR=0 min=12, sec=17 
+785801582 || SEND: sleep=1 | counter=573 | timeElap=HR=0 min=12, sec=18 
+785801583 || SEND: sleep=1 | counter=574 | timeElap=HR=0 min=12, sec=19 
+785801584 || SEND: sleep=1 | counter=575 | timeElap=HR=0 min=12, sec=20 
+785801585 || SEND: sleep=1 | counter=576 | timeElap=HR=0 min=12, sec=21 
+785801753 || SEND: sleep=1 | counter=577 | timeElap=HR=0 min=12, sec=22 
+785801753 ||  Received: recv0k:  counter=577  
+785801754 || SEND: sleep=1 | counter=578 | timeElap=HR=0 min=15, sec=10 
+785801755 ||  Received: recv0k:  counter=578  
+785801756 || SEND: sleep=1 | counter=579 | timeElap=HR=0 min=15, sec=12 
+785801756 ||  Received: recv0k:  counter=579  
+785801757 || SEND: sleep=1 | counter=580 | timeElap=HR=0 min=15, sec=13 
+785801757 ||  Received: recv0k:  counter=580  
+785801758 || SEND: sleep=1 | counter=581 | timeElap=HR=0 min=15, sec=14 
+785801758 ||  Received: recv0k:  counter=581  
+785801759 || SEND: sleep=1 | counter=582 | timeElap=HR=0 min=15, sec=15 
+785801759 ||  Received: recv0k:  counter=582  
+785801760 || SEND: sleep=1 | counter=583 | timeElap=HR=0 min=15, sec=16 
+785801760 ||  Received: recv0k:  counter=583  
+785801761 || SEND: sleep=1 | counter=584 | timeElap=HR=0 min=15, sec=17 
+785801761 ||  Received: recv0k:  counter=584  
+785801762 || SEND: sleep=1 | counter=585 | timeElap=HR=0 min=15, sec=18 
+785801763 ||  Received: recv0k:  counter=585  
+785801764 || SEND: sleep=1 | counter=586 | timeElap=HR=0 min=15, sec=20 
+785801765 || SEND: sleep=1 | counter=587 | timeElap=HR=0 min=15, sec=21 
+785801765 ||  Received: recv0k:  counter=587  
+785801766 || SEND: sleep=1 | counter=588 | timeElap=HR=0 min=15, sec=22 
+785801766 ||  Received: recv0k:  counter=588  
+785801767 || SEND: sleep=1 | counter=589 | timeElap=HR=0 min=15, sec=23 
+785801767 ||  Received: recv0k:  counter=589  
+785801768 || SEND: sleep=1 | counter=590 | timeElap=HR=0 min=15, sec=24 
+785801769 || SEND: sleep=1 | counter=591 | timeElap=HR=0 min=15, sec=25 
+785801770 ||  Received: recv0k:  counter=591  
+785801771 || SEND: sleep=1 | counter=592 | timeElap=HR=0 min=15, sec=26 
+785801771 ||  Received: recv0k:  counter=592  
+785801772 || SEND: sleep=1 | counter=593 | timeElap=HR=0 min=15, sec=28 
+785801772 ||  Received: recv0k:  counter=593  
+785801773 || SEND: sleep=1 | counter=594 | timeElap=HR=0 min=15, sec=29 
+785801773 ||  Received: recv0k:  counter=594  
+785801774 || SEND: sleep=1 | counter=595 | timeElap=HR=0 min=15, sec=30 
+785801774 ||  Received: recv0k:  counter=595  
+785801775 || SEND: sleep=1 | counter=596 | timeElap=HR=0 min=15, sec=31 
+785801775 ||  Received: recv0k:  counter=596  
+785801776 || SEND: sleep=1 | counter=597 | timeElap=HR=0 min=15, sec=32 
+785801777 || SEND: sleep=1 | counter=598 | timeElap=HR=0 min=15, sec=33 
+785801777 ||  Received: recv0k:  counter=598  
+785801778 || SEND: sleep=1 | counter=599 | timeElap=HR=0 min=15, sec=34 
+785801779 || SEND: sleep=1 | counter=600 | timeElap=HR=0 min=15, sec=35 
+785801780 ||  Received: recv0k:  counter=600  
+785801780 || SEND: sleep=1 | counter=601 | timeElap=HR=0 min=15, sec=36 
+785801781 ||  Received: recv0k:  counter=601  
+785801782 || SEND: sleep=1 | counter=602 | timeElap=HR=0 min=15, sec=38 
+785801782 ||  Received: recv0k:  counter=602  
+785801783 || SEND: sleep=1 | counter=603 | timeElap=HR=0 min=15, sec=39 
+785801783 ||  Received: recv0k:  counter=603  
+785801784 || SEND: sleep=1 | counter=604 | timeElap=HR=0 min=15, sec=40 
+785801784 ||  Received: recv0k:  counter=604  
+785801785 || SEND: sleep=1 | counter=605 | timeElap=HR=0 min=15, sec=41 
+785801785 ||  Received: recv0k:  counter=605  
+785801786 || SEND: sleep=1 | counter=606 | timeElap=HR=0 min=15, sec=42 
+785801786 ||  Received: recv0k:  counter=606  
+785801787 || SEND: sleep=1 | counter=607 | timeElap=HR=0 min=15, sec=43 
+785801788 || SEND: sleep=1 | counter=608 | timeElap=HR=0 min=15, sec=44 
+785801789 ||  Received: recv0k:  counter=608  
+785801789 || SEND: sleep=1 | counter=609 | timeElap=HR=0 min=15, sec=45 
+785801790 || SEND: sleep=1 | counter=610 | timeElap=HR=0 min=15, sec=46 
+785801792 || SEND: sleep=1 | counter=611 | timeElap=HR=0 min=15, sec=48 
+785801792 ||  Received: recv0k:  counter=611  
+785801793 || SEND: sleep=1 | counter=612 | timeElap=HR=0 min=15, sec=49 
+785801793 ||  Received: recv0k:  counter=612  
+785801794 || SEND: sleep=1 | counter=613 | timeElap=HR=0 min=15, sec=50 
+785801794 ||  Received: recv0k:  counter=613  
+785801795 || SEND: sleep=1 | counter=614 | timeElap=HR=0 min=15, sec=51 
+785801796 ||  Received: recv0k:  counter=614  
+785801796 || SEND: sleep=1 | counter=615 | timeElap=HR=0 min=15, sec=52 
+785801797 ||  Received: recv0k:  counter=615  
+785801798 || SEND: sleep=1 | counter=616 | timeElap=HR=0 min=15, sec=54 
+785801798 ||  Received: recv0k:  counter=616  
+785801799 || SEND: sleep=1 | counter=617 | timeElap=HR=0 min=15, sec=55 
+785801799 ||  Received: recv0k:  counter=617  
+785801800 || SEND: sleep=1 | counter=618 | timeElap=HR=0 min=15, sec=56 
+785801801 || SEND: sleep=1 | counter=619 | timeElap=HR=0 min=15, sec=57 
+785801802 || SEND: sleep=1 | counter=620 | timeElap=HR=0 min=15, sec=58 
+785801803 || SEND: sleep=1 | counter=621 | timeElap=HR=0 min=15, sec=59 
+785801804 || SEND: sleep=1 | counter=622 | timeElap=HR=0 min=16, sec=0 
+785801805 ||  Received: recv0k:  counter=622  
+785801806 || SEND: sleep=1 | counter=623 | timeElap=HR=0 min=16, sec=2 
+785801806 ||  Received: recv0k:  counter=623  
+785801807 || SEND: sleep=1 | counter=624 | timeElap=HR=0 min=16, sec=3 
+785801807 ||  Received: recv0k:  counter=624  
+785801808 || SEND: sleep=1 | counter=625 | timeElap=HR=0 min=16, sec=4 
+785801809 || SEND: sleep=1 | counter=626 | timeElap=HR=0 min=16, sec=5 
+785801809 ||  Received: recv0k:  counter=626  
+785801810 || SEND: sleep=1 | counter=627 | timeElap=HR=0 min=16, sec=6 
+785801811 || SEND: sleep=1 | counter=628 | timeElap=HR=0 min=16, sec=7 
+785801811 ||  Received: recv0k:  counter=628  
+785801812 || SEND: sleep=1 | counter=629 | timeElap=HR=0 min=16, sec=8 
+785801813 ||  Received: recv0k:  counter=629  
+785801814 || SEND: sleep=1 | counter=630 | timeElap=HR=0 min=16, sec=10 
+785801815 || SEND: sleep=1 | counter=631 | timeElap=HR=0 min=16, sec=11 
+785801816 || SEND: sleep=1 | counter=632 | timeElap=HR=0 min=16, sec=12 
+785801817 || SEND: sleep=1 | counter=633 | timeElap=HR=0 min=16, sec=13 
+785801817 ||  Received: recv0k:  counter=633  
+785801818 || SEND: sleep=1 | counter=634 | timeElap=HR=0 min=16, sec=14 
+785801818 ||  Received: recv0k:  counter=634  
+785801819 || SEND: sleep=1 | counter=635 | timeElap=HR=0 min=16, sec=15 
+785801819 ||  Received: recv0k:  counter=635  
+785801820 || SEND: sleep=1 | counter=636 | timeElap=HR=0 min=16, sec=16 
+785801821 || SEND: sleep=1 | counter=637 | timeElap=HR=0 min=16, sec=17 
+785801822 || SEND: sleep=1 | counter=638 | timeElap=HR=0 min=16, sec=18 
+785801824 || SEND: sleep=1 | counter=639 | timeElap=HR=0 min=16, sec=19 
+785801825 || SEND: sleep=1 | counter=640 | timeElap=HR=0 min=16, sec=21 
+785801825 ||  Received: recv0k:  counter=640  
+785801826 || SEND: sleep=1 | counter=641 | timeElap=HR=0 min=16, sec=22 
+785801826 ||  Received: recv0k:  counter=641  
+785801827 || SEND: sleep=1 | counter=642 | timeElap=HR=0 min=16, sec=23 
+785801828 || SEND: sleep=1 | counter=643 | timeElap=HR=0 min=16, sec=24 
+785801829 || SEND: sleep=1 | counter=644 | timeElap=HR=0 min=16, sec=25 
+785801829 ||  Received: recv0k:  counter=644  
+785801830 || SEND: sleep=1 | counter=645 | timeElap=HR=0 min=16, sec=26 
+785801830 ||  Received: recv0k:  counter=645  
+785801831 || SEND: sleep=1 | counter=646 | timeElap=HR=0 min=16, sec=27 
+785801832 || SEND: sleep=1 | counter=647 | timeElap=HR=0 min=16, sec=28 
+785801833 ||  Received: recv0k:  counter=647  
+785801833 || SEND: sleep=1 | counter=648 | timeElap=HR=0 min=16, sec=29 
+785801834 ||  Received: recv0k:  counter=648  
+785801835 || SEND: sleep=1 | counter=649 | timeElap=HR=0 min=16, sec=31 
+785801835 ||  Received: recv0k:  counter=649  
+785801836 || SEND: sleep=1 | counter=650 | timeElap=HR=0 min=16, sec=32 
+785801837 || SEND: sleep=1 | counter=651 | timeElap=HR=0 min=16, sec=33 
+785801837 ||  Received: recv0k:  counter=651  
+785801838 || SEND: sleep=1 | counter=652 | timeElap=HR=0 min=16, sec=34 
+785801838 ||  Received: recv0k:  counter=652  
+785801839 || SEND: sleep=1 | counter=653 | timeElap=HR=0 min=16, sec=35 
+785801840 ||  Received: recv0k:  counter=653  
+785801841 || SEND: sleep=1 | counter=654 | timeElap=HR=0 min=16, sec=37 
+785801841 ||  Received: recv0k:  counter=654  
+785801842 || SEND: sleep=1 | counter=655 | timeElap=HR=0 min=16, sec=38 
+785801843 || SEND: sleep=1 | counter=656 | timeElap=HR=0 min=16, sec=39 
+785801843 ||  Received: recv0k:  counter=656  
+785801844 || SEND: sleep=1 | counter=657 | timeElap=HR=0 min=16, sec=40 
+785801844 ||  Received: recv0k:  counter=657  
+785801845 || SEND: sleep=1 | counter=658 | timeElap=HR=0 min=16, sec=41 
+785801846 || SEND: sleep=1 | counter=659 | timeElap=HR=0 min=16, sec=42 
+785801847 || SEND: sleep=1 | counter=660 | timeElap=HR=0 min=16, sec=43 
+785801848 ||  Received: recv0k:  counter=660  
+785801849 || SEND: sleep=1 | counter=661 | timeElap=HR=0 min=16, sec=45 
+785801849 ||  Received: recv0k:  counter=661  
+785801850 || SEND: sleep=1 | counter=662 | timeElap=HR=0 min=16, sec=46 
+785801851 || SEND: sleep=1 | counter=663 | timeElap=HR=0 min=16, sec=47 
+785801852 || SEND: sleep=1 | counter=664 | timeElap=HR=0 min=16, sec=48 
+785801852 ||  Received: recv0k:  counter=664  
+785801853 || SEND: sleep=1 | counter=665 | timeElap=HR=0 min=16, sec=49 
+785801854 || SEND: sleep=1 | counter=666 | timeElap=HR=0 min=16, sec=50 
+785801854 ||  Received: recv0k:  counter=666  
+785801855 || SEND: sleep=1 | counter=667 | timeElap=HR=0 min=16, sec=51 
+785801855 ||  Received: recv0k:  counter=667  
+785801856 || SEND: sleep=1 | counter=668 | timeElap=HR=0 min=16, sec=52 
+785801858 || SEND: sleep=1 | counter=669 | timeElap=HR=0 min=16, sec=54 
+785801858 ||  Received: recv0k:  counter=669  
+785801859 || SEND: sleep=1 | counter=670 | timeElap=HR=0 min=16, sec=55 
+785801859 ||  Received: recv0k:  counter=670  
+785801860 || SEND: sleep=1 |
