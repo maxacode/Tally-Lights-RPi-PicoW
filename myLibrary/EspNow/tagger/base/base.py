@@ -3,12 +3,11 @@ Base v1.2
 
  - setup espNow stuff
  - main - all tasks with asncio
-- done
 
 npDone.py
 """
 import time, asyncio
-from machine import Pin, deepsleep, lightsleep, DEEPSLEEP, SLEEP
+from machine import Pin, deepsleep, lightsleep, DEEPSLEEP, SLEEP,reset_cause
 from time import sleep
 import network, espnow
 from json import dumps
@@ -18,16 +17,20 @@ from npDone import setNeo, red, green, blue, white, off
 
 setNeo(blue)
 
-def writeFile(data:str)-> None:
+dsEnabled = True
+
+def writeFile(*args, **kwargs )-> None:
     """
     Write data to a file with time and pipe separator
     """
-    print(data)
-    #setNeo(red)
+    setNeo(red)
+    curTime = time.time()
+    print(curTime, args, kwargs)
+
     with open('logBase.txt', 'a+') as file:
-        file.write(f'{time.time()} || {data} \n')
+        file.write(f'{curTime=} || {args} {kwargs} \n')
     #await asyncio.
-    #sleep(.)
+   # sleep(.3)
     
 def espTX()-> None:
     """
@@ -50,22 +53,39 @@ def keepAlive()-> None:
     """    
     Sleep and increase counter by X and if button is pressed reset it. 
     After Y time, do deep sleep
+    
+   1 machine.PWRON_RESET
+   2 machine.HARD_RESET
+   3 machine.WDT_RESET
+   4 machine.DEEPSLEEP_RESET
+   5 machine.SOFT_RESET
+   
     """
     kA = 0
     while True:
-        if kA >= 7:
+        if kA >= 5:
             writeFile(f'Going to ds: {kA=}')
             setNeo((20,20,20))
             sleep(1)
-            deepsleep() # deepsleep()
+            if dsEnabled:
+                writeFile('ln 62')
+                setNeo(off)
+                sleep(1)
+                #deepsleep() # deepsleep()
+                #writeFile('ln 75 reset_cause:', reset_cause())
+                kA = 0
+                #writeFile(f'wake from ls {kA=}')
+            else:
+                sleep(10)
+                kA = 0
         else:
-            kA += 3
+            kA += 1
             setNeo((20,0,30))
             #await asyncio.
             # Try light sleep or deepsleep
             writeFile(f'awaiting sleep: {kA=}')
             espTX()
-            sleep(1)
+            sleep(.3)
             setNeo(blue)
             
 async def main()-> None:
@@ -80,7 +100,9 @@ async def main()-> None:
     asyncio.run(keepAlive())
 
 tNow = time.time()
+writeFile(' ---------------------------- ')
 writeFile(f"\n\n NEW INTSTANCE | {tNow=}\n")
+writeFile('ln 104 reset_cause:', reset_cause())
 
 ### Setup ESP Now
 sta = network.WLAN(network.STA_IF)    # Enable station mode for ESP
@@ -91,27 +113,19 @@ sta.disconnect()        # Disconnect from last connected WiFi SSID
 e = espnow.ESPNow()     # Enable ESP-NOW
 e.active(True)
 peer1 = b'\xff\xff\xff\xff\xff\xff' #broadcast
+#peer1 = b"H'\xe2\r\x80h"
 try:
     e.add_peer(peer1)
 except:
     pass
 
 butt1 = Pin(12, Pin.IN)#, Pin.PULL_DOWN)  # pin 43
+#butt1.off()
+#esp32.wake_on_ulp(False)
+#esp32.gpio_deep_sleep_hold(False)
 esp32.wake_on_ext0(pin = butt1, level = esp32.WAKEUP_ANY_HIGH)
+#esp32.wake_on_ext0(pin = butt1, level = esp32.WAKEUP_ALL_LOW)
 
 keepAlive()
-#while True:
-# setNeo(red)
-# sleep(2)
-#deepsleep()
-# setNeo((20,0,30))
-# sleep(1)
-# blue 2s
-# white .5
-# purple .3
-#  red file .2
-#  green .5
-# purple .3
-# white sleep 1s
-# #asyncio.run(main())
+ 
 
