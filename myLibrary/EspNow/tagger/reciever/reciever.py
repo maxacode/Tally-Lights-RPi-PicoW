@@ -4,6 +4,9 @@ Receiver v2 - Works
  - VIB works
  - 
 
+2.2 11/28
+- added PWM VIB
+
 v2.1 11/27
 - made recv blocking instead of 5sec timeout
 
@@ -11,9 +14,11 @@ v2.1 11/27
 from machine import Pin
 import espnow
 import time, asyncio
-from npDone import setNeo, red, green, blue, white, off
 import network
 from json import loads
+
+from npDone import setNeo, red, green, blue, white, off
+from testPWM import setPWM as vib
 
 setNeo(white)
 time.sleep(1)
@@ -27,8 +32,8 @@ e = espnow.ESPNow()                  # Enable ESP-NOW
 e.active(True)
 
 
-vib = Pin(44, Pin.OUT, Pin.PULL_DOWN)
 
+    
 def writeFile(*args, **kwargs )-> None:
     """
     Write data to a file with time and pipe separator
@@ -41,10 +46,11 @@ def writeFile(*args, **kwargs )-> None:
         file.write(f'{curTime=} || {args} {kwargs} \n')
     #await asyncio.
    # sleep(.3)
-    
+vibCounter = 0 
 async def espnow_rx():
-    writeFile('espnow-rx-start')
+    writeFile(f'espnow-rx-start | {vibCounter=}')
     tNow = time.time()
+    global vibCounter
     while True:
         setNeo(blue)
         host, msg = e.recv()
@@ -62,15 +68,16 @@ async def espnow_rx():
                 writeFile(f'finally: {e.peers_table=}  :  {msgJ=}')
             
             if "tagger" in msgJ:
+                vibCounter +=1
                 if "wakeup" == msgJ['tagger']:
                     setNeo(green) # green/
                     writeFile('tagger:wakeup: vib.on')
                     #await asyncio.sleep(2) #keeps buzzing till last packet is recieved.
                     for x in range(0, 5):
-                        vib.on()
-                        time.sleep(1)
-                        vib.off()
+                        vib(vibCounter)
                         time.sleep(.5)
+                        vib(0)
+                        time.sleep(.2)
                     writeFile('tagger:wakeup: vib.off')
                 else:
                     writeFile('not wakeup in msgJ')
@@ -98,5 +105,4 @@ writeFile(f"\n\n NEW INTSTANCE | {tNow=}\n")
 
 
 asyncio.run(main())
-
 
