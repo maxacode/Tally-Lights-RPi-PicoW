@@ -1,77 +1,54 @@
 # Recievers Main Function
 """
-v7.7
+8.0
 
-Functions and classes:
-    getconfig() - reads the config file
-    query_mdns - get mdns of tally .local hostname in config file
-    getDipSwitch() - Reads the dip switches and sets the tallyID
-    makePost - sends a http post with requests library and given url/headers. Returns Status (Add returning response)
-    index(/) - home page with config that can be chagned
-    updateWifi(/updatewifi) - Base sends new Wifi Configs
-    setBrightness(/setBrightness) - Sets the brightness of the LED red, green, blue
-    led(/led) - Sets the LED colors
-    shutdown(/shutdown) - Shuts down the server
-    recvSetup post baseIP(/recvSetup) - Sends a POST request to the base station with the IP and Tally ID
-    keepAlive() - Sleeps for 10seconds then adds 10 to counter, if over 30 triggers recvSetup. kA is reset on every postMade
-    mainThreads() - Main function that runs the server and the recvSetup function
+make a list of each function and the purpose with params and returns in each function:
+    - getConfig() - reads the config file
+    - getDipSwitch() - reads the dip switches and sets the tallyID
+    - makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 20 ) -> list[bool, int, string] - sends a http post with requests library and given url/headers. Returns Status (Add returning response)
+    - index(request) - home page with config that can be changed
+    - updateWifi(request) - Base sends new Wifi Configs
+    - setBrightness(request) - Sets the brightness of the LED red, green, blue  
+    - led(request) - Sets the LED colors
+    - shutdown(request) - Shuts down the server
+    - recvSetup(config,serverIP,myIP) - Sends a POST request to the base station with the IP and Tally ID
+    - keepAlive() - Sleeps for 10 seconds then adds 10 to counter, if over 30 triggers recvSetup. kA is reset on every postMade
+    - mainThreads() - Main function that runs the server and the recvSetup function
 
-v7.v4 11/23 - 1am -
-minor code changes
-started to return response.text in makePost
 
-v 7.3 -11/22
- - clock at start set to 250 then 133 after imports
 
-v 7.2 10pm 11/20
-ka disabled !!
-
-Files changed:
-    - printF
-    - npTestClass in lib.neopixel
-    - test.py - imporitng new npTestClass
-    
-Changes:
-- clenaing up code
-- added time tracker to printF
-- static Brightness levels at start of program
-    - Works but con is when config is updated it wont chagne until reboot
-    - all but 1 setNeo updated since first setNeo is before config
-- all GC/Collect removed
-- removed timoeout global var and made is as a parm in makePost that has defualt 5 seconds (tested and workes so far but lower end)
-     - reqTimeOut:int = 5 
-    
-v7.1 10pm 11/19
- - connectWlan, recvConf, boot.py
-# Works: adding single func for Ruquest Posts'
+8.0 Nov 30 
+    - Added each funciton and purpose with params and returns
+    - removed mdns import
+    - removed query_mdns_and_dns_address Function
 
 """
 
 from machine import Pin, reset, freq
- 
 
 # changing clock feq normal = 125000000
 freq(250000000)
 
+# All my imports that are built in
 from json import loads
 from time import sleep
 import asyncio
 from requests import post,get
 
 
-# my lib
+# All my imports that are Locally installed
 from connectToWlan import mainFunc
 from lib.neopixel.npDone import setNeo, green, red, blue, off, white
 from lib.microdot.microdot import Microdot, Response
 from cors import CORS
 from utemplate import Template
 from utemplate2 import compiled
-app = Microdot()
-from lib.mdns_client import Client
 from printF import printF, printFF, printW
 
+#Initialze Microdot
+app = Microdot()
 
-
+# 
 def getConfig():
     from lib.getConfig import getConf
 
