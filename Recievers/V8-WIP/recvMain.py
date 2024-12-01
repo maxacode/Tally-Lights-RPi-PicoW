@@ -20,7 +20,7 @@ make a list of each function and the purpose with params and returns in each fun
 8.0 Nov 30 
     - Added each funciton and purpose with params and returns
     - removed mdns import
-    - removed query_mdns_and_dns_address Function
+    - removed query_mdns_and_dns_address Functiond
 
 """
 
@@ -44,72 +44,51 @@ from cors import CORS
 from utemplate import Template
 from utemplate2 import compiled
 from printF import printF, printFF, printW
+from lib.getConfig import getConf
 
 #Initialze Microdot
 app = Microdot()
 
-# 
-def getConfig():
-    from lib.getConfig import getConf
+# Gets config and returns the object
+def getConfig() -> dict{str,dict{str, str}}:
+    """ 
+    Reads the config file and returns the config
+    Params: 
+        None
+    Returns:
+            dict: config 
+            Example:
+                - {'dipSwitch': {'dip1': '0', 'dip2': '2'}, 'global': {'wlanSSID': 'ssid', 'wlanPassword': 'password'}
+            Syntax:
+                - int(config.items('dipSwitch')['dip1'])
+            Notes:
+                - all keys/values are strings so need to cast to int if needed
 
+"""
     configFileName = 'recvConfig.json'
-    
     config = getConf(configFileName)
-
     return config
 
-# Function to start query of MDNS 
-async def query_mdns_and_dns_address(myIP):
-    global serverIP
-    client = Client(myIP)
-    retry = 0
-    printFF(f"    Getting MDNS for: {config.items('global')['baseStationName']}")
+# Get the config file and set it to config - Doing this first since other fields bellow need access. 
+config = getConfig()
 
-    while True:
-        printF(f'retry mdns: {retry=}')
-        
-        if retry >= 8:
-            printF("retry more than 8")
-            retry = 0
-            break
-        try:
-            retry += 1
-            
-            serverIP1 = (list(await client.getaddrinfo(config.items('global')['baseStationName'], config.items('api')['port'])))
-           # serverIP1 = (list(await client.getaddrinfo("tally2", 8080)))
-            serverIP = "http://"+serverIP1[0][4][0] + ":" + config.items('api')['port']
-            printFF(("           !!!! MDNS address found: ", serverIP))
+# Read dip switches and set the tallyID 00 = 1, 10 = 2, 01 = 3, 11 = 4
+def getDipSwitch() -> int:
+    """
+    Reads the dip switches and sets the tallyID
+    Params:
+        None
+    Returns:
+        None
+        Notes:
+            - Sets the tallyID based on the dip switches of type INT
 
-            config.items('global')['baseStationIP'] = str(serverIP1[0][4][0])
-            config.write('recvConfig.json')
-            
-            return serverIP
-        except Exception as e:
-            retry += 1
-            printFF(("        MDNS address not found: ",e))
-            await asyncio.sleep(1)
-    return serverIP
-      
-    #printF("starting recvSetu ln 75")
-    #await asyncio.run_until_complete(recvSetup(config))
-
-
-
-##### Reading 2 Dip Switches ####
-
-def getDipSwitch():
+        """
     global tallyID
-    # 00 = 1, 10 = 2, 01 = 3, 11 = 4 
-    # Dip switch 1
+    ## setting up dip switches Pins based on config file mapping
     dip1 = Pin(int(config.items('dipSwitch')['dip1']), Pin.IN, Pin.PULL_UP)
-    # Dip switch 2
     dip2 = Pin(int(config.items('dipSwitch')['dip2']), Pin.IN, Pin.PULL_UP)
-    # create 4 variables to store the values of the dip switches
-#     from time import sleep
-#     while True:
-#         sleep(1)
-#         printF(dip1.value(), dip2.value())
-#         
+ 
     if dip1.value() == 0:
         if dip2.value() == 0:
             tallyID = 4
@@ -120,10 +99,10 @@ def getDipSwitch():
             tallyID = 1
         else:
             tallyID = 2       
-    printFF(f"Tally ID: {tallyID}")
+    printFF(f"{tallyID=}")
  
 
-async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 20 ) -> list[bool, int, string]:
+async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 4 ) -> list[bool, int, string]:
         """
         Function to make a request.post or get with Passed Method,Headers, Timeout
         
@@ -134,7 +113,16 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
             reqTimeOut: timeout whe making a5 request default 5 seconds ( tested and this seems sufficiuent but also on lower side)
             
         Returns:
-            list[bool, str, str]: sucess: true 200-300 false else, str: 
+            list[bool, str, str] 
+                - bool: POST/GET in 200 HTTP response code range
+                - int: HTTP response code
+                - str: response.text
+
+            # TODO remove Bool and just return status code and response.text
+
+            Example:
+                - [True, 200, 'recvSetup OK']
+                - [False, 400, 'recvSetup Dupe']
         
         """
 
@@ -380,7 +368,6 @@ async def mainThreads(apMode, myIP):
 
 
 
-config = getConfig()
 redLevel = int(config.items('tallyBrightness')['red'])
 blueLevel = int(config.items('tallyBrightness')['blue'])
 greenLevel = int(config.items('tallyBrightness')['green'])
