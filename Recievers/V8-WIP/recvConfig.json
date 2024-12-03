@@ -18,17 +18,16 @@ receiverSetup = /recvSetup
 
 [global]
 title = Global Settings, add Wifi networks seperated with a "," and no spaces between entries.
-apSSID = tallyReciever
-baseStationIP = 192.168.4.1
 wlanSSID = tallybase
 baseStationName = tallybase.local
 wlanPassword = 
-version = 7.4
+apSSID = tallyReciever
+keepAlivePush = 30
+heartbeat = 18
+version = 8.1
+baseStationIP = 192.168.4.1
 
 [hidden]
-neoPixel = 28
-heartbeat = 300
 title = hidden
-keepAlivePush = 300
-
+neoPixel = 28
 

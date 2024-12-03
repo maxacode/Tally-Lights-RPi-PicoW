@@ -51,14 +51,18 @@
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
+            // Display the banner immediately
+            const banner = document.createElement('div');
+            banner.classList.add('banner');
+            banner.textContent = 'Configuration saved successfully! Rebooting Now!';
+            document.getElementById('banner-container').appendChild(banner);
+
+            // Hide the banner after a few seconds
+            setTimeout(() => {
+                banner.remove();
+            }, 30000); // Adjust the time as needed
+    }
+
     </script>
 </body>
 </html>

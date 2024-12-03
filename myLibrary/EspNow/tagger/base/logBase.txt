@@ -1,1670 +1,215 @@
-785977685 || 
-
- NEW INTSTANCE | tNow=785977685
- 
-785977689 || 
-
- NEW INTSTANCE | tNow=785977689
- 
-785977725 || 
-
- NEW INTSTANCE | tNow=785977725
- 
-785977729 || 
-
- NEW INTSTANCE | tNow=785977729
- 
-785977741 || 
-
- NEW INTSTANCE | tNow=785977741
- 
-785977745 || awaiting sleep: kA=3 
-785977747 || 
-
- NEW INTSTANCE | tNow=785977747
- 
-785977751 || awaiting sleep: kA=3 
-785977771 || 
-
- NEW INTSTANCE | tNow=785977771
- 
-785977775 || awaiting sleep: kA=3 
-785977778 || start espTX 
-785977779 || end espTX 
-785977781 || awaiting sleep: kA=3 
-785977782 || start espTX 
-785977784 || end espTX 
-785977786 || awaiting sleep: kA=3 
-785977787 || start espTX 
-785977789 || end espTX 
-785977791 || awaiting sleep: kA=3 
-785977792 || start espTX 
-785977794 || end espTX 
-785977796 || awaiting sleep: kA=3 
-785977797 || start espTX 
-785977798 || end espTX 
-785977800 || awaiting sleep: kA=3 
-785977802 || start espTX 
-785977803 || end espTX 
-785977805 || awaiting sleep: kA=3 
-785977806 || start espTX 
-785977808 || end espTX 
-785977810 || awaiting sleep: kA=3 
-785977811 || start espTX 
-785977813 || end espTX 
-785977815 || awaiting sleep: kA=3 
-785977816 || start espTX 
-785977818 || end espTX 
-785977820 || awaiting sleep: kA=3 
-785977821 || start espTX 
-785977822 || end espTX 
-785977824 || awaiting sleep: kA=3 
-785977826 || start espTX 
-785977827 || end espTX 
-785977829 || awaiting sleep: kA=3 
-785977830 || start espTX 
-785977832 || end espTX 
-785977834 || awaiting sleep: kA=3 
-785977835 || start espTX 
-785977837 || end espTX 
-785977839 || awaiting sleep: kA=3 
-785977840 || start espTX 
-785977842 || end espTX 
-785977844 || awaiting sleep: kA=3 
-785977845 || start espTX 
-785977847 || end espTX 
-785977848 || 
-
- NEW INTSTANCE | tNow=785977848
- 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-5 || awaiting sleep: kA=3 
-785977860 || 
-
- NEW INTSTANCE | tNow=785977860
- 
-785977865 || awaiting sleep: kA=3 
-785977866 || start espTX 
-785977868 || end espTX 
-785977870 || awaiting sleep: kA=6 
-785977871 || start espTX 
-785977873 || end espTX 
-785977875 || awaiting sleep: kA=9 
-785977876 || start espTX 
-785977877 || end espTX 
-785977879 || Going to lightsleep: kA=9 
-785977898 || 
-
- NEW INTSTANCE | tNow=785977898
- 
-785977903 || awaiting sleep: kA=3 
-785977904 || start espTX 
-785977905 || end espTX 
-785977908 || awaiting sleep: kA=6 
-785977909 || start espTX 
-785977910 || end espTX 
-785977912 || awaiting sleep: kA=9 
-785977914 || start espTX 
-785977915 || end espTX 
-785977916 || Going to lightsleep: kA=9 
-785977921 || 
-
- NEW INTSTANCE | tNow=785977921
- 
-785977926 || awaiting sleep: kA=3 
-785977927 || start espTX 
-785977928 || end espTX 
-785977930 || awaiting sleep: kA=6 
-785977932 || start espTX 
-785977933 || end espTX 
-785977935 || awaiting sleep: kA=9 
-785977937 || start espTX 
-785977938 || end espTX 
-785977939 || Going to lightsleep: kA=9 
-785977947 || 
-
- NEW INTSTANCE | tNow=785977947
- 
-785977952 || awaiting sleep: kA=3 
-785977953 || start espTX 
-785977955 || end espTX 
-785977957 || awaiting sleep: kA=6 
-785977958 || start espTX 
-785977960 || end espTX 
-785977962 || awaiting sleep: kA=9 
-785977963 || start espTX 
-785977965 || end espTX 
-785977966 || Going to lightsleep: kA=9 
-785978141 || 
-
- NEW INTSTANCE | tNow=785978141
- 
-785978146 || awaiting sleep: kA=3 
-785978147 || start espTX 
-785978149 || end espTX 
-785978151 || awaiting sleep: kA=6 
-785978152 || start espTX 
-785978154 || end espTX 
-785978156 || awaiting sleep: kA=9 
-785978157 || start espTX 
-785978159 || end espTX 
-785978160 || Going to lightsleep: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-5 || awaiting sleep: kA=3 
-6 || start espTX 
-8 || end espTX 
-10 || awaiting sleep: kA=6 
-11 || start espTX 
-13 || end espTX 
-15 || awaiting sleep: kA=9 
-16 || start espTX 
-18 || end espTX 
-19 || Going to lightsleep: kA=9 
-54 || 
-
- NEW INTSTANCE | tNow=54
- 
-59 || awaiting sleep: kA=3 
-60 || start espTX 
-62 || end espTX 
-64 || awaiting sleep: kA=6 
-65 || start espTX 
-68 || end espTX 
-70 || awaiting sleep: kA=9 
-71 || start espTX 
-73 || end espTX 
-74 || Going to lightsleep: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-785978451 || 
-
- NEW INTSTANCE | tNow=785978451
- 
-785978453 || awaiting sleep: kA=3 
-785978453 || start espTX 
-785978454 || end espTX 
-785978454 || awaiting sleep: kA=6 
-785978455 || start espTX 
-785978455 || end espTX 
-785978456 || awaiting sleep: kA=9 
-785978457 || start espTX 
-785978457 || end espTX 
-785978458 || Going to ds: kA=9 
-785978558 || 
-
- NEW INTSTANCE | tNow=785978558
- 
-785978560 || awaiting sleep: kA=3 
-785978560 || start espTX 
-785978561 || end espTX 
-785978561 || awaiting sleep: kA=6 
-785978562 || start espTX 
-785978562 || end espTX 
-785978563 || awaiting sleep: kA=9 
-785978564 || start espTX 
-785978564 || end espTX 
-785978565 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-3 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-5 || start espTX 
-6 || end espTX 
-7 || awaiting sleep: kA=9 
-7 || start espTX 
-8 || end espTX 
-8 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-3 || awaiting sleep: kA=6 
-4 || start espTX 
-4 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-6 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-147 || 
-
- NEW INTSTANCE | tNow=147
- 
-149 || awaiting sleep: kA=3 
-149 || start espTX 
-150 || end espTX 
-150 || awaiting sleep: kA=6 
-151 || start espTX 
-152 || end espTX 
-152 || awaiting sleep: kA=9 
-153 || start espTX 
-153 || end espTX 
-154 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-3 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-8 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-1 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-3 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-6 || end espTX 
-7 || Going to ds: kA=9 
-14 || 
-
- NEW INTSTANCE | tNow=14
- 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-8 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-3 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-5 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-8 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-3 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-6 || start espTX 
-6 || end espTX 
-7 || awaiting sleep: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-6 || end espTX 
-7 || Going to ds: kA=9 
-25 || 
-
- NEW INTSTANCE | tNow=25
- 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-3 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-6 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-3 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-4 || start espTX 
-4 || end espTX 
-5 || awaiting sleep: kA=6 
-5 || start espTX 
-6 || end espTX 
-7 || awaiting sleep: kA=9 
-7 || start espTX 
-8 || end espTX 
-8 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-3 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-6 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-3 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-5 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-7 || start espTX 
-8 || end espTX 
-9 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-3 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-6 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-5 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-7 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-2 || start espTX 
-3 || end espTX 
-4 || awaiting sleep: kA=6 
-4 || start espTX 
-5 || end espTX 
-6 || awaiting sleep: kA=9 
-6 || start espTX 
-7 || end espTX 
-8 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-2 || awaiting sleep: kA=3 
-785979775 || 
-
- NEW INTSTANCE | tNow=785979775
- 
-785979775 || awaiting sleep: kA=3 
-785979775 || start espTX 
-785979776 || end espTX 
-785979777 || awaiting sleep: kA=6 
-785979777 || start espTX 
-785979777 || end espTX 
-785979778 || awaiting sleep: kA=9 
-785979779 || start espTX 
-785979780 || end espTX 
-785979781 || Going to ds: kA=9 
-785979793 || 
-
- NEW INTSTANCE | tNow=785979793
- 
-785979793 || awaiting sleep: kA=3 
-785979793 || start espTX 
-785979794 || end espTX 
-785979795 || awaiting sleep: kA=6 
-785979795 || start espTX 
-785979795 || end espTX 
-785979797 || awaiting sleep: kA=9 
-785979797 || start espTX 
-785979797 || end espTX 
-785979798 || Going to ds: kA=9 
-785979804 || 
-
- NEW INTSTANCE | tNow=785979804
- 
-785979805 || awaiting sleep: kA=3 
-785979805 || start espTX 
-785979805 || end espTX 
-785979806 || awaiting sleep: kA=6 
-785979806 || start espTX 
-785979807 || end espTX 
-785979808 || awaiting sleep: kA=9 
-785979808 || start espTX 
-785979808 || end espTX 
-785979809 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=9 
-3 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-21 || 
-
- NEW INTSTANCE | tNow=21
- 
-21 || awaiting sleep: kA=3 
-21 || start espTX 
-21 || end espTX 
-23 || awaiting sleep: kA=6 
-23 || start espTX 
-23 || end espTX 
-24 || awaiting sleep: kA=9 
-24 || start espTX 
-25 || end espTX 
-26 || Going to ds: kA=9 
-28 || 
-
- NEW INTSTANCE | tNow=28
- 
-29 || awaiting sleep: kA=3 
-29 || start espTX 
-29 || end espTX 
-30 || awaiting sleep: kA=6 
-30 || start espTX 
-31 || end espTX 
-32 || awaiting sleep: kA=9 
-32 || start espTX 
-32 || end espTX 
-33 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-1 || awaiting sleep: kA=3 
-1 || start espTX 
-1 || end espTX 
-3 || awaiting sleep: kA=6 
-3 || start espTX 
-4 || end espTX 
-786022630 || 
-
- NEW INTSTANCE | tNow=786022630
- 
-786022630 || awaiting sleep: kA=3 
-786022630 || start espTX 
-786022630 || end espTX 
-786022631 || awaiting sleep: kA=6 
-786022631 || start espTX 
-786022632 || end espTX 
-786022633 || awaiting sleep: kA=9 
-786022633 || start espTX 
-786022633 || end espTX 
-786022635 || Going to ds: kA=9 
-786022643 || 
-
- NEW INTSTANCE | tNow=786022643
- 
-786022643 || awaiting sleep: kA=3 
-786022643 || start espTX 
-786022644 || end espTX 
-786022645 || awaiting sleep: kA=6 
-786022645 || start espTX 
-786022645 || end espTX 
-786022646 || awaiting sleep: kA=9 
-786022646 || start espTX 
-786022647 || end espTX 
-786022687 || 
-
- NEW INTSTANCE | tNow=786022687
- 
-786022687 || awaiting sleep: kA=3 
-786022687 || start espTX 
-786022688 || end espTX 
-786022689 || awaiting sleep: kA=6 
-786022689 || start espTX 
-786022690 || end espTX 
-786022691 || awaiting sleep: kA=9 
-786022691 || start espTX 
-786022691 || end espTX 
-786022692 || Going to ds: kA=9 
-786022694 || Going to ds: kA=9 
-786022695 || Going to ds: kA=9 
-786022696 || Going to ds: kA=9 
-786022697 || Going to ds: kA=9 
-786022698 || Going to ds: kA=9 
-786022699 || Going to ds: kA=9 
-786022700 || Going to ds: kA=9 
-786022701 || Going to ds: kA=9 
-786022703 || Going to ds: kA=9 
-786022704 || Going to ds: kA=9 
-786022705 || Going to ds: kA=9 
-786022706 || Going to ds: kA=9 
-786022707 || Going to ds: kA=9 
-786022708 || 
-
- NEW INTSTANCE | tNow=786022708
- 
-786022708 || awaiting sleep: kA=3 
-786022708 || start espTX 
-786022709 || end espTX 
-786022710 || awaiting sleep: kA=6 
-786022710 || start espTX 
-786022710 || end espTX 
-786022712 || awaiting sleep: kA=9 
-786022712 || start espTX 
-786022712 || end espTX 
-786022714 || Going to ds: kA=9 
-786022716 || Going to ds: kA=9 
-786022717 || Going to ds: kA=9 
-786022718 || Going to ds: kA=9 
-786022719 || Going to ds: kA=9 
-786022722 || 
-
- NEW INTSTANCE | tNow=786022722
- 
-786022722 || awaiting sleep: kA=3 
-786022722 || start espTX 
-786022723 || end espTX 
-786022724 || awaiting sleep: kA=6 
-786022724 || start espTX 
-786022724 || end espTX 
-786022725 || awaiting sleep: kA=9 
-786022726 || start espTX 
-786022726 || end espTX 
-786022727 || Going to ds: kA=9 
-786022728 || awaiting sleep: kA=3 
-786022729 || start espTX 
-786022729 || end espTX 
-786022730 || awaiting sleep: kA=6 
-786022730 || start espTX 
-786022731 || end espTX 
-786022732 || awaiting sleep: kA=9 
-786022732 || start espTX 
-786022732 || end espTX 
-786022734 || Going to ds: kA=9 
-786022735 || awaiting sleep: kA=3 
-786022735 || start espTX 
-786022735 || end espTX 
-786022736 || awaiting sleep: kA=6 
-786022737 || start espTX 
-786022737 || end espTX 
-786022738 || awaiting sleep: kA=9 
-786022738 || start espTX 
-786022739 || end espTX 
-786022740 || Going to ds: kA=9 
-786022741 || awaiting sleep: kA=3 
-786022741 || start espTX 
-786022742 || end espTX 
-786022743 || awaiting sleep: kA=6 
-786022743 || start espTX 
-786022743 || end espTX 
-786022744 || awaiting sleep: kA=9 
-786022744 || start espTX 
-786022745 || end espTX 
-786022746 || Going to ds: kA=9 
-786022747 || awaiting sleep: kA=3 
-786022747 || start espTX 
-786022747 || end espTX 
-786022748 || 
-
- NEW INTSTANCE | tNow=786022748
- 
-786022748 || awaiting sleep: kA=3 
-786022748 || start espTX 
-786022749 || end espTX 
-786022750 || awaiting sleep: kA=6 
-786022750 || start espTX 
-786022750 || end espTX 
-786022754 || 
-
- NEW INTSTANCE | tNow=786022754
- 
-786022754 || awaiting sleep: kA=3 
-786022754 || start espTX 
-786022754 || end espTX 
-786022755 || awaiting sleep: kA=6 
-786022755 || start espTX 
-786022756 || end espTX 
-786022757 || awaiting sleep: kA=9 
-786022757 || start espTX 
-786022757 || end espTX 
-786022759 || Going to ds: kA=9 
-786022760 || awaiting sleep: kA=-17 
-786022760 || start espTX 
-786022760 || end espTX 
-786022761 || awaiting sleep: kA=-14 
-786022761 || start espTX 
-786022762 || end espTX 
-786022763 || awaiting sleep: kA=-11 
-786022763 || start espTX 
-786022763 || end espTX 
-786022764 || awaiting sleep: kA=-8 
-786022764 || start espTX 
-786022765 || end espTX 
-786022766 || awaiting sleep: kA=-5 
-786022766 || start espTX 
-786022767 || end espTX 
-786022768 || awaiting sleep: kA=-2 
-786022768 || start espTX 
-786022768 || end espTX 
-786022769 || awaiting sleep: kA=1 
-786022769 || start espTX 
-786022770 || end espTX 
-786022771 || awaiting sleep: kA=4 
-786022771 || start espTX 
-786022771 || end espTX 
-786022773 || awaiting sleep: kA=7 
-786022773 || start espTX 
-786022773 || end espTX 
-786022774 || Going to ds: kA=7 
-786022775 || awaiting sleep: kA=-17 
-786022775 || start espTX 
-786022776 || end espTX 
-786022777 || awaiting sleep: kA=-14 
-786022777 || start espTX 
-786022777 || end espTX 
-786022779 || awaiting sleep: kA=-11 
-786022779 || start espTX 
-786022779 || end espTX 
-786022780 || awaiting sleep: kA=-8 
-786022780 || start espTX 
-786022781 || end espTX 
-786022782 || awaiting sleep: kA=-5 
-786022782 || start espTX 
-786022783 || end espTX 
-786022784 || awaiting sleep: kA=-2 
-786022784 || start espTX 
-786022784 || end espTX 
-786022785 || awaiting sleep: kA=1 
-786022785 || start espTX 
-786022786 || end espTX 
-786022788 || awaiting sleep: kA=4 
-786022788 || start espTX 
-786022789 || end espTX 
-786022790 || awaiting sleep: kA=7 
-786022790 || start espTX 
-786022790 || 
-
- NEW INTSTANCE | tNow=786022790
- 
-786022790 || awaiting sleep: kA=3 
-786022790 || start espTX 
-786022791 || end espTX 
-786022792 || awaiting sleep: kA=6 
-786022792 || start espTX 
-786022793 || end espTX 
-786022794 || awaiting sleep: kA=9 
-786022794 || start espTX 
-786022794 || end espTX 
-786022795 || Going to ds: kA=9 
-786022797 || awaiting sleep: kA=-17 
-786022797 || start espTX 
-786022797 || end espTX 
-786022798 || awaiting sleep: kA=-14 
-786022798 || start espTX 
-786022799 || end espTX 
-786022800 || awaiting sleep: kA=-11 
-786022800 || start espTX 
-786022800 || end espTX 
-786022802 || awaiting sleep: kA=-8 
-786022802 || start espTX 
-786022802 || end espTX 
-786022803 || awaiting sleep: kA=-5 
-786022803 || start espTX 
-786022804 || end espTX 
-786022805 || awaiting sleep: kA=-2 
-786022805 || start espTX 
-786022806 || end espTX 
-786022807 || awaiting sleep: kA=1 
-786022807 || start espTX 
-786022807 || end espTX 
-786022811 || 
-
- NEW INTSTANCE | tNow=786022811
- 
-786022811 || awaiting sleep: kA=3 
-786022811 || start espTX 
-786022811 || end espTX 
-786022813 || awaiting sleep: kA=6 
-786022813 || start espTX 
-786022813 || end espTX 
-786022814 || awaiting sleep: kA=9 
-786022814 || start espTX 
-786022815 || end espTX 
-786022816 || Going to ds: kA=9 
-786022877 || awaiting sleep: kA=3 
-786022877 || start espTX 
-786022878 || end espTX 
-786022879 || awaiting sleep: kA=6 
-786022879 || start espTX 
-786022880 || end espTX 
-786022881 || awaiting sleep: kA=9 
-786022881 || start espTX 
-786022881 || end espTX 
-786022883 || Going to ds: kA=9 
-786022945 || awaiting sleep: kA=3 
-786022945 || start espTX 
-786022945 || end espTX 
-786022946 || awaiting sleep: kA=6 
-786022946 || start espTX 
-786022947 || end espTX 
-786022948 || awaiting sleep: kA=9 
-786022948 || start espTX 
-786022948 || end espTX 
-786022949 || Going to ds: kA=9 
-786023010 || awaiting sleep: kA=3 
-786023011 || start espTX 
-786023011 || end espTX 
-786023012 || awaiting sleep: kA=6 
-786023012 || start espTX 
-786023012 || end espTX 
-786023014 || awaiting sleep: kA=9 
-786023014 || start espTX 
-786023014 || end espTX 
-786023015 || Going to ds: kA=9 
-786023076 || awaiting sleep: kA=3 
-786023076 || start espTX 
-786023077 || end espTX 
-786023078 || awaiting sleep: kA=6 
-786023078 || start espTX 
-786023078 || end espTX 
-786023079 || awaiting sleep: kA=9 
-786023080 || start espTX 
-786023080 || end espTX 
-786023081 || Going to ds: kA=9 
-786023142 || awaiting sleep: kA=3 
-786023142 || start espTX 
-786023143 || end espTX 
-786023144 || awaiting sleep: kA=6 
-786023144 || start espTX 
-786023144 || end espTX 
-786023145 || awaiting sleep: kA=9 
-786023145 || start espTX 
-786023146 || end espTX 
-786023147 || Going to ds: kA=9 
-786023208 || awaiting sleep: kA=3 
-786023208 || start espTX 
-786023209 || end espTX 
-786023210 || awaiting sleep: kA=6 
-786023210 || start espTX 
-786023210 || end espTX 
-786023211 || awaiting sleep: kA=9 
-786023211 || start espTX 
-786023212 || end espTX 
-786023213 || Going to ds: kA=9 
-786023274 || awaiting sleep: kA=3 
-786023274 || start espTX 
-786023275 || end espTX 
-786023276 || awaiting sleep: kA=6 
-786023276 || start espTX 
-786023276 || end espTX 
-786023277 || awaiting sleep: kA=9 
-786023277 || start espTX 
-786023278 || end espTX 
-786023279 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-1 || awaiting sleep: kA=3 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=6 
-3 || start espTX 
-4 || end espTX 
-5 || awaiting sleep: kA=9 
-5 || start espTX 
-5 || end espTX 
-6 || Going to ds: kA=9 
-68 || awaiting sleep: kA=3 
-68 || start espTX 
-68 || end espTX 
-69 || awaiting sleep: kA=6 
-69 || start espTX 
-70 || end espTX 
-71 || awaiting sleep: kA=9 
-71 || start espTX 
-71 || end espTX 
-73 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=9 
-4 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-66 || awaiting sleep: kA=3 
-66 || start espTX 
-67 || end espTX 
-68 || awaiting sleep: kA=6 
-68 || start espTX 
-69 || end espTX 
-70 || awaiting sleep: kA=9 
-70 || start espTX 
-70 || end espTX 
-71 || Going to ds: kA=9 
-786024906 || 
-
- NEW INTSTANCE | tNow=786024906
- 
-786024906 || awaiting sleep: kA=3 
-786024906 || start espTX 
-786024907 || end espTX 
-786024908 || awaiting sleep: kA=6 
-786024908 || start espTX 
-786024908 || end espTX 
-786024910 || awaiting sleep: kA=9 
-786024910 || start espTX 
-786024910 || end espTX 
-786024911 || Going to ds: kA=9 
-786024936 || 
-
- NEW INTSTANCE | tNow=786024936
- 
-786024936 || awaiting sleep: kA=3 
-786024936 || start espTX 
-786024937 || end espTX 
-786024938 || awaiting sleep: kA=6 
-786024938 || start espTX 
-786024941 || 
-
- NEW INTSTANCE | tNow=786024941
- 
-786024941 || awaiting sleep: kA=3 
-786024941 || start espTX 
-786024941 || end espTX 
-786024942 || awaiting sleep: kA=6 
-786024943 || start espTX 
-786024943 || end espTX 
-786024944 || awaiting sleep: kA=9 
-786024944 || start espTX 
-786024945 || end espTX 
-786024946 || Going to ds: kA=9 
-786024951 || 
-
- NEW INTSTANCE | tNow=786024951
- 
-786024951 || awaiting sleep: kA=3 
-786024951 || start espTX 
-786024951 || end espTX 
-786024953 || awaiting sleep: kA=6 
-786024953 || start espTX 
-786024953 || end espTX 
-786024954 || awaiting sleep: kA=9 
-786024954 || start espTX 
-786024955 || end espTX 
-786024956 || Going to ds: kA=9 
-786024964 || 
-
- NEW INTSTANCE | tNow=786024964
- 
-786024965 || awaiting sleep: kA=3 
-786024965 || start espTX 
-786024965 || end espTX 
-786024966 || awaiting sleep: kA=6 
-786024967 || start espTX 
-786024967 || end espTX 
-786024968 || awaiting sleep: kA=9 
-786024968 || start espTX 
-786024969 || end espTX 
-786024970 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=9 
-3 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-1 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-4 || awaiting sleep: kA=9 
-4 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-1 || awaiting sleep: kA=3 
-1 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-4 || end espTX 
-5 || awaiting sleep: kA=9 
-5 || start espTX 
-5 || end espTX 
-6 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-0 || end espTX 
-1 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=9 
-3 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=9 
-3 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-144 || 
-
- NEW INTSTANCE | tNow=144
- 
-144 || awaiting sleep: kA=3 
-144 || start espTX 
-145 || end espTX 
-146 || awaiting sleep: kA=6 
-146 || start espTX 
-147 || end espTX 
-148 || awaiting sleep: kA=9 
-148 || start espTX 
-148 || end espTX 
-149 || Going to ds: kA=9 
-154 || 
-
- NEW INTSTANCE | tNow=154
- 
-154 || awaiting sleep: kA=3 
-154 || start espTX 
-155 || end espTX 
-156 || awaiting sleep: kA=6 
-156 || start espTX 
-156 || end espTX 
-158 || awaiting sleep: kA=9 
-158 || start espTX 
-158 || end espTX 
-159 || Going to ds: kA=9 
-277 || 
-
- NEW INTSTANCE | tNow=277
- 
-277 || awaiting sleep: kA=3 
-277 || start espTX 
-277 || end espTX 
-278 || awaiting sleep: kA=6 
-279 || start espTX 
-279 || end espTX 
-280 || awaiting sleep: kA=9 
-280 || start espTX 
-281 || end espTX 
-282 || Going to ds: kA=9 
-310 || 
-
- NEW INTSTANCE | tNow=310
- 
-311 || awaiting sleep: kA=3 
-311 || start espTX 
-311 || end espTX 
-312 || awaiting sleep: kA=6 
-313 || start espTX 
-313 || end espTX 
-314 || awaiting sleep: kA=9 
-314 || start espTX 
-315 || end espTX 
-316 || Going to ds: kA=9 
-327 || 
-
- NEW INTSTANCE | tNow=327
- 
-327 || awaiting sleep: kA=3 
-327 || start espTX 
-328 || end espTX 
-329 || awaiting sleep: kA=6 
-329 || start espTX 
-329 || end espTX 
-331 || awaiting sleep: kA=9 
-331 || start espTX 
-331 || end espTX 
-332 || Going to ds: kA=9 
-440 || 
-
- NEW INTSTANCE | tNow=440
- 
-440 || awaiting sleep: kA=3 
-440 || start espTX 
-440 || end espTX 
-442 || awaiting sleep: kA=6 
-442 || start espTX 
-442 || end espTX 
-443 || awaiting sleep: kA=9 
-443 || start espTX 
-444 || end espTX 
-445 || Going to ds: kA=9 
-533 || 
-
- NEW INTSTANCE | tNow=533
- 
-533 || awaiting sleep: kA=3 
-533 || start espTX 
-534 || end espTX 
-535 || awaiting sleep: kA=6 
-535 || start espTX 
-535 || end espTX 
-537 || awaiting sleep: kA=9 
-537 || start espTX 
-537 || end espTX 
-538 || Going to ds: kA=9 
-910 || 
-
- NEW INTSTANCE | tNow=910
- 
-910 || awaiting sleep: kA=3 
-911 || start espTX 
-911 || end espTX 
-912 || awaiting sleep: kA=6 
-912 || start espTX 
-913 || end espTX 
-914 || awaiting sleep: kA=9 
-914 || start espTX 
-915 || end espTX 
-916 || Going to ds: kA=9 
-932 || 
-
- NEW INTSTANCE | tNow=932
- 
-932 || awaiting sleep: kA=3 
-932 || start espTX 
-933 || end espTX 
-934 || awaiting sleep: kA=6 
-934 || start espTX 
-934 || end espTX 
-937 || awaiting sleep: kA=9 
-937 || start espTX 
-937 || end espTX 
-938 || Going to ds: kA=9 
-955 || 
-
- NEW INTSTANCE | tNow=955
- 
-955 || awaiting sleep: kA=3 
-955 || start espTX 
-956 || end espTX 
-957 || awaiting sleep: kA=6 
-957 || start espTX 
-957 || end espTX 
-959 || awaiting sleep: kA=9 
-959 || start espTX 
-959 || end espTX 
-960 || Going to ds: kA=9 
-964 || 
-
- NEW INTSTANCE | tNow=964
- 
-964 || awaiting sleep: kA=3 
-965 || start espTX 
-965 || end espTX 
-966 || awaiting sleep: kA=6 
-966 || start espTX 
-967 || end espTX 
-968 || awaiting sleep: kA=9 
-968 || start espTX 
-968 || end espTX 
-969 || Going to ds: kA=9 
-971 || 
-
- NEW INTSTANCE | tNow=971
- 
-971 || awaiting sleep: kA=3 
-972 || start espTX 
-972 || end espTX 
-973 || awaiting sleep: kA=6 
-973 || start espTX 
-973 || end espTX 
-975 || awaiting sleep: kA=9 
-975 || start espTX 
-975 || end espTX 
-976 || Going to ds: kA=9 
-1039 || 
-
- NEW INTSTANCE | tNow=1039
- 
-1039 || awaiting sleep: kA=3 
-1039 || start espTX 
-1040 || end espTX 
-1041 || awaiting sleep: kA=6 
-1041 || start espTX 
-1041 || end espTX 
-1043 || awaiting sleep: kA=9 
-1043 || start espTX 
-1043 || end espTX 
-1044 || Going to ds: kA=9 
-1052 || 
-
- NEW INTSTANCE | tNow=1052
- 
-1052 || awaiting sleep: kA=3 
-1052 || start espTX 
-1053 || end espTX 
-1054 || awaiting sleep: kA=6 
-1054 || start espTX 
-1054 || end espTX 
-1055 || awaiting sleep: kA=9 
-1055 || start espTX 
-1056 || end espTX 
-1057 || Going to ds: kA=9 
-1075 || 
-
- NEW INTSTANCE | tNow=1075
- 
-1075 || awaiting sleep: kA=3 
-1077 || start espTX 
-1077 || end espTX 
-1078 || awaiting sleep: kA=6 
-1078 || start espTX 
-1079 || end espTX 
-1080 || awaiting sleep: kA=9 
-1080 || start espTX 
-1080 || end espTX 
-1081 || Going to ds: kA=9 
-1099 || 
-
- NEW INTSTANCE | tNow=1099
- 
-1100 || awaiting sleep: kA=3 
-1100 || start espTX 
-1100 || end espTX 
-1101 || awaiting sleep: kA=6 
-1101 || start espTX 
-1102 || end espTX 
-1103 || awaiting sleep: kA=9 
-1103 || start espTX 
-1103 || end espTX 
-1104 || Going to ds: kA=9 
-1107 || 
-
- NEW INTSTANCE | tNow=1107
- 
-1107 || awaiting sleep: kA=3 
-1107 || start espTX 
-1108 || end espTX 
-1109 || awaiting sleep: kA=6 
-1109 || start espTX 
-1109 || end espTX 
-1110 || awaiting sleep: kA=9 
-1111 || start espTX 
-1111 || end espTX 
-1112 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-4 || awaiting sleep: kA=9 
-4 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-55 || 
-
- NEW INTSTANCE | tNow=55
- 
-55 || awaiting sleep: kA=3 
-55 || start espTX 
-56 || end espTX 
-57 || awaiting sleep: kA=6 
-57 || start espTX 
-57 || end espTX 
-58 || awaiting sleep: kA=9 
-59 || start espTX 
-59 || end espTX 
-60 || Going to ds: kA=9 
-68 || 
-
- NEW INTSTANCE | tNow=68
- 
-68 || awaiting sleep: kA=3 
-68 || start espTX 
-69 || end espTX 
-70 || awaiting sleep: kA=6 
-70 || start espTX 
-71 || end espTX 
-72 || awaiting sleep: kA=9 
-73 || start espTX 
-73 || end espTX 
-74 || Going to ds: kA=9 
-83 || 
-
- NEW INTSTANCE | tNow=83
- 
-83 || awaiting sleep: kA=3 
-83 || start espTX 
-83 || end espTX 
-84 || awaiting sleep: kA=6 
-85 || start espTX 
-85 || end espTX 
-86 || awaiting sleep: kA=9 
-86 || start espTX 
-87 || end espTX 
-88 || Going to ds: kA=9 
-92 || 
-
- NEW INTSTANCE | tNow=92
- 
-92 || awaiting sleep: kA=3 
-92 || start espTX 
-93 || end espTX 
-94 || awaiting sleep: kA=6 
-94 || start espTX 
-94 || end espTX 
-96 || awaiting sleep: kA=9 
-96 || start espTX 
-96 || end espTX 
-97 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-1 || end espTX 
-2 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-4 || awaiting sleep: kA=9 
-4 || start espTX 
-4 || end espTX 
-5 || Going to ds: kA=9 
-9 || 
-
- NEW INTSTANCE | tNow=9
- 
-9 || awaiting sleep: kA=3 
-9 || start espTX 
-10 || end espTX 
-11 || awaiting sleep: kA=6 
-11 || start espTX 
-11 || end espTX 
-12 || awaiting sleep: kA=9 
-13 || start espTX 
-13 || end espTX 
-14 || Going to ds: kA=9 
-120 || 
-
- NEW INTSTANCE | tNow=120
- 
-120 || awaiting sleep: kA=3 
-120 || start espTX 
-120 || end espTX 
-122 || awaiting sleep: kA=6 
-122 || start espTX 
-122 || end espTX 
-123 || awaiting sleep: kA=9 
-124 || start espTX 
-124 || end espTX 
-125 || Going to ds: kA=9 
-128 || 
-
- NEW INTSTANCE | tNow=128
- 
-128 || awaiting sleep: kA=3 
-128 || start espTX 
-129 || end espTX 
-131 || awaiting sleep: kA=6 
-131 || start espTX 
-131 || end espTX 
-132 || awaiting sleep: kA=9 
-133 || start espTX 
-133 || end espTX 
-134 || Going to ds: kA=9 
-147 || 
-
- NEW INTSTANCE | tNow=147
- 
-147 || awaiting sleep: kA=3 
-148 || start espTX 
-148 || end espTX 
-149 || awaiting sleep: kA=6 
-149 || start espTX 
-150 || end espTX 
-151 || awaiting sleep: kA=9 
-151 || start espTX 
-151 || end espTX 
-152 || Going to ds: kA=9 
-199 || 
-
- NEW INTSTANCE | tNow=199
- 
-199 || awaiting sleep: kA=3 
-199 || start espTX 
-200 || end espTX 
-201 || awaiting sleep: kA=6 
-201 || start espTX 
-201 || end espTX 
-202 || awaiting sleep: kA=9 
-202 || start espTX 
-203 || end espTX 
-204 || Going to ds: kA=9 
-220 || 
-
- NEW INTSTANCE | tNow=220
- 
-220 || awaiting sleep: kA=3 
-220 || start espTX 
-220 || end espTX 
-222 || awaiting sleep: kA=6 
-222 || start espTX 
-222 || end espTX 
-223 || awaiting sleep: kA=9 
-223 || start espTX 
-224 || end espTX 
-225 || Going to ds: kA=9 
-229 || 
-
- NEW INTSTANCE | tNow=229
- 
-229 || awaiting sleep: kA=3 
-229 || start espTX 
-229 || end espTX 
-230 || awaiting sleep: kA=6 
-230 || start espTX 
-231 || end espTX 
-232 || awaiting sleep: kA=9 
-232 || start espTX 
-232 || end espTX 
-234 || Going to ds: kA=9 
-240 || 
-
- NEW INTSTANCE | tNow=240
- 
-240 || awaiting sleep: kA=3 
-240 || start espTX 
-241 || end espTX 
-242 || awaiting sleep: kA=6 
-242 || start espTX 
-242 || end espTX 
-243 || awaiting sleep: kA=9 
-244 || start espTX 
-245 || end espTX 
-246 || Going to ds: kA=9 
-0 || 
-
- NEW INTSTANCE | tNow=0
- 
-0 || awaiting sleep: kA=3 
-0 || start espTX 
-0 || end espTX 
-1 || awaiting sleep: kA=6 
-2 || start espTX 
-2 || end espTX 
-3 || awaiting sleep: kA=9 
-3 || start espTX 
-4 || end espTX 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || (' ---------------------------- ',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('\n\n NEW INTSTANCE | tLast=0\n',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('ln 104 reset_cause: reset_cause()=1', <class 'int'>) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('awaiting sleep: kA=1',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('start espTX',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('end espTX',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('awaiting sleep: kA=2',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('start espTX',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('end espTX',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('awaiting sleep: kA=3',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('start espTX',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('awaiting sleep: kA=4',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('awaiting sleep: kA=5',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('start espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('end espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('Going to ds: kA=5',) {} 
+6curTime=13 | timeSinceLast=HR=0 min=0, sec=7 || (' ---------------------------- ',) {} 
+curTime=13 | timeSinceLast=HR=0 min=0, sec=7 || ('\n\n NEW INTSTANCE | tLast=6\n',) {} 
+curTime=13 | timeSinceLast=HR=0 min=0, sec=7 || ('ln 104 reset_cause: reset_cause()=4', <class 'int'>) {} 
+curTime=13 | timeSinceLast=HR=0 min=0, sec=7 || ('awaiting sleep: kA=1',) {} 
+curTime=13 | timeSinceLast=HR=0 min=0, sec=7 || ('start espTX',) {} 
+curTime=14 | timeSinceLast=HR=0 min=0, sec=8 || ('end espTX',) {} 
+curTime=14 | timeSinceLast=HR=0 min=0, sec=8 || ('awaiting sleep: kA=2',) {} 
+curTime=14 | timeSinceLast=HR=0 min=0, sec=8 || ('start espTX',) {} 
+curTime=15 | timeSinceLast=HR=0 min=0, sec=9 || ('end espTX',) {} 
+curTime=15 | timeSinceLast=HR=0 min=0, sec=9 || ('awaiting sleep: kA=3',) {} 
+curTime=15 | timeSinceLast=HR=0 min=0, sec=9 || ('start espTX',) {} 
+curTime=16 | timeSinceLast=HR=0 min=0, sec=10 || ('end espTX',) {} 
+curTime=16 | timeSinceLast=HR=0 min=0, sec=10 || ('awaiting sleep: kA=4',) {} 
+curTime=16 | timeSinceLast=HR=0 min=0, sec=10 || ('start espTX',) {} 
+curTime=17 | timeSinceLast=HR=0 min=0, sec=11 || ('end espTX',) {} 
+curTime=17 | timeSinceLast=HR=0 min=0, sec=11 || ('awaiting sleep: kA=5',) {} 
+curTime=17 | timeSinceLast=HR=0 min=0, sec=11 || ('start espTX',) {} 
+curTime=18 | timeSinceLast=HR=0 min=0, sec=12 || ('end espTX',) {} 
+curTime=18 | timeSinceLast=HR=0 min=0, sec=12 || ('Going to ds: kA=5',) {} 
+20curTime=1 | timeSinceLast=HR=-1 min=59, sec=41 || (' ---------------------------- ',) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=41 || ('\n\n NEW INTSTANCE | tLast=20\n',) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=41 || ('ln 104 reset_cause: reset_cause()=1', <class 'int'>) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=41 || ('awaiting sleep: kA=1',) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=41 || ('start espTX',) {} 
+curTime=2 | timeSinceLast=HR=-1 min=59, sec=42 || ('end espTX',) {} 
+curTime=2 | timeSinceLast=HR=-1 min=59, sec=42 || ('awaiting sleep: kA=2',) {} 
+curTime=2 | timeSinceLast=HR=-1 min=59, sec=42 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=-1 min=59, sec=43 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=-1 min=59, sec=43 || ('awaiting sleep: kA=3',) {} 
+curTime=3 | timeSinceLast=HR=-1 min=59, sec=43 || ('start espTX',) {} 
+curTime=4 | timeSinceLast=HR=-1 min=59, sec=44 || ('end espTX',) {} 
+curTime=4 | timeSinceLast=HR=-1 min=59, sec=44 || ('awaiting sleep: kA=4',) {} 
+curTime=4 | timeSinceLast=HR=-1 min=59, sec=44 || ('start espTX',) {} 
+curTime=5 | timeSinceLast=HR=-1 min=59, sec=45 || ('end espTX',) {} 
+curTime=5 | timeSinceLast=HR=-1 min=59, sec=45 || ('awaiting sleep: kA=5',) {} 
+curTime=5 | timeSinceLast=HR=-1 min=59, sec=45 || ('start espTX',) {} 
+curTime=6 | timeSinceLast=HR=-1 min=59, sec=46 || ('end espTX',) {} 
+curTime=6 | timeSinceLast=HR=-1 min=59, sec=46 || ('Going to ds: kA=5',) {} 
+8curTime=4869 | timeSinceLast=HR=1 min=21, sec=1 || (' ---------------------------- ',) {} 
+curTime=4870 | timeSinceLast=HR=1 min=21, sec=2 || ('\n\n NEW INTSTANCE | tLast=8\n',) {} 
+curTime=4870 | timeSinceLast=HR=1 min=21, sec=2 || ('ln 104 reset_cause: reset_cause()=4', <class 'int'>) {} 
+curTime=4870 | timeSinceLast=HR=1 min=21, sec=2 || ('awaiting sleep: kA=1',) {} 
+curTime=4870 | timeSinceLast=HR=1 min=21, sec=2 || ('start espTX',) {} 
+curTime=4870 | timeSinceLast=HR=1 min=21, sec=2 || ('end espTX',) {} 
+curTime=4871 | timeSinceLast=HR=1 min=21, sec=3 || ('awaiting sleep: kA=2',) {} 
+curTime=4871 | timeSinceLast=HR=1 min=21, sec=3 || ('start espTX',) {} 
+curTime=4871 | timeSinceLast=HR=1 min=21, sec=3 || ('end espTX',) {} 
+curTime=4872 | timeSinceLast=HR=1 min=21, sec=4 || ('awaiting sleep: kA=3',) {} 
+curTime=4872 | timeSinceLast=HR=1 min=21, sec=4 || ('start espTX',) {} 
+curTime=4872 | timeSinceLast=HR=1 min=21, sec=4 || ('end espTX',) {} 
+curTime=4872 | timeSinceLast=HR=1 min=21, sec=4 || ('awaiting sleep: kA=4',) {} 
+curTime=4872 | timeSinceLast=HR=1 min=21, sec=4 || ('start espTX',) {} 
+curTime=4873 | timeSinceLast=HR=1 min=21, sec=5 || ('end espTX',) {} 
+curTime=4873 | timeSinceLast=HR=1 min=21, sec=5 || ('awaiting sleep: kA=5',) {} 
+curTime=4873 | timeSinceLast=HR=1 min=21, sec=5 || ('start espTX',) {} 
+curTime=4874 | timeSinceLast=HR=1 min=21, sec=6 || ('end espTX',) {} 
+curTime=4874 | timeSinceLast=HR=1 min=21, sec=6 || ('Going to ds: kA=5',) {} 
+4876curTime=43444 | timeSinceLast=HR=10 min=42, sec=48 || (' ---------------------------- ',) {} 
+curTime=43445 | timeSinceLast=HR=10 min=42, sec=49 || ('\n\n NEW INTSTANCE | tLast=4876\n',) {} 
+curTime=43445 | timeSinceLast=HR=10 min=42, sec=49 || ('ln 104 reset_cause: reset_cause()=4', <class 'int'>) {} 
+curTime=43445 | timeSinceLast=HR=10 min=42, sec=49 || ('awaiting sleep: kA=1',) {} 
+curTime=43445 | timeSinceLast=HR=10 min=42, sec=49 || ('start espTX',) {} 
+curTime=43445 | timeSinceLast=HR=10 min=42, sec=49 || ('end espTX',) {} 
+curTime=43446 | timeSinceLast=HR=10 min=42, sec=50 || ('awaiting sleep: kA=2',) {} 
+curTime=43446 | timeSinceLast=HR=10 min=42, sec=50 || ('start espTX',) {} 
+curTime=43446 | timeSinceLast=HR=10 min=42, sec=50 || ('end espTX',) {} 
+curTime=43447 | timeSinceLast=HR=10 min=42, sec=51 || ('awaiting sleep: kA=3',) {} 
+curTime=43447 | timeSinceLast=HR=10 min=42, sec=51 || ('start espTX',) {} 
+curTime=43447 | timeSinceLast=HR=10 min=42, sec=51 || ('end espTX',) {} 
+curTime=43448 | timeSinceLast=HR=10 min=42, sec=52 || ('awaiting sleep: kA=4',) {} 
+curTime=43448 | timeSinceLast=HR=10 min=42, sec=52 || ('start espTX',) {} 
+curTime=43448 | timeSinceLast=HR=10 min=42, sec=52 || ('end espTX',) {} 
+curTime=43449 | timeSinceLast=HR=10 min=42, sec=53 || ('awaiting sleep: kA=5',) {} 
+curTime=43449 | timeSinceLast=HR=10 min=42, sec=53 || ('start espTX',) {} 
+curTime=43449 | timeSinceLast=HR=10 min=42, sec=53 || ('end espTX',) {} 
+curTime=43450 | timeSinceLast=HR=10 min=42, sec=54 || ('Going to ds: kA=5',) {} 
+43452curTime=43629 | timeSinceLast=HR=0 min=2, sec=57 || (' ---------------------------- ',) {} 
+curTime=43630 | timeSinceLast=HR=0 min=2, sec=58 || ('\n\n NEW INTSTANCE | tLast=43452\n',) {} 
+curTime=43630 | timeSinceLast=HR=0 min=2, sec=58 || ('ln 104 reset_cause: reset_cause()=4', <class 'int'>) {} 
+curTime=43630 | timeSinceLast=HR=0 min=2, sec=58 || ('awaiting sleep: kA=1',) {} 
+curTime=43630 | timeSinceLast=HR=0 min=2, sec=58 || ('start espTX',) {} 
+curTime=43631 | timeSinceLast=HR=0 min=2, sec=59 || ('end espTX',) {} 
+curTime=43631 | timeSinceLast=HR=0 min=2, sec=59 || ('awaiting sleep: kA=2',) {} 
+curTime=43631 | timeSinceLast=HR=0 min=2, sec=59 || ('start espTX',) {} 
+curTime=43632 | timeSinceLast=HR=0 min=3, sec=0 || ('end espTX',) {} 
+curTime=43632 | timeSinceLast=HR=0 min=3, sec=0 || ('awaiting sleep: kA=3',) {} 
+curTime=43632 | timeSinceLast=HR=0 min=3, sec=0 || ('start espTX',) {} 
+curTime=43633 | timeSinceLast=HR=0 min=3, sec=1 || ('end espTX',) {} 
+curTime=43633 | timeSinceLast=HR=0 min=3, sec=1 || ('awaiting sleep: kA=4',) {} 
+curTime=43633 | timeSinceLast=HR=0 min=3, sec=1 || ('start espTX',) {} 
+curTime=43634 | timeSinceLast=HR=0 min=3, sec=2 || ('end espTX',) {} 
+curTime=43634 | timeSinceLast=HR=0 min=3, sec=2 || ('awaiting sleep: kA=5',) {} 
+curTime=43634 | timeSinceLast=HR=0 min=3, sec=2 || ('start espTX',) {} 
+curTime=43635 | timeSinceLast=HR=0 min=3, sec=3 || ('end espTX',) {} 
+curTime=43635 | timeSinceLast=HR=0 min=3, sec=3 || ('Going to ds: kA=5',) {} 
+43637curTime=43658 | timeSinceLast=HR=0 min=0, sec=21 || (' ---------------------------- ',) {} 
+curTime=43659 | timeSinceLast=HR=0 min=0, sec=22 || ('\n\n NEW INTSTANCE | tLast=43637\n',) {} 
+curTime=43659 | timeSinceLast=HR=0 min=0, sec=22 || ('ln 104 reset_cause: reset_cause()=4', <class 'int'>) {} 
+curTime=43659 | timeSinceLast=HR=0 min=0, sec=22 || ('awaiting sleep: kA=1',) {} 
+curTime=43659 | timeSinceLast=HR=0 min=0, sec=22 || ('start espTX',) {} 
+curTime=43659 | timeSinceLast=HR=0 min=0, sec=22 || ('end espTX',) {} 
+curTime=43660 | timeSinceLast=HR=0 min=0, sec=23 || ('awaiting sleep: kA=2',) {} 
+curTime=43660 | timeSinceLast=HR=0 min=0, sec=23 || ('start espTX',) {} 
+curTime=43660 | timeSinceLast=HR=0 min=0, sec=23 || ('end espTX',) {} 
+curTime=43661 | timeSinceLast=HR=0 min=0, sec=24 || ('awaiting sleep: kA=3',) {} 
+curTime=43661 | timeSinceLast=HR=0 min=0, sec=24 || ('start espTX',) {} 
+curTime=43661 | timeSinceLast=HR=0 min=0, sec=24 || ('end espTX',) {} 
+curTime=43662 | timeSinceLast=HR=0 min=0, sec=25 || ('awaiting sleep: kA=4',) {} 
+curTime=43662 | timeSinceLast=HR=0 min=0, sec=25 || ('start espTX',) {} 
+curTime=43662 | timeSinceLast=HR=0 min=0, sec=25 || ('end espTX',) {} 
+curTime=43662 | timeSinceLast=HR=0 min=0, sec=25 || ('awaiting sleep: kA=5',) {} 
+curTime=43663 | timeSinceLast=HR=0 min=0, sec=26 || ('start espTX',) {} 
+curTime=43663 | timeSinceLast=HR=0 min=0, sec=26 || ('end espTX',) {} 
+curTime=43663 | timeSinceLast=HR=0 min=0, sec=26 || ('Going to ds: kA=5',) {} 
+43666curTime=43668 | timeSinceLast=HR=0 min=0, sec=2 || (' ---------------------------- ',) {} 
+curTime=43668 | timeSinceLast=HR=0 min=0, sec=2 || ('\n\n NEW INTSTANCE | tLast=43666\n',) {} 
+curTime=43669 | timeSinceLast=HR=0 min=0, sec=3 || ('ln 104 reset_cause: reset_cause()=4', <class 'int'>) {} 
+curTime=43669 | timeSinceLast=HR=0 min=0, sec=3 || ('awaiting sleep: kA=1',) {} 
+curTime=43669 | timeSinceLast=HR=0 min=0, sec=3 || ('start espTX',) {} 
+curTime=43669 | timeSinceLast=HR=0 min=0, sec=3 || ('end espTX',) {} 
+curTime=43670 | timeSinceLast=HR=0 min=0, sec=4 || ('awaiting sleep: kA=2',) {} 
+curTime=43670 | timeSinceLast=HR=0 min=0, sec=4 || ('start espTX',) {} 
+curTime=43670 | timeSinceLast=HR=0 min=0, sec=4 || ('end espTX',) {} 
+curTime=43671 | timeSinceLast=HR=0 min=0, sec=5 || ('awaiting sleep: kA=3',) {} 
+curTime=43671 | timeSinceLast=HR=0 min=0, sec=5 || ('start espTX',) {} 
+curTime=43671 | timeSinceLast=HR=0 min=0, sec=5 || ('end espTX',) {} 
+curTime=43672 | timeSinceLast=HR=0 min=0, sec=6 || ('awaiting sleep: kA=4',) {} 
+curTime=43672 | timeSinceLast=HR=0 min=0, sec=6 || ('start espTX',) {} 
+curTime=43672 | timeSinceLast=HR=0 min=0, sec=6 || ('end espTX',) {} 
+curTime=43673 | timeSinceLast=HR=0 min=0, sec=7 || ('awaiting sleep: kA=5',) {} 
+curTime=43673 | timeSinceLast=HR=0 min=0, sec=7 || ('start espTX',) {} 
+curTime=43673 | timeSinceLast=HR=0 min=0, sec=7 || ('end espTX',) {} 
+curTime=43674 | timeSinceLast=HR=0 min=0, sec=8 || ('Going to ds: kA=5',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || (' ---------------------------- ',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('\n\n NEW INTSTANCE | tLast=0\n',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('ln 104 reset_cause: reset_cause()=1', <class 'int'>) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('awaiting sleep: kA=1',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('start espTX',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('end espTX',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('awaiting sleep: kA=2',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('awaiting sleep: kA=3',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('end espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('awaiting sleep: kA=4',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('start espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('end espTX',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('awaiting sleep: kA=5',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('start espTX',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('end espTX',) {} 
+curTime=6 | timeSinceLast=HR=0 min=0, sec=6 || ('Going to ds: kA=5',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || (' ---------------------------- ',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('\n\n NEW INTSTANCE | tLast=0\n',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('ln 104 reset_cause: reset_cause()=1', <class 'int'>) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('awaiting sleep: kA=1',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('awaiting sleep: kA=2',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('start espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('end espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('awaiting sleep: kA=3',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('start espTX',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('end espTX',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('awaiting sleep: kA=4',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('start espTX',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || (' ---------------------------- ',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('\n\n NEW INTSTANCE | tLast=0\n',) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('ln 104 reset_cause: reset_cause()=1', <class 'int'>) {} 
+curTime=0 | timeSinceLast=HR=0 min=0, sec=0 || ('awaiting sleep: kA=1',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('start espTX',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('end espTX',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('awaiting sleep: kA=2',) {} 
+curTime=1 | timeSinceLast=HR=0 min=0, sec=1 || ('start espTX',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('end espTX',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('awaiting sleep: kA=3',) {} 
+curTime=2 | timeSinceLast=HR=0 min=0, sec=2 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('awaiting sleep: kA=4',) {} 
+curTime=3 | timeSinceLast=HR=0 min=0, sec=3 || ('start espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('end espTX',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('awaiting sleep: kA=5',) {} 
+curTime=4 | timeSinceLast=HR=0 min=0, sec=4 || ('start espTX',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('end espTX',) {} 
+curTime=5 | timeSinceLast=HR=0 min=0, sec=5 || ('Going to ds: kA=5',) {} 
+7curTime=0 | timeSinceLast=HR=-1 min=59, sec=53 || (' ---------------------------- ',) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=54 || ('\n\n NEW INTSTANCE | tLast=7\n',) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=54 || ('ln 104 reset_cause: reset_cause()=1', <class 'int'>) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=54 || ('awaiting sleep: kA=1',) {} 
+curTime=1 | timeSinceLast=HR=-1 min=59, sec=54 || ('start espTX',) {} 
+curTime=2 | timeSinceLast=HR=-1 min=59, sec=55 || ('end espTX',) {} 
+curTime=2 | timeSinceLast=HR=-1 min=59, sec=55 || ('awaiting sleep: kA=2',) {} 
+curTime=2 | timeSinceLast=HR=-1 min=59, sec=55 || ('start espTX',) {} 
+curTime=3 | timeSinceLast=HR=-1 min=59, sec=56 || ('end espTX',) {} 
+curTime=3 | timeSinceLast=HR=-1 min=59, sec=56 || ('awaiting sleep: kA=3',) {} 
+curTime=3 | timeSinceLast=HR=-1 min=59, sec=56 || ('start espTX',) {} 

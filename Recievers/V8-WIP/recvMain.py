@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-8.0
+v8.1
 
 make a list of each function and the purpose with params and returns in each function:
     - getConfig() - reads the config file
@@ -16,79 +16,82 @@ make a list of each function and the purpose with params and returns in each fun
     - mainThreads() - Main function that runs the server and the recvSetup function
 
 
+#TODO
+Does this after KA is met but base has been reset
+
+232, ('status=[False, 400]',)
+233, ("makePost Start : http://192.168.4.1:8080/recvSetup {'ip': '192.168.4.2', 'tallyID': '1'}",)
+233, ('        ln 167 timeout e=[Errno 113] EHOSTUNREACH',)
+233, ('status=[False, 400]',)
+233, ("makePost Start : http://192.168.4.1:8080/recvSetup {'ip': '192.168.4.2', 'tallyID': '1'}",)
+233, ('        ln 167 timeout e=[Errno 113] EHOSTUNREACH',)
+233
+
+v8.1 12/3:
+- move heartbeat from hidden to global
+- /shutdown resets machine.
+- index2.html displays save msg and reboot
+- homeTest in ln 239
+- machin.reset if recvStup fails after 5 attempts
+
 
 8.0 Nov 30 
-    - Added each funciton and purpose with params and returns
+    - Added each funciton and purpose with params and returns in Top
     - removed mdns import
-    - removed query_mdns_and_dns_address Functiond
-
+    - removed query_mdns_and_dns_address Function and Invocation in mainThread
+    
+    
 """
 
 from machine import Pin, reset, freq
+ 
 
 # changing clock feq normal = 125000000
 freq(250000000)
 
-# All my imports that are built in
 from json import loads
 from time import sleep
 import asyncio
 from requests import post,get
 
 
-# All my imports that are Locally installed
+# my lib
 from connectToWlan import mainFunc
 from lib.neopixel.npDone import setNeo, green, red, blue, off, white
 from lib.microdot.microdot import Microdot, Response
 from cors import CORS
 from utemplate import Template
 from utemplate2 import compiled
-from printF import printF, printFF, printW
-from lib.getConfig import getConf
-
-#Initialze Microdot
 app = Microdot()
+from printF import printF, printFF, printW
 
-# Gets config and returns the object
-def getConfig() -> dict{str,dict{str, str}}:
-    """ 
-    Reads the config file and returns the config
-    Params: 
-        None
-    Returns:
-            dict: config 
-            Example:
-                - {'dipSwitch': {'dip1': '0', 'dip2': '2'}, 'global': {'wlanSSID': 'ssid', 'wlanPassword': 'password'}
-            Syntax:
-                - int(config.items('dipSwitch')['dip1'])
-            Notes:
-                - all keys/values are strings so need to cast to int if needed
 
-"""
+
+def getConfig():
+    from lib.getConfig import getConf
+
     configFileName = 'recvConfig.json'
+    
     config = getConf(configFileName)
+
     return config
 
-# Get the config file and set it to config - Doing this first since other fields bellow need access. 
-config = getConfig()
 
-# Read dip switches and set the tallyID 00 = 1, 10 = 2, 01 = 3, 11 = 4
-def getDipSwitch() -> int:
-    """
-    Reads the dip switches and sets the tallyID
-    Params:
-        None
-    Returns:
-        None
-        Notes:
-            - Sets the tallyID based on the dip switches of type INT
+##### Reading 2 Dip Switches ####
 
-        """
+def getDipSwitch():
     global tallyID
-    ## setting up dip switches Pins based on config file mapping
+    # 00 = 1, 10 = 2, 01 = 3, 11 = 4 
+    # Dip switch 1
     dip1 = Pin(int(config.items('dipSwitch')['dip1']), Pin.IN, Pin.PULL_UP)
+    # Dip switch 2
     dip2 = Pin(int(config.items('dipSwitch')['dip2']), Pin.IN, Pin.PULL_UP)
- 
+    # create 4 variables to store the values of the dip switches
+#     from time import sleep
+#     while True:
+#         sleep(1)
+#         printF(dip1.value(), dip2.value())
+#         
     if dip1.value() == 0:
         if dip2.value() == 0:
             tallyID = 4
@@ -99,10 +102,10 @@ def getDipSwitch() -> int:
             tallyID = 1
         else:
             tallyID = 2       
-    printFF(f"{tallyID=}")
- 
+    printFF(f"Tally ID: {tallyID}")
 
-async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 4 ) -> list[bool, int, string]:
+ 
+async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  reqTimeOut:int = 5 ) -> list[bool, int, string]:
         """
         Function to make a request.post or get with Passed Method,Headers, Timeout
         
@@ -113,16 +116,7 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
             reqTimeOut: timeout whe making a5 request default 5 seconds ( tested and this seems sufficiuent but also on lower side)
             
         Returns:
-            list[bool, str, str] 
-                - bool: POST/GET in 200 HTTP response code range
-                - int: HTTP response code
-                - str: response.text
-
-            # TODO remove Bool and just return status code and response.text
-
-            Example:
-                - [True, 200, 'recvSetup OK']
-                - [False, 400, 'recvSetup Dupe']
+            list[bool, str, str]: sucess: true 200-300 false else, str: 
         
         """
 
@@ -173,7 +167,7 @@ async def index(request):
                     else:
                         printF(f'form key DIFF {config.items(section)[key]} {formData[form_key]} ')
                         config.set(section, key, formData[form_key])
-            
+                            
         config.write('recvConfig.json')
         return await Template('index2.html').render_async(name=config)
         #return await Template('index.html').render_async(name=config)
@@ -245,21 +239,31 @@ async def led(request):
     #printW(f"ledStatus: {ledStatus}")
     out = 'Code Error recv main 164: '
   #  multiplier = 45000
+    
     headAll = request.headers
     if "led" in headAll:
         head = request.headers['led']
         # 0 in 0 index = first button in GPIO In pressed
-        if "0" == head[0]:
+        # home test jig settings - disable
+        homeTest = True
+        if homeTest == True: #00
+            head0 = str(1 - int(head[0]))
+            head1 = str(1 - int(head[1]))
+        else:
+            head0 = head[0]
+            head1 = head[1]
+        
+        if "0" == head0:
             setNeo(red, redLevel)
             out = 'red on'
-        if "1" == head[0]:
+        if "1" == head0:
             out = 'red off, blue on'
             setNeo(blue, blueLevel, 0)
-        if "0" == head[1] or "1" == head[1]:
-            if "0" == head[0]:
+        if "0" == head1 or "1" == head1:
+            if "0" == head0:
                 setNeo(red,redLevel)
                 out = 'red on'
-            elif "0" == head[1]:
+            elif "0" == head1:
                 setNeo(green, greenLevel)
                 out = 'green on'          
        # if "1" == head[0]:
@@ -275,7 +279,8 @@ async def led(request):
 
 @app.route('/shutdown')
 async def shutdown(request):
-    request.app.shutdown()
+    await asyncio.sleep(2)
+    machine.reset()
     return 'The server is shutting down...'
 
 async def recvSetup(config,serverIP,myIP):
@@ -284,17 +289,11 @@ async def recvSetup(config,serverIP,myIP):
     kA = 0
     while True:
        # setNeo((255,165,0), whiteLevel)
-
-        # We are trying to get MDNS IP if server does not reply after 5 attemps
         retry += 1
-        printF(f'recvSetup {retry=}')
         if retry >= 5:
-            printF('starting query mdns ln 237')
-            retry = 0
-            #await query_mdns_and_dns_address(myIP)
-            serverIP = await query_mdns_and_dns_address(myIP)
-            printFF(f'ln 238 {serverIP=} ')
-           # break
+            reset()
+            
+        # We are trying to get MDNS IP if server does not reply after 5 attemps
                     # Sending a post to base and recvSetup with IP and Tally ID
         url = f"{serverIP}{config.items('api')['receiverSetup']}"
         headers = {'ip':myIP, 'tallyID':str(tallyID)}
@@ -344,22 +343,9 @@ async def keepAlive():
 async def mainThreads(apMode, myIP):
     printF('ln 207 mainThread start')
     global serverIP
-    if apMode:
-        pass
-    elif apMode == False:
-        # iF not AP mode try connect to server
-        try:
-            # if IP is in config try to connect just in case its the same as last time
-            if isinstance(config.items('global')['baseStationIP'], str):
-                printF('ln 230')
-                serverIP = "http://"+str(config.items('global')['baseStationIP']) + ":8080"
-            else:
-                printF(('ln 233: ', config.items('global')['baseStationIP']))
-                await asyncio.run(query_mdns_and_dns_address(myIP))
-        except Exception as e:
-            printFF(235, e)
-            await asyncio.run(query_mdns_and_dns_address(myIP))
-            
+
+    serverIP = "http://"+str(config.items('global')['baseStationIP']) + ":8080"
+          
     asyncio.create_task(recvSetup(config,serverIP,myIP))
 
     asyncio.create_task(keepAlive())
@@ -368,12 +354,13 @@ async def mainThreads(apMode, myIP):
 
 
 
+config = getConfig()
 redLevel = int(config.items('tallyBrightness')['red'])
 blueLevel = int(config.items('tallyBrightness')['blue'])
 greenLevel = int(config.items('tallyBrightness')['green'])
 whiteLevel = int(config.items('tallyBrightness')['white'])
-heartBeat = int(config.items('hidden')['heartbeat'])
-keepAlivePush = int(config.items('hidden')['keepAlivePush'])
+heartBeat = int(config.items('global')['heartbeat'])
+keepAlivePush = int(config.items('global')['keepAlivePush'])
 
 setNeo(blue, 50, 0, True)
 
@@ -395,3 +382,6 @@ if __name__ == "__main__":
 
 
 
+
+
+g

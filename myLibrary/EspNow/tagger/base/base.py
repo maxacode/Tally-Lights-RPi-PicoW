@@ -1,8 +1,9 @@
 """
-Base v1.2
+Base v1.4
 
  - setup espNow stuff
  - main - all tasks with asncio
+ - time since last button press tracked.
 
 npDone.py
 """
@@ -23,18 +24,34 @@ def writeFile(*args, **kwargs )-> None:
     """
     Write data to a file with time and pipe separator
     """
-    setNeo(red)
-    curTime = time.time()
-    print(curTime, args, kwargs)
+    try:
+        setNeo(red)
+        curTime = time.time()
+        #print(curTime, args, kwargs)
+        #                90     84 = 6sec
+        time_elapsed = curTime-tLast
+        sec = time_elapsed % 60
+        min = (time_elapsed // 60) % 60
+        HR = time_elapsed // 3600
 
-    with open('logBase.txt', 'a+') as file:
-        file.write(f'{curTime=} || {args} {kwargs} \n')
+        timeSinceLast = (f"{HR=} {min=}, {sec=}")
+            
+        data = f'{curTime=} | {timeSinceLast=} || {args} {kwargs} \n'
+        
+    except Exception as Error:
+        print(Error)
+        data = f'Err writeFile {Error=} \n{time.time()}'
+        
+    finally:
+        with open('logBase.txt', 'a+') as file:
+            file.write(data)
+            
     #await asyncio.
    # sleep(.3)
     
 def espTX()-> None:
     """
-    Send commands to peer broadcast
+    Send commands to peer broadcast 
     """
     global kA, e
     kA = 0 #reset keepAlive counter to 0
@@ -68,14 +85,17 @@ def keepAlive()-> None:
             setNeo((20,20,20))
             sleep(1)
             if dsEnabled:
-                writeFile('ln 62')
+                #writeFile('ln 62')
                 setNeo(off)
                 sleep(1)
-                #deepsleep() # deepsleep()
-                #writeFile('ln 75 reset_cause:', reset_cause())
-                kA = 0
-                #writeFile(f'wake from ls {kA=}')
+                with open('logBase.txt', 'a+') as file:
+                    curTime = str(time.time())
+                    file.write(curTime)
+                               
+                deepsleep() # deepsleep()
+
             else:
+                writeFile('dS False, sleep , ka=0')
                 sleep(10)
                 kA = 0
         else:
@@ -99,10 +119,18 @@ async def main()-> None:
     #butt1.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=espTX)
     asyncio.run(keepAlive())
 
-tNow = time.time()
+try:
+    with open('logBase.txt', 'r') as file:
+        tLast = int(file.readlines()[-1])
+except:
+    tLast = 0 
+
 writeFile(' ---------------------------- ')
-writeFile(f"\n\n NEW INTSTANCE | {tNow=}\n")
-writeFile('ln 104 reset_cause:', reset_cause())
+writeFile(f"\n\n NEW INTSTANCE | {tLast=}\n")
+writeFile(f"ln 104 reset_cause: {reset_cause()=}", type(reset_cause()))
+
+
+    
 
 ### Setup ESP Now
 sta = network.WLAN(network.STA_IF)    # Enable station mode for ESP
@@ -128,4 +156,5 @@ esp32.wake_on_ext0(pin = butt1, level = esp32.WAKEUP_ANY_HIGH)
 
 keepAlive()
  
+
 

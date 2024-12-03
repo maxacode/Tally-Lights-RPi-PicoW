@@ -20,8 +20,8 @@ tally1 = [1,2]
 title = !!pins that are from video switcher
 
 [general]
-neoPixel = 10
 title = hidden
+neoPixel = 10
 apSSID = tallybase
 
 [tallyEnabled]
@@ -32,14 +32,15 @@ tally1 = true
 title = Which Tally is enabled, false or true
 
 [api]
-setTallyBrightness = /setBrightness
+title = hidden
 updatewifi = /updatewifi
 receiverSetup = /recvSetup
 ledControlEndpoint = /led
-title = hidden
+setTallyBrightness = /setBrightness
+version = 6.1
 
 [global]
-wlanSSID = Tell My Wi-Fi Love Her,OC-Staff
+wlanSSID = None
 baseStationName = tallybase
 wlanPassword = GodIsGood!,loveGodloveothers
 title = Global Settings, Wifi Details without Spaces
