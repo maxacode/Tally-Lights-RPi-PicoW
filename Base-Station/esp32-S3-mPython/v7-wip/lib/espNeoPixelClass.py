@@ -85,7 +85,7 @@ class NeoPixelController:
         """Blend two RGB colors by averaging their values."""
         return tuple((c1 + c2) // 2 for c1, c2 in zip(color1, color2))
     
-    def setNeo(self, color, level=None, pid=0, reset=True) -> tuple:
+    def setNeo(self, color, level=None, pid=0, reset=False) -> tuple:
         """
         Set a NeoPixel to a specific color and brightness level.
         
@@ -117,11 +117,11 @@ class NeoPixelController:
         # Apply brightness to the color
         color_with_brightness = self.apply_brightness(color, brightness)
         
-        # Blend colors if reset is False
-        if not reset:
-            current_color = self.strip[pid]
-            color_with_brightness = self.blend_colors(current_color, color_with_brightness)
-        
+        # Blend colors if reset is False - not useful since we have rset
+#         if not reset:
+#             current_color = self.strip[pid]
+#             color_with_brightness = self.blend_colors(current_color, color_with_brightness)
+#         
         # Set the pixel with the adjusted color
         self.strip[pid] = color_with_brightness
         self.strip.write()
@@ -134,13 +134,13 @@ c = _controller
 # Expose the setNeo function for direct use
 setNeo = _controller.setNeo
 
-#import time 
+#import time
 
 # while True:
 #tallyIDStr = 'tally4'
 # = '0'
 
-#setNeo(green, id=int(b))
+setNeo(green, pid=3)
 #     time.sleep(1)
 #     setNeo(red, 5, 2)
 #     time.sleep(1)
@@ -152,3 +152,4 @@ setNeo = _controller.setNeo
 
 # Example usage
 #setNeo(c.gr)  # Uses greenC directly (without string lookup)
+

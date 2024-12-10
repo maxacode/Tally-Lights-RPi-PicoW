@@ -1,34 +1,34 @@
 [tallyBrightness]
 white = 50
-red = 70
+title = Brightness of these Colors
 blue = 30
 green = 70
-title = Brightness of these Colors
+red = 70
 
 [dipSwitch]
 title = hidden
 dip2 = 14
 dip1 = 15
 
+[hidden]
+neoPixel = 28
+title = hidden
+
+[global]
+homeTest = True
+title = Global Settings, add Wifi networks seperated with a "," and no spaces between entries.
+wlanSSID = tallybase
+baseStationName = tallybase.local
+wlanPassword = 
+heartbeat = 16
+resetTest = True
+version = 8.4
+keepAlivePush = 30
+baseStationIP = 192.168.4.1
+
 [api]
 ledControlEndpoint = /led
 title = hidden
 port = 8080
 receiverSetup = /recvSetup
-
-[global]
-homeTest = True
-baseStationName = tallybase.local
-resetTest = True
-baseStationIP = 192.168.4.1
-version = 8.4
-title = Global Settings, add Wifi networks seperated with a "," and no spaces between entries.
-wlanPassword = 
-wlanSSID = tallybase
-heartbeat = 16
-keepAlivePush = 30
-
-[hidden]
-title = hidden
-neoPixel = 28
 

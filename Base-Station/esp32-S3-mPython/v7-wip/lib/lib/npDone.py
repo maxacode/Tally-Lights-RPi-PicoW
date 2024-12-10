@@ -14,10 +14,10 @@ numpix = 5
 pin_10 = Pin(10)
 np = NeoPixel(pin_10, numpix,bpp=3, timing=1)
 
-red = (128, 0, 0)
-green = (0, 128, 0)
-blue = (0, 0, 128)
-white = (40, 40, 40)
+red = (20, 0, 0)
+green = (0, 20, 0)
+blue = (0, 0, 20)
+white = (10, 10, 10)
 off = (0,0,0)
 
 # have a dictionary with all ID's as Key and value as a list of current colors set. Then do this:
@@ -51,8 +51,11 @@ def setNeo(color:tuple[int,int,int], level:int = 100, id:int = 0, reset: bool = 
 
 if __name__== '__main__':
     setNeo(red, 100, 0)
-    setNeo(white, 100, 3, True)
-    setNeo(blue, 100, 2)
+    setNeo(green, 100, 1)
+    setNeo(green, 100, 4)
+
+    setNeo(white, 100, 3)
+    setNeo(blue, 50, 2)
 
  
 

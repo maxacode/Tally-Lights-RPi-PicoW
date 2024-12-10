@@ -69,19 +69,21 @@ def scanSSID(config: object, baseStation: bool) -> tuple:
 
    # scanResult =  # scan for available networks
     savedSSID: list = config.items('global')['wlanSSID'].split(",") # get all saved SSID from config file
-    scan: list = wlan.scan()
- 
-    ssids: list = []
-    for entry in scan:
-        ssid, _, _, _, _, _ = entry
-        ssids.append(ssid.decode('utf-8'))  # Decode the SSID from bytes to string
- 
-    for x in ssids:
-        for y in savedSSID:
-            if y in x:
-                printFF(f"Found Saved SSID, connecting to {y}")
-                wlanPass: str = config.items('global')['wlanPassword'].split(',')[savedSSID.index(y)]
-                return(False, y, wlanPass)              
+    if "None" not in savedSSID:
+        scan: list = wlan.scan()
+     
+        ssids: list = []
+        for entry in scan:
+            ssid, _, _, _, _, _ = entry
+            ssids.append(ssid.decode('utf-8'))  # Decode the SSID from bytes to string
+     
+        for x in ssids:
+            for y in savedSSID:
+                if y in x:
+                    printFF(f"Found Saved SSID, connecting to {y}")
+                    wlanPass: str = config.items('global')['wlanPassword'].split(',')[savedSSID.index(y)]
+                    return(False, y, wlanPass)
+
     else:
         ssid: str = f"{config.items('general')['apSSID']}"
         printFF("No saved SSID Found, starting AP Mode no Password", ssid)

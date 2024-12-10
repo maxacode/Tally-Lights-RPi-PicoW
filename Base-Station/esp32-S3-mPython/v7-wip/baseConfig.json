@@ -13,9 +13,9 @@ tally1 = 80
 title = Brightness of status LED Strip
 
 [gpioInput]
-tally3 = [3,4]
-tally2 = [5,6]
-tally4 = [7,8]
+tally3 = [5,6]
+tally2 = [3,4]
+tally4 = [43,7]
 tally1 = [1,2]
 title = !!pins that are from video switcher
 
@@ -44,5 +44,4 @@ wlanSSID = None
 baseStationName = tallybase
 wlanPassword = GodIsGood!,loveGodloveothers
 title = Global Settings, Wifi Details without Spaces
-
 
