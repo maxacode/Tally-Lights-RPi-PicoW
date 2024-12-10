@@ -18,6 +18,7 @@
 <form id="configForm">
 <h1>Edit Configuration</h1>
 <button type="button" onclick="submitConfig()">Save Changes</button>
+<div id="banner-container"></div>
 {% for section in name.sections() %}
     {% if name.items(section)['title'] != "hidden"  %}
     <h4> {{section }} : {{ name.items(section)['title'] }}</h4>
@@ -61,6 +62,8 @@
             setTimeout(() => {
                 banner.remove();
             }, 30000); // Adjust the time as needed
+            
+            fetch('/reset');
     }
 
     </script>

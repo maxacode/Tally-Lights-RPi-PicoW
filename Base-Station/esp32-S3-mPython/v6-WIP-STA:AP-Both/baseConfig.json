@@ -6,10 +6,10 @@ tally1 = 70,70,30
 title = How bright is the individual tally: red, green, blue :level 0-255
 
 [tallyLEDStatus]
-tally3 = 200
-tally2 = 200
-tally4 = 200
-tally1 = 200
+tally3 = 80
+tally2 = 80
+tally4 = 80
+tally1 = 80
 title = Brightness of status LED Strip
 
 [gpioInput]

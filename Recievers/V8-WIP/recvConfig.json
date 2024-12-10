@@ -17,15 +17,16 @@ port = 8080
 receiverSetup = /recvSetup
 
 [global]
-title = Global Settings, add Wifi networks seperated with a "," and no spaces between entries.
-wlanSSID = tallybase
+homeTest = True
 baseStationName = tallybase.local
-wlanPassword = 
-apSSID = tallyReciever
-keepAlivePush = 30
-heartbeat = 18
-version = 8.1
+resetTest = True
 baseStationIP = 192.168.4.1
+version = 8.4
+title = Global Settings, add Wifi networks seperated with a "," and no spaces between entries.
+wlanPassword = 
+wlanSSID = tallybase
+heartbeat = 16
+keepAlivePush = 30
 
 [hidden]
 title = hidden

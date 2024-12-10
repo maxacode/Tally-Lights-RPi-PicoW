@@ -19,6 +19,13 @@ Functions and classes:
 
  TODO:  Disable WLAN Before enalbe since soft reset doesnt clear it
 Set WIFI to known state on startup: MicroPython does not reset the wifi peripheral after a soft reset. This can lead to unexpected behaviour. To guarantee the wifi is reset to a known state after a soft reset make sure you deactivate the STA_IF and AP_IF before setting them to the desired state at startup, eg.:
+TODO: led # blicks when recvSetup is hit with tally
+
+-v6.2 - 12/05
+- testing threads on sending packets to tallys - Works but multiple threads start and if 2 sends go to 1 tally then each will try to so total is alot more since thread 2 for try 2 keeps trying event though thread 1 knows device is offline
+
+
+
 
 -v6.1 12/3
 - removed pst setting and checking from getGPIOState since we do not need to check button value since buttons are used and no bounces accur with MCU or video Board
@@ -48,6 +55,9 @@ sta, ap = wifi_reset()
 #TODO. boot.py file to run mainBase.py like in recivers setup
  
  """
+
+import _thread
+
 from gc import collect, mem_free # type: ignore
 
 import network, asyncio # type: ignore
@@ -135,7 +145,7 @@ def getGPIOState(pin: object, *args:str ) -> None:
         None
     """
         # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
-    print(f'getGPIO State {pin=}, {args=}')
+    #print(f'getGPIO State {pin=}, {args=}')
     
     
     if args:
@@ -153,26 +163,28 @@ def getGPIOState(pin: object, *args:str ) -> None:
     tallyID = ''
         # Output the matching keys    for key,values in gpioInMap.items():
     curVal = ''
+        # 
     for key,values in gpioInMap.items(): # key is tallyID full Str values is list of 2 pin mappings
         if pinNum in values:
             pinValue = str(Pin(values[0]).value())+ str(Pin(values[1]).value()) 
-            printFF(f'IntP: {pinNum} {key} {pinValue}')
+            #printFF(f'IntP: {pinNum} {key} {pinValue}')
             tallyID = key  
             curVal += str(pinValue)
             break 
-                
+        
+        # If clients exists then send color
     for ip, tallyIDInt in clients.items(): #key2 is IP val2 is TallyID just Int
         if tallyIDInt in tallyID:
             #printF('s3: ', ip[-3:0], curVal)
-            asyncio.run(sendTo1Client(curVal, ip, tallyID))
-                         
+           # asyncio.run(sendTo1Client(curVal, ip, tallyID))
+            _thread.start_new_thread(sendTo1Client, (curVal, ip, tallyID))       
         setNeo(blue, 120)
          
     # Enabling IRQ based on Pin param
     #Pin(pinNum, Pin.IN, Pin.PULL_UP).irq(handler=getGPIOState)
    
 
-async def sendTo1Client(curVal: str, ip: str, tallyIDStr: str) -> None: #pinValue, ip,endPoint, tallyID):
+def sendTo1Client(curVal: str, ip: str, tallyIDStr: str) -> None: #pinValue, ip,endPoint, tallyID):
         """
         Function to send the GPIO state to a single connected client.
         Params:
@@ -183,40 +195,60 @@ async def sendTo1Client(curVal: str, ip: str, tallyIDStr: str) -> None: #pinValu
         Returns:
             none
         """
-        printF('SendTo1Client Started: ', curVal, ip, tallyIDStr)
+       # printF('SendTo1Client Started: ', curVal, ip, tallyIDStr)
             #sendTo1Client(pinValue, ip, endPoint)
         tryCounter = 0 
         while True:
-            tryCounter += 1
             try:
-                printF(f'Sending to: {ip=} {tryCounter=} ')
+                tryCounter += 1
+
+                printF(f'    {tallyIDStr} | Sending  {tryCounter=} ')
                 url = f"http://{ip}:8080" + config.items('api')['ledControlEndpoint'] #type: ignore
                 headers = {'led':str(curVal)}
                 response = post(url,headers=headers,timeout = reqTimeOut)
                 status = response.status_code #status: 200 | response: green off
-                printFF(f's2: {status} | r: {response.text}') 
+                rText = response.text
+                printFF(f'        {tallyIDStr} s: {status} | r: {rText}')
+                
+                
+                # Setting status Neos to correct status from response (R,G,B)
+                if "red on" in rText:
+                    setNeo(red, id = int( (tallyIDStr[-1])))
+                elif "green on" in rText:
+                    setNeo(green, id = int((tallyIDStr[-1])))
+                elif "blue on" in rText:
+                    setNeo(blue, id = int((tallyIDStr[-1])))
+                    
+                    
                 if status != 200:
-                    if tryCounter > 3:
-                        printFF(f"           {ip=} is not avaialable, removing from clients")
-                        del clients[ip]
+                    if tryCounter > 2:
+                        printFF(f"           {tallyIDStr} is not avaialable, removing from clients")
+                        try:
+                            del clients[ip]
+                        except:
+                            pass
                         printF(setNeo(off, 0, int(tallyIDStr[-1])))
                         break
-                    await asyncio.sleep(.2)
+                    #await asyncio.sleep(.2)
 
                 if status == 200:
                     break
                     
             except Exception as e:
-                printW(f'           timeout {ip=} {e=}')
-                await asyncio.sleep(.1)
+                printW(f'           {tallyIDStr} timeout {e=}')
+                #await asyncio.sleep(.1)
                 
-                if tryCounter > 5:
-                    printFF(f"    ln 270  {ip=} ooo, removing ", tallyIDStr[-1])
-                    del clients[ip]
+                if tryCounter > 2:
+                    printFF(f"     {tallyIDStr} ooo, removing ", tallyIDStr[-1])
+                    try:
+                        del clients[ip]
+                    except:
+                        pass 
                     printF(setNeo(off, 0, int(tallyIDStr[-1])))
                     break
- 
-
+                
+        _thread.exit() 
+        
 
 @app.post('/recvSetup') #type: ignore
 async def create_client(request):
@@ -250,6 +282,8 @@ async def create_client(request):
         printF('await setbrightness')
 
         asyncio.create_task(setBrightness(tallyIDFullString.split()))
+        asyncio.create_task(sendCurrentGpio(tallyIDFullString))
+
         try:
             printF('returnign recvSetup')
             return 'recvS:OK', 200, {'Content-Type': 'text/html'}
@@ -307,7 +341,7 @@ async def setBrightness(keys: set[str]):
     for tallyToUpdate in keys:
         for key, value in clients.items():
             if value in tallyToUpdate:
-                printFF(f'{tallyToUpdate=} send brightness')
+                #printFF(f'{tallyToUpdate=} send brightness')
 
                 red: str = config.items('tallyBrightness')[tallyToUpdate].split(',')[0] #type: ignore
                 green: str = config.items('tallyBrightness')[tallyToUpdate].split(',')[1] #type: ignore
@@ -475,5 +509,6 @@ apMode, myIP = mainFunc(config,True)
 printFF('myIP/ApMode: ', myIP, apMode)
 setupMappings(config)
 asyncio.run(mainThreads())
+
 
 

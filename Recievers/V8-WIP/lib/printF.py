@@ -1,6 +1,6 @@
-printFOn = False
-printFFOn = False
-printWOn = False
+printFOn = True
+printFFOn = True
+printWOn = True
 from time import time,sleep
 
 timeStart = time()

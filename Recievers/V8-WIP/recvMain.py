@@ -1,6 +1,6 @@
 # Recievers Main Function
 """
-v8.1
+v8.4
 
 make a list of each function and the purpose with params and returns in each function:
     - getConfig() - reads the config file
@@ -10,29 +10,35 @@ make a list of each function and the purpose with params and returns in each fun
     - updateWifi(request) - Base sends new Wifi Configs
     - setBrightness(request) - Sets the brightness of the LED red, green, blue  
     - led(request) - Sets the LED colors
-    - shutdown(request) - Shuts down the server
+    - resetFunc(request) - Shuts down the server
     - recvSetup(config,serverIP,myIP) - Sends a POST request to the base station with the IP and Tally ID
     - keepAlive() - Sleeps for 10 seconds then adds 10 to counter, if over 30 triggers recvSetup. kA is reset on every postMade
     - mainThreads() - Main function that runs the server and the recvSetup function
 
 
-#TODO
-Does this after KA is met but base has been reset
+Set homeTest False when running in Prod!
 
-232, ('status=[False, 400]',)
-233, ("makePost Start : http://192.168.4.1:8080/recvSetup {'ip': '192.168.4.2', 'tallyID': '1'}",)
-233, ('        ln 167 timeout e=[Errno 113] EHOSTUNREACH',)
-233, ('status=[False, 400]',)
-233, ("makePost Start : http://192.168.4.1:8080/recvSetup {'ip': '192.168.4.2', 'tallyID': '1'}",)
-233, ('        ln 167 timeout e=[Errno 113] EHOSTUNREACH',)
-233
+v 8.4 12/9
+- home/Bool Test are strings and no builtin way to get boolean with Config parser so just chekcing them as "True/False"
+- added resetFunc2 - which waits 2 secs before reseting to return http can happen
+- Connect to WLAN major changes
+
+v.8.3 12/5
+- latest
+
+ 
+v8.2 12/5
+- recvSetup doesnt change LED - Works
+- banner on Save added to index2.html - Works
+- machine reset after config change - works
+- white/cyan blink when tyring to connect to base- works
 
 v8.1 12/3:
 - move heartbeat from hidden to global
-- /shutdown resets machine.
-- index2.html displays save msg and reboot
+- /reset resets machine.
+- index2.html displays save msg and reboot Works
 - homeTest in ln 239
-- machin.reset if recvStup fails after 5 attempts
+- reset if recvStup fails after 5 attempts - Works
 
 
 8.0 Nov 30 
@@ -42,6 +48,7 @@ v8.1 12/3:
     
     
 """
+
 
 from machine import Pin, reset, freq
  
@@ -64,6 +71,7 @@ from utemplate import Template
 from utemplate2 import compiled
 app = Microdot()
 from printF import printF, printFF, printW
+
 
 
 
@@ -127,7 +135,6 @@ async def makePost(method:str,  url:str,  headers:dict[str|iter, str|iter],  req
                 #response = post(url,headers=headers)`
                 response = post(url,headers=headers,timeout = reqTimeOut)
                # response = post(url,headers=headers)
-# TODO: why timeout = reqTimeOut does not work? to short of a time? or wrong syntax?
 
             elif method == "GET":
                 response = get(url,headers=headers,timeout = reqTimeOut)
@@ -231,7 +238,8 @@ async def setBrightness(request):
 async def led(request):
     global kA
     kA = 0
-    printF(f'hit on /led {request.method=} , {request.client_addr=}, {request.headers["led"]=}')
+    #printF(f'hit on /led {request.method=} , {request.client_addr=}, {request.headers["led"]=}')
+    printFF(f'/led | headers= {request.headers["led"]}')
     #printF(request.url, request.client_addr, request.headers['led']) #('/led', None, {'ledStatus': '00000100', 'Host': '192.168.88.229', 'Connection': 'close'})
     setNeo(blue, blueLevel)
     
@@ -245,8 +253,8 @@ async def led(request):
         head = request.headers['led']
         # 0 in 0 index = first button in GPIO In pressed
         # home test jig settings - disable
-        homeTest = True
-        if homeTest == True: #00
+
+        if homeTest == "True": #00
             head0 = str(1 - int(head[0]))
             head1 = str(1 - int(head[1]))
         else:
@@ -276,12 +284,15 @@ async def led(request):
     printFF(out)
     return out, 200, {'Content-Type': 'text/html'}
 
-
-@app.route('/shutdown')
-async def shutdown(request):
-    await asyncio.sleep(2)
-    machine.reset()
-    return 'The server is shutting down...'
+#to actually reset after a return
+async def resetFunc2():
+    await asyncio.sleep(3)
+        #if resetTest:
+    reset()
+@app.route('/reset')
+async def resetFunc(request):
+    asyncio.create_task(resetFunc2())
+    return 'The server is now shutting down.'
 
 async def recvSetup(config,serverIP,myIP):
     retry = 0 
@@ -290,14 +301,20 @@ async def recvSetup(config,serverIP,myIP):
     while True:
        # setNeo((255,165,0), whiteLevel)
         retry += 1
+       # setNeo((128,0,128), 80)
+
         if retry >= 5:
-            reset()
+            setNeo((50,0,30), 80)
+            if resetTest == "True":
+                print('304 resettest true')
+                reset()
+
             
         # We are trying to get MDNS IP if server does not reply after 5 attemps
                     # Sending a post to base and recvSetup with IP and Tally ID
         url = f"{serverIP}{config.items('api')['receiverSetup']}"
         headers = {'ip':myIP, 'tallyID':str(tallyID)}
-      #  status = response.status_code
+      #  status = response.status_coded
         status = await makePost('POST', url, headers)
         printFF(f'{status=}')
         if status[1] >= 200 and status[1] < 300:
@@ -307,40 +324,34 @@ async def recvSetup(config,serverIP,myIP):
         #elif status[0] == 208:
         else:
            # setNeo(off, 0)
-            await asyncio.sleep(1)
-            #TODO: do something if status is not 200, like disable red/green light if resonse is recvS:dupe
+            await asyncio.sleep(.4)
             
 kA = 0
 
 async def keepAlive():
     global kA
  
-    print(f'{heartBeat=}, {keepAlivePush=}')
+    #print(f'{heartBeat=}, {keepAlivePush=}')
     while True:
         try:
-            printF(f'{kA=}, /60 {kA/60=}')
+            printF(f'     {kA=}')
             await asyncio.sleep(heartBeat)
             kA += heartBeat
                         
             if kA >= keepAlivePush:
-#                 freq -= 1000000
-#                 print(f'{freq/1000000=}')
-# 
-#                 machine.freq(freq)
-                #print('frew machine.freq(75000000)')
-                freq(133000000)
-
-                printF(f'{kA=}, /60 {kA/60=}')
+               # freq(133000000)
                 kA = 0
                 asyncio.create_task(recvSetup(config,serverIP,myIP))
                 
         except Exception as e:
             printF(f'ln 320 {e=}')
-            await asyncio.sleep(30)
-            machine.reset()
+            await asyncio.sleep(heartBeat)
+            if resetTest == "True":
+                print("345 reset test true")
+                reset()
             
         
-async def mainThreads(apMode, myIP):
+async def mainThreads(myIP):
     printF('ln 207 mainThread start')
     global serverIP
 
@@ -362,16 +373,20 @@ whiteLevel = int(config.items('tallyBrightness')['white'])
 heartBeat = int(config.items('global')['heartbeat'])
 keepAlivePush = int(config.items('global')['keepAlivePush'])
 
-setNeo(blue, 50, 0, True)
+resetTest = config.items('global')['resetTest']
+homeTest = config.items('global')['homeTest']
+
+#print(type(resetTest), resetTest, type(homeTest), homeTest)
+#setNeo(, 50, 0, True)
 
 
 
 serverIP = ''
    # get Dip switch value
 getDipSwitch()
-apMode, myIP = mainFunc(config,True) # GC Done
-printFF(myIP, apMode)
-asyncio.run(mainThreads(apMode, myIP))
+myIP = mainFunc(config) # GC Done
+printFF(myIP)
+asyncio.run(mainThreads(myIP))
 # Main thread continues running while the other threads execute
 
 if __name__ == "__main__":
@@ -384,4 +399,4 @@ if __name__ == "__main__":
 
 
 
-g
+

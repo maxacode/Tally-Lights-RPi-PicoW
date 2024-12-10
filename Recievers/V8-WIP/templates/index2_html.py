@@ -20,6 +20,7 @@ def render(name):
 <form id=\"configForm\">
 <h1>Edit Configuration</h1>
 <button type=\"button\" onclick=\"submitConfig()\">Save Changes</button>
+<div id=\"banner-container\"></div>
 """
     for section in name.sections():
         yield """    """
@@ -83,16 +84,21 @@ def render(name):
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => """
+            // Display the banner immediately
+            const banner = document.createElement('div');
+            banner.classList.add('banner');
+            banner.textContent = 'Configuration saved successfully! Rebooting Now!';
+            document.getElementById('banner-container').appendChild(banner);
+
+            // Hide the banner after a few seconds
+            setTimeout(() => """
     yield """{
-                console.log('Success:', data);
-            })
-            .catch((error) => """
-    yield """{
-                console.error('Error:', error);
-            });
-        }
+                banner.remove();
+            }, 30000); // Adjust the time as needed
+            
+            fetch('/reset');
+    }
+
     </script>
 </body>
 </html>
