@@ -192,28 +192,27 @@ def getGPIOState(pin: object, *args:str ) -> None:
         if pinNum in values:
             oldPinValue = 0
             pinValue = str(Pin(values[0]).value())+ str(Pin(values[1]).value())
-                if oldPinValue == pinValue:
-                    tallyID = key  
+            if oldPinValue == pinValue:
+                tallyID = key  
+                break
+            else:
+            #printFF(f'IntP: {pinNum} {key} {pinValue}')
+                oldPinValue == pinValue
+                await asyncio.sleep(.2)
+                tallyID = key  
+                curVal += str(pinValue)
+              #  break 
+    
+                    # If clients exists then send color
+                for ip, tallyIDInt in clients.items(): #key2 is IP val2 is TallyID just Int
+                    if tallyIDInt in tallyID:
+                        #printF('s3: ', ip[-3:0], curVal)
+                       # asyncio.run(sendTo1Client(curVal, ip, tallyID))
+                        printFF(f'IntP: {pinNum} {key} {pinValue}')
 
-                    break
-                else:
-                #printFF(f'IntP: {pinNum} {key} {pinValue}')
-                    oldPinValue == pinValue
-                    await asyncio.sleep(.2)
-                    tallyID = key  
-                    curVal += str(pinValue)
-                    break 
-        
-        # If clients exists then send color
-    for ip, tallyIDInt in clients.items(): #key2 is IP val2 is TallyID just Int
-        if tallyIDInt in tallyID:
-            #printF('s3: ', ip[-3:0], curVal)
-           # asyncio.run(sendTo1Client(curVal, ip, tallyID))
-            printFF(f'IntP: {pinNum} {key} {pinValue}')
-
-            printF('  thread start', tallyID)
-            _thread.start_new_thread(sendTo1Client, (curVal, ip, tallyID))       
-        setNeo(blue, 120)
+                        printF('  thread start', tallyID)
+                        _thread.start_new_thread(sendTo1Client, (curVal, ip, tallyID))       
+                    setNeo(blue, 120)
          
     # Enabling IRQ based on Pin param
    # Pin(pinNum, Pin.IN, Pin.PULL_UP).irq(handler=getGPIOState)

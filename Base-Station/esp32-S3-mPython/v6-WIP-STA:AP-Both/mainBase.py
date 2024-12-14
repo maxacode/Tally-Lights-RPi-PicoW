@@ -145,7 +145,7 @@ def getGPIOState(pin: object, *args:str ) -> None:
         None
     """
         # gpioinput {'tally1': [16, 17], 'tally4': [22, 26], 'tally3': [20, 21], 'tally2': [18, 19]}
-    #print(f'getGPIO State {pin=}, {args=}')
+    print(f'getGPIO State {pin=}, {args=}')
     
     
     if args:
